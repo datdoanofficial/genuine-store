@@ -1,9 +1,10 @@
 import React from "react";
+import "../styles/pages/Home.scss";
 
 type Props = {};
 
 const Home = (props: Props) => {
-  return <div>Home</div>;
+  return <div className="homepage">Home</div>;
 };
 
 export default Home;

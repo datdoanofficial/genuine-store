@@ -1,0 +1,21 @@
+@import "../../styles/common/root.scss";
+
+.primary-btn {
+  color: #fff;
+  display: flex;
+  font-family: $pontano;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 36px;
+  text-decoration: none;
+  border-radius: 50px;
+  background-color: $primary-color;
+}
+
+.primary-btn:hover {
+  background-color: $hover-color;
+}
