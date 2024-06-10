@@ -7,14 +7,17 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
   color: #fff;
   background-color: #101010;
 }
 
 .homepage {
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   top: 105px;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 200px);
   height: 200vh;
 }
