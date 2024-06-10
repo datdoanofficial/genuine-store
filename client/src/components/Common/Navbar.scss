@@ -1,13 +1,21 @@
 @import "../../styles/common/root.scss";
 
 .navbar {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1d1d1d;
+  padding: 30px 40px;
+  transition: 0.6s;
   color: white;
   font-size: 16px;
+  z-index: 1000;
+
+  &.sticky {
+    padding: 20px 40px;
+    background: #1d1d1d;
+  }
 
   .navbar-link {
     display: flex;
