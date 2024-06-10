@@ -9,6 +9,9 @@ const HomeBanner = (props: Props) => {
     <div className="home-banner">
       <div className="slide">
         <img src={banner1} alt="" />
+        <img src={banner1} alt="" />
+        <img src={banner1} alt="" />
+        <img src={banner1} alt="" />
       </div>
       <div className="card-information">
         <div className="card-item">

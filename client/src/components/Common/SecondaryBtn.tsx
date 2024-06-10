@@ -1,9 +1,18 @@
 import React from "react";
+import "./SecondaryBtn.scss";
 
-type Props = {};
+interface LinkProps {
+  to: string;
+  children: React.ReactNode;
+  className?: string;
+}
 
-const SecondaryBtn = (props: Props) => {
-  return <div>SecondaryBtn</div>;
+const Link: React.FC<LinkProps> = ({ to, children, className }) => {
+  return (
+    <a href={to} className="secondary-btn">
+      {children}
+    </a>
+  );
 };
 
-export default SecondaryBtn;
+export default Link;

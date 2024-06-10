@@ -1,0 +1,21 @@
+@import "../../styles/common/root.scss";
+
+.secondary-btn {
+  color: #fff;
+  display: flex;
+  font-family: $pontano;
+  font-weight: 100;
+  text-transform: capitalize;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 50px;
+  text-decoration: none;
+  border-radius: 50px;
+  background-color: $bg-color;
+}
+
+.secondary-btn:hover {
+  background-color: $bg-hover;
+}
