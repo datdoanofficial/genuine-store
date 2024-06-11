@@ -50,9 +50,56 @@ const bannerData: Banner[] = [
 const HomeBanner = () => {
   const [currentOverlay, setCurrentOverlay] = useState(0);
   const [animateBanner, setAnimateBanner] = useState(false);
+  const [pageLoadAnimation, setPageLoadAnimation] = useState(true); // State to control animation on page load
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  const renderCardItems = () => {
+    return bannerData.map((banner, index) => (
+      <div
+        key={index}
+        className="card-item"
+        onClick={() => handleCardItemClick(index)}
+        style={{
+          animationDelay: `${index * 0.5}s`,
+        }}
+      >
+        <div
+          className={`overlay-${index + 1} overlay`}
+          style={{
+            animation:
+              currentOverlay === index
+                ? `expandOverlay ${index === 0 ? "7s" : "7s"} ${
+                    index === 0 && pageLoadAnimation ? "0s" : "0s"
+                  } forwards`
+                : "none",
+            width:
+              currentOverlay === index
+                ? "0%"
+                : currentOverlay > index
+                ? "100%"
+                : "0%",
+            opacity: currentOverlay === index ? 1 : 0,
+          }}
+        ></div>
+        <div className="card-content">
+          <div className="name">{banner.name}</div>
+          <div className="rating">
+            <span className="stars">{renderStars(banner.rating)}</span>
+            <span className="total-rating">{banner.votes} votes</span>
+          </div>
+          <div className="price">{banner.price}</div>
+        </div>
+      </div>
+    ));
+  };
+
   useEffect(() => {
+    // This effect runs only once on component mount
+    // Delay turning off the animation to allow it to complete
+    const timer = setTimeout(() => {
+      setPageLoadAnimation(false); // Turn off the animation after it's been applied
+    }, 500); // Adjust the timeout duration to match your animation duration
+
     intervalRef.current = setInterval(() => {
       if (!animateBanner) {
         setAnimateBanner(true);
@@ -61,9 +108,10 @@ const HomeBanner = () => {
           (prevOverlay) => (prevOverlay + 1) % bannerData.length
         );
       }
-    }, 4000);
+    }, 6000);
 
     return () => {
+      clearTimeout(timer); // Clear the timeout on component unmount
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [animateBanner]);
@@ -96,48 +144,19 @@ const HomeBanner = () => {
           (prevOverlay) => (prevOverlay + 1) % bannerData.length
         );
       }
-    }, 5000); // Consider adjusting this duration if needed
+    }, 6000); // Consider adjusting this duration if needed
   };
 
   return (
     <div className="home-banner">
-      <div className={`slide ${animateBanner ? "banner-animate" : ""}`}>
+      <div
+        className={`slide ${pageLoadAnimation ? "animate-on-load" : ""} ${
+          animateBanner ? "banner-animate" : ""
+        }`}
+      >
         <img src={bannerData[currentOverlay].src} alt="" />
       </div>
-      <div className="card-information">
-        {bannerData.map((banner, index) => (
-          <div
-            key={index}
-            className={`card-item ${currentOverlay === index ? "active" : ""}`}
-            onClick={() => handleCardItemClick(index)}
-          >
-            <div
-              className={`overlay-${index + 1} overlay`}
-              style={{
-                animation:
-                  currentOverlay === index
-                    ? "expandOverlay 5s forwards"
-                    : "none",
-                width:
-                  currentOverlay === index
-                    ? "0%"
-                    : currentOverlay > index
-                    ? "100%"
-                    : "0%",
-                opacity: currentOverlay === index ? 1 : 0,
-              }}
-            ></div>
-            <div className="card-content">
-              <div className="name">{banner.name}</div>
-              <div className="rating">
-                <span className="stars">{renderStars(banner.rating)}</span>
-                <span className="total-rating">{banner.votes} votes</span>
-              </div>
-              <div className="price">{banner.price}</div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <div className="card-information">{renderCardItems()}</div>
     </div>
   );
 };
