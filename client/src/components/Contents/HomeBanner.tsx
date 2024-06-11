@@ -13,6 +13,7 @@ type Banner = {
   rating: number; // Assuming rating is a number for simplicity
   votes: number;
   price: string;
+  discount?: number;
 };
 
 // Example banner data, replace with actual data
@@ -23,6 +24,7 @@ const bannerData: Banner[] = [
     rating: 5,
     votes: 1052,
     price: "1.299.000đ",
+    discount: 0,
   },
   {
     src: banner2,
@@ -30,6 +32,7 @@ const bannerData: Banner[] = [
     rating: 5,
     votes: 866,
     price: "1.524.000đ",
+    discount: 0.2,
   },
   {
     src: banner3,
@@ -37,6 +40,7 @@ const bannerData: Banner[] = [
     rating: 5,
     votes: 422,
     price: "Free",
+    discount: 0,
   },
   {
     src: banner4,
@@ -44,6 +48,7 @@ const bannerData: Banner[] = [
     rating: 5,
     votes: 584,
     price: "Free",
+    discount: 0,
   },
 ];
 
@@ -53,52 +58,87 @@ const HomeBanner = () => {
   const [pageLoadAnimation, setPageLoadAnimation] = useState(true); // State to control animation on page load
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  const calculateDiscountedPrice = (
+    price: string,
+    discount?: number
+  ): string => {
+    if (discount && price !== "Free") {
+      const priceNumber = parseFloat(price.replace(/\./g, "").replace("đ", ""));
+      const discountedPrice = priceNumber - priceNumber * discount;
+      return `${discountedPrice.toLocaleString("vi-VN")}đ`;
+    }
+    return price;
+  };
+
   const renderCardItems = () => {
-    return bannerData.map((banner, index) => (
-      <div
-        key={index}
-        className="card-item"
-        onClick={() => handleCardItemClick(index)}
-        style={{
-          animationDelay: `${index * 0.5}s`,
-        }}
-      >
+    return bannerData.map((banner, index) => {
+      // Ensure discount is a number and greater than 0
+      const hasDiscount =
+        typeof banner.discount === "number" && banner.discount > 0;
+      // Check if the price is not "Free"
+      const isPriceNotFree = banner.price !== "Free";
+
+      return (
         <div
-          className={`overlay-${index + 1} overlay`}
+          key={index}
+          className="card-item"
+          onClick={() => handleCardItemClick(index)}
           style={{
-            animation:
-              currentOverlay === index
-                ? `expandOverlay ${index === 0 ? "7s" : "7s"} ${
-                    index === 0 && pageLoadAnimation ? "0s" : "0s"
-                  } forwards`
-                : "none",
-            width:
-              currentOverlay === index
-                ? "0%"
-                : currentOverlay > index
-                ? "100%"
-                : "0%",
-            opacity: currentOverlay === index ? 1 : 0,
+            animationDelay: `${index * 0.5}s`,
           }}
-        ></div>
-        <div className="card-content">
-          <div className="name">{banner.name}</div>
-          <div className="rating">
-            <span className="stars">{renderStars(banner.rating)}</span>
-            <span className="total-rating">{banner.votes} votes</span>
+          role="button"
+          tabIndex={0}
+        >
+          <div
+            className={`overlay-${index + 1} overlay`}
+            style={{
+              animation:
+                currentOverlay === index
+                  ? `expandOverlay ${index === 0 ? "7s" : "7s"} ${
+                      index === 0 && pageLoadAnimation ? "0s" : "0s"
+                    } forwards`
+                  : "none",
+              width:
+                currentOverlay === index
+                  ? "0%"
+                  : currentOverlay > index
+                  ? "100%"
+                  : "0%",
+              opacity: currentOverlay === index ? 1 : 0,
+            }}
+          ></div>
+          <div className="card-content">
+            <div className="name">{banner.name}</div>
+            <div className="rating">
+              <span className="stars">{renderStars(banner.rating)}</span>
+              <span className="total-rating">{banner.votes} votes</span>
+            </div>
+            {/* Other banner elements */}
+            <div className="price">
+              {hasDiscount && isPriceNotFree && (
+                <div className="discount">
+                  {`${(Number(banner.discount) * 100).toFixed(0)}%`}
+                </div>
+              )}
+              {hasDiscount && isPriceNotFree ? (
+                <span className="original-price">{banner.price}</span>
+              ) : (
+                ""
+              )}
+              {isPriceNotFree
+                ? calculateDiscountedPrice(banner.price, banner.discount)
+                : "Free"}
+            </div>
           </div>
-          <div className="price">{banner.price}</div>
         </div>
-      </div>
-    ));
+      );
+    });
   };
 
   useEffect(() => {
-    // This effect runs only once on component mount
-    // Delay turning off the animation to allow it to complete
     const timer = setTimeout(() => {
-      setPageLoadAnimation(false); // Turn off the animation after it's been applied
-    }, 500); // Adjust the timeout duration to match your animation duration
+      setPageLoadAnimation(false);
+    }, 500);
 
     intervalRef.current = setInterval(() => {
       if (!animateBanner) {
@@ -111,7 +151,7 @@ const HomeBanner = () => {
     }, 6000);
 
     return () => {
-      clearTimeout(timer); // Clear the timeout on component unmount
+      clearTimeout(timer);
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [animateBanner]);
@@ -124,27 +164,21 @@ const HomeBanner = () => {
     ));
   };
 
-  // Inside handleCardItemClick, adjust the timing to better align with the CSS animation
   const handleCardItemClick = (index: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current);
-
-    // Start the banner change immediately or with a slight delay as needed
     setCurrentOverlay(index);
-
-    // Adjust the timing here to better align with your CSS animations
     setAnimateBanner(true);
-    setTimeout(() => setAnimateBanner(false), 500); // Adjusted to slightly less than the CSS animation duration
+    setTimeout(() => setAnimateBanner(false), 500);
 
-    // Restart the interval with adjusted timing if necessary
     intervalRef.current = setInterval(() => {
       if (!animateBanner) {
         setAnimateBanner(true);
-        setTimeout(() => setAnimateBanner(false), 500); // Keep consistent timing
+        setTimeout(() => setAnimateBanner(false), 500);
         setCurrentOverlay(
           (prevOverlay) => (prevOverlay + 1) % bannerData.length
         );
       }
-    }, 6000); // Consider adjusting this duration if needed
+    }, 6000);
   };
 
   return (

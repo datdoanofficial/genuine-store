@@ -31,7 +31,7 @@ const Navbar = (props: Props) => {
         </Link>
         <ul>
           <li>
-            <Link to="/">About</Link>
+            <Link to="/">Store</Link>
           </li>
           <li>
             <Link to="/">News</Link>
