@@ -1,22 +1,22 @@
 @import "../../styles/common/root.scss";
 
-.secondary-btn {
+.small-btn {
   color: #fff;
   display: flex;
   font-family: $pontano;
   font-weight: 100;
   text-transform: capitalize;
-  font-size: 16px;
+  font-size: 14px;
+  transition: 0.3s;
   justify-content: center;
   align-items: center;
-  transition: 0.3s;
-  width: 130px;
-  height: 46px;
+  width: 100px;
+  height: 32px;
   text-decoration: none;
   border-radius: 50px;
-  background-color: $bg-color;
+  background-color: $primary-color;
 }
 
-.secondary-btn:hover {
-  background-color: $bg-hover;
+.small-btn:hover {
+  background-color: $hover-color;
 }
