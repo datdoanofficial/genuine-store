@@ -54,6 +54,14 @@ html {
     display: flex;
     align-items: center;
     overflow-x: auto;
+
+    // Hide scrollbar for Webkit browsers
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // Hide scrollbar for Firefox
+    scrollbar-width: none;
   }
 
   .section-04 {

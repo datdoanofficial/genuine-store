@@ -1,9 +1,149 @@
 @import "../../styles/common/root.scss";
 
+@keyframes hori {
+  0% {
+    transform: translateX(-70%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .horizontal-cards {
   height: 700px;
   width: fit-content;
   display: flex;
+  opacity: 0;
+
+  &.appear {
+    opacity: 1;
+    transform: translateX(0);
+    animation: hori 4s linear forwards;
+
+    // image appear
+
+    @keyframes image-appear {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .card:nth-child(1) img {
+      animation: image-appear 1s 3.4s linear forwards;
+    }
+
+    .card:nth-child(2) img {
+      animation: image-appear 1s 3.2s linear forwards;
+    }
+
+    .card:nth-child(3) img {
+      animation: image-appear 1s 3s linear forwards;
+    }
+
+    .card:nth-child(4) img {
+      animation: image-appear 1s 2.5s linear forwards;
+    }
+
+    .card:nth-child(5) img {
+      animation: image-appear 1s 2s linear forwards;
+    }
+
+    .card:nth-child(6) img {
+      animation: image-appear 1s 1.8s linear forwards;
+    }
+
+    .card:nth-child(7) img {
+      animation: image-appear 1s 1.6s linear forwards;
+    }
+
+    .card:nth-child(8) img {
+      animation: image-appear 1s 1.4s linear forwards;
+    }
+
+    .card:nth-child(9) img {
+      animation: image-appear 1s 1.2s linear forwards;
+    }
+
+    .card:nth-child(10) img {
+      animation: image-appear 1s 1s linear forwards;
+    }
+
+    // card appear
+
+    .card:nth-child(1) {
+      width: 0;
+      animation: nth-child-2 1s 2.2s linear forwards;
+    }
+
+    .card:nth-child(2) {
+      width: 0;
+      animation: nth-child-2 1s 2.1s linear forwards;
+    }
+
+    .card:nth-child(3) {
+      width: 0;
+      animation: nth-child-2 1s 2s linear forwards;
+    }
+
+    .card:nth-child(4) {
+      width: 0;
+      animation: nth-child-2 1s 1.5s linear forwards;
+    }
+
+    .card:nth-child(5) {
+      width: 0;
+      animation: nth-child-2 1s 1s linear forwards;
+    }
+
+    .card:nth-child(6) {
+      width: 0;
+      animation: nth-child-2 1s 0.8s linear forwards;
+    }
+
+    .card:nth-child(7) {
+      width: 0;
+      animation: nth-child-2 1s 0.6s linear forwards;
+    }
+
+    .card:nth-child(8) {
+      width: 0;
+      animation: nth-child-2 1s 0.4s linear forwards;
+    }
+
+    .card:nth-child(9) {
+      width: 0;
+      animation: nth-child-2 1s 0.2s linear forwards;
+    }
+
+    .card:nth-child(10) {
+      width: 0;
+      animation: nth-child-2 1s 0s linear forwards;
+    }
+
+    @keyframes nth-child-2 {
+      0% {
+        opacity: 0;
+        width: 0;
+        height: 330px;
+        pointer-events: none; /* Disable hover at the start */
+      }
+      50% {
+        opacity: 0.5;
+        width: 100px;
+        height: 330px;
+        pointer-events: none;
+      }
+      100% {
+        opacity: 1;
+        width: 220px;
+        height: 330px;
+        pointer-events: auto; /* Re-enable hover at the end */
+      }
+    }
+  }
 
   .content {
     position: relative;
@@ -39,6 +179,7 @@
         position: relative;
         width: 220px;
         height: 330px;
+        opacity: 0;
         background: #2a2a2a;
         border-radius: 10px;
         box-sizing: border-box;
@@ -47,6 +188,7 @@
 
         img {
           width: 100%;
+          opacity: 0;
           border-radius: inherit;
         }
 

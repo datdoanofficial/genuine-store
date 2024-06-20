@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HorizontalCards.scss";
 import PrimaryBtn from "../Common/PrimaryBtn";
 import cardDemo from "../../assets/images/card/card-demo.png";
@@ -27,6 +27,21 @@ const bannerData: Banner[] = [
 ];
 
 const HorizontalCards = () => {
+  const [isCardListVisible, setIsCardListVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      setIsCardListVisible(scrollPosition > window.innerHeight * 2.2); // 100vh * 2 = 200vh
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const calculateDiscountedPrice = (
     price: string,
     discount?: number
@@ -85,7 +100,7 @@ const HorizontalCards = () => {
   };
 
   return (
-    <div className="horizontal-cards">
+    <div className={`horizontal-cards ${isCardListVisible ? "appear" : ""}`}>
       <div className="content">
         <div className="title">Explore Worlds</div>
         <div className="description">
