@@ -4,18 +4,16 @@ import PrimaryBtn from "../Common/PrimaryBtn";
 import cardDemo from "../../assets/images/card/card-demo.png";
 import cardDemo1 from "../../assets/images/card/card-demo-01.png";
 
-// Define a type for the banner data to include the properties used
-type Banner = {
+type card = {
   src: string;
   name: string;
-  rating: number; // Assuming rating is a number for simplicity
+  rating: number;
   votes: number;
   price: string;
   discount?: number;
 };
 
-// Example banner data, replace with actual data
-const bannerData: Banner[] = [
+const bannerData: card[] = [
   {
     src: cardDemo,
     name: "The Crew™ Motorfest Trial",
@@ -32,7 +30,7 @@ const HorizontalCards = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
-      setIsCardListVisible(scrollPosition > window.innerHeight * 2.2); // 100vh * 2 = 200vh
+      setIsCardListVisible(scrollPosition > window.innerHeight * 2.2); // 100vh * 2.2 = 220vh
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -113,7 +111,7 @@ const HorizontalCards = () => {
       <div className="line-wrapper">
         <div className="first-line line">
           {Array.from({ length: 10 }, (_, index) => (
-            <div key={index} className="card">
+            <div className="card">
               <img src={cardDemo} alt="" />
               {renderCardItems()}
             </div>
@@ -121,7 +119,7 @@ const HorizontalCards = () => {
         </div>
         <div className="second-line line">
           {Array.from({ length: 10 }, (_, index) => (
-            <div key={index} className="card">
+            <div className="card">
               <img src={cardDemo1} alt="" />
               {renderCardItems()}
             </div>

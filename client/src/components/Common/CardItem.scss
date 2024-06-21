@@ -1,0 +1,25 @@
+@import "../../styles/common/root.scss";
+
+.icard {
+  position: relative; // Added to ensure z-index applies
+  width: 370px;
+  height: 190px;
+  background-color: #2a2a2a;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  perspective: 1000px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    opacity: 0.8;
+    transition: transform 0.8s, opacity 0.8s, box-shadow 0.8s; // Added box-shadow to transition
+    box-shadow: 0 0 0px transparent;
+  }
+
+  img:hover {
+    transform: scale(1.08) translateZ(50px); // Scale slightly to make it pop
+    opacity: 1; // Full opacity on hover
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); // Add a glow effect
+  }
+}

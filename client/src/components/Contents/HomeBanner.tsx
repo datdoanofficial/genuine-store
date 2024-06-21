@@ -6,17 +6,15 @@ import banner3 from "../../assets/images/banner/banner-03.png";
 import banner4 from "../../assets/images/banner/banner-04.png";
 import "./HomeBanner.scss";
 
-// Define a type for the banner data to include the properties used
 type Banner = {
   src: string;
   name: string;
-  rating: number; // Assuming rating is a number for simplicity
+  rating: number;
   votes: number;
   price: string;
   discount?: number;
 };
 
-// Example banner data, replace with actual data
 const bannerData: Banner[] = [
   {
     src: banner1,
