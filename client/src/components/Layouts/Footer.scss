@@ -1,0 +1,205 @@
+@import "../../styles/common/root.scss";
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-top: 100px;
+  padding: 45px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  background-color: #1d1d1d;
+  color: #fff;
+
+  .brand-name {
+    margin-top: -20px;
+    font-family: $pontano;
+
+    img {
+      width: 180px;
+    }
+
+    .dev-brand {
+      display: flex;
+      align-items: center;
+      margin-top: 60px;
+      font-size: 20px;
+      font-weight: 300;
+
+      .dev-logo {
+        margin-left: 10px;
+        width: 70px;
+      }
+    }
+  }
+
+  .quick-links {
+    font-family: $pontano;
+    margin-left: -20px;
+    font-weight: 300;
+
+    ul li {
+      list-style: none;
+
+      .item-link {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 50px;
+        font-size: 18px;
+      }
+
+      .item-link:hover {
+        color: $primary-color;
+      }
+    }
+    .description {
+      font-size: 16px;
+      margin-top: 30px;
+      line-height: 24px;
+      max-width: 400px;
+      color: #8a8a8a;
+      font-weight: 300;
+
+      .social-links {
+        margin-top: 30px;
+
+        ul li {
+          display: flex;
+        }
+
+        ul li .sc-link {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+          width: 40px;
+          height: 40px;
+          background-color: #3a3a3a;
+          margin-right: 20px;
+          color: #fff;
+          text-decoration: none;
+
+          &:hover {
+            background-color: $primary-color;
+          }
+
+          .ins-icon {
+            font-size: 22px;
+          }
+          .linkedin-icon {
+            font-size: 18px;
+          }
+          .wechat-icon {
+            font-size: 24px;
+          }
+          .qq-icon {
+            font-size: 22px;
+          }
+          .weibo-icon {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+
+  .send-mail {
+    font-family: $pontano;
+    margin-left: 50px;
+    margin-top: 10px;
+    font-weight: 300;
+
+    .heading-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+      .descript {
+        font-size: 16px;
+        font-weight: 300;
+        color: #8a8a8a;
+      }
+
+      .back-to-top {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: #3a3a3a;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .back-to-top:hover {
+        background-color: $primary-color;
+      }
+    }
+
+    input {
+      width: 80%;
+      height: 44px;
+      margin-top: 30px;
+      outline: none;
+      border: none;
+      color: $text-color;
+      font-size: 16px;
+      padding: 0 20px;
+      font-family: $pontano;
+      font-weight: 300;
+      background-color: #3a3a3a;
+      border-radius: 5px;
+    }
+
+    .payment-method {
+      margin-top: 25px;
+
+      ul {
+        display: flex;
+        align-items: center;
+
+        li {
+          list-style: none;
+          margin-right: 30px;
+
+          .visa-icon {
+            font-size: 40px;
+            color: #4f58ff;
+          }
+
+          img {
+            width: 34px;
+          }
+
+          .paypal-icon {
+            font-size: 25px;
+            color: #49a6f1;
+          }
+
+          .weixinpay-icon {
+            font-size: 30px;
+            color: #2f8819;
+          }
+
+          .momo-icon {
+            font-size: 30px;
+            color: #d82d8b;
+          }
+        }
+      }
+    }
+  }
+}

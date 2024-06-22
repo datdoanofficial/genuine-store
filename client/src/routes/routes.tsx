@@ -6,7 +6,7 @@ export const routes = [
     path: "/",
     page: home,
     isShowHeader: true,
-    isShowFooter: false,
+    isShowFooter: true,
   },
   {
     path: "*",
