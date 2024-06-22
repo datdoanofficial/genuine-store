@@ -31,16 +31,16 @@ const Navbar = (props: Props) => {
         </Link>
         <ul>
           <li>
-            <Link to="/">Store</Link>
+            <Link to="/store">Store</Link>
           </li>
           <li>
-            <Link to="/">News</Link>
+            <Link to="/news">News</Link>
           </li>
           <li>
-            <Link to="/">FAQ</Link>
+            <Link to="/faq">FAQ</Link>
           </li>
           <li>
-            <Link to="/">Contact</Link>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
