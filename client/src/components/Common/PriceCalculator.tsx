@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./PriceCalculator.scss";
 
 type PriceProps = {
@@ -8,26 +8,24 @@ type PriceProps = {
 
 const PriceCalculator: React.FC<PriceProps> = ({ originalPrice, discount }) => {
   const [finalPrice, setFinalPrice] = useState<string>("");
-  const [discountedAmount, setDiscountedAmount] = useState<string>("");
 
-  const calculatePrice = () => {
+  const calculatePrice = useCallback(() => {
     if (discount && originalPrice !== "Free") {
       const priceNumber = parseFloat(
         originalPrice.replace(/\./g, "").replace("đ", "")
       );
       const discountAmount = priceNumber * discount;
       const discountedPrice = priceNumber - discountAmount;
-      setDiscountedAmount(`${discountAmount.toLocaleString("vi-VN")}đ`);
       setFinalPrice(`${discountedPrice.toLocaleString("vi-VN")}đ`);
     } else {
       setFinalPrice(originalPrice);
     }
-  };
+  }, [originalPrice, discount]);
 
   // Automatically calculate the final price when component mounts or props change
   useEffect(() => {
     calculatePrice();
-  }, [originalPrice, discount]);
+  }, [calculatePrice]);
 
   return (
     <div className="prd-price">

@@ -186,6 +186,39 @@
         overflow: hidden;
         cursor: pointer;
 
+        .wishlist {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          width: 30px;
+          height: 30px;
+          opacity: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          background-color: rgba(#000000, 0.6);
+          border-radius: 50%;
+          outline: none;
+          border: 1px solid #4a4a4a;
+          color: #fff;
+          cursor: pointer;
+          transition: transform 1s ease;
+
+          .icon {
+            &.tabler--plus {
+              animation: rotate-plus 1s forwards;
+            }
+            &.tabler--check {
+              animation: fade-in 1s forwards;
+            }
+          }
+        }
+
+        &:hover .wishlist {
+          opacity: 1;
+        }
+
         img {
           width: 100%;
           opacity: 0;

@@ -3,22 +3,80 @@
 .prd-card {
   width: 100%;
 
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
+  .prd-img {
+    position: relative;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    .wishlist {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 30px;
+      height: 30px;
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      background-color: rgba(#000000, 0.6);
+      border-radius: 50%;
+      outline: none;
+      border: 1px solid #4a4a4a;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 1s ease;
+
+      .icon {
+        &.tabler--plus {
+          animation: rotate-plus 1s forwards;
+        }
+        &.tabler--check {
+          animation: fade-in 1s forwards;
+        }
+      }
+    }
+  }
+
+  @keyframes rotate-plus {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .prd-img:hover .wishlist {
+    opacity: 1;
   }
 
   .prd-content {
     margin: 20px 0;
 
     .prd-title {
+      width: fit-content;
       font-size: 18px;
       line-height: 28px;
       font-family: $pontano;
       font-weight: 300;
       color: $text-color;
       margin-bottom: 15px;
+      cursor: pointer;
     }
   }
 }
