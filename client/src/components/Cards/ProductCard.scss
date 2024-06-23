@@ -1,0 +1,24 @@
+@import "../../styles/common/root.scss";
+
+.prd-card {
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .prd-content {
+    margin: 20px 0;
+
+    .prd-title {
+      font-size: 18px;
+      line-height: 28px;
+      font-family: $pontano;
+      font-weight: 300;
+      color: $text-color;
+      margin-bottom: 15px;
+    }
+  }
+}

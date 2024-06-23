@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   width: calc(100% - 200px);
-  height: 200vh;
+  height: fit-content;
 
   .header-wrapper {
     margin-top: 20px;
@@ -21,130 +21,12 @@
     justify-content: space-between;
   }
 
-  .filter {
+  .product-list {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    // sort filter
-
-    .sort {
-      width: fit-content;
-      display: flex;
-      align-items: center;
-
-      #sort-by {
-        appearance: none;
-        width: fit-content;
-        height: 30px;
-        margin-left: 20px;
-        font-size: 16px;
-        font-family: $pontano;
-        font-weight: 400;
-        color: #5a5a5a;
-        background: none;
-        border: none;
-        outline: none;
-        cursor: pointer;
-      }
-
-      .icon {
-        color: #5a5a5a;
-      }
-
-      &:hover {
-        #sort-by {
-          color: #8a8a8a;
-        }
-
-        .icon {
-          color: #8a8a8a;
-        }
-      }
-    }
-
-    .select-filter {
-      width: fit-content;
-      display: flex;
-
-      .sortbygenre {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
-        width: 140px;
-        background-color: none;
-        border: 1px solid $bg-color;
-        border-radius: 5px;
-
-        &:hover {
-          border: 1px solid #8a8a8a;
-        }
-
-        .icon {
-          position: absolute;
-          right: 0;
-          font-size: 14px;
-          margin-right: 10px;
-        }
-      }
-
-      .sortbytypes {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
-        width: 140px;
-        background-color: none;
-        border: 1px solid $bg-color;
-        border-radius: 5px;
-
-        &:hover {
-          border: 1px solid #8a8a8a;
-        }
-
-        .icon {
-          position: absolute;
-          right: 0;
-          font-size: 14px;
-          margin-right: 10px;
-        }
-      }
-
-      .sortbyplatform {
-        position: relative;
-        display: flex;
-        align-items: center;
-        width: 140px;
-        background-color: none;
-        border: 1px solid $bg-color;
-        border-radius: 5px;
-
-        &:hover {
-          border: 1px solid #8a8a8a;
-        }
-
-        .icon {
-          position: absolute;
-          right: 0;
-          font-size: 14px;
-          margin-right: 10px;
-        }
-      }
-
-      select {
-        position: absolute;
-        appearance: none;
-        width: 100%;
-        height: 30px;
-        padding: 0 15px;
-        background: none;
-        border-radius: inherit;
-        color: #fff;
-        border: none;
-        outline: none;
-        cursor: pointer;
-      }
-    }
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 100px;
   }
 }
