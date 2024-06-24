@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/pages/Auth/Login.scss";
 import Logo from "../../components/Common/Logo";
 
 type Props = {};
 
 const Login = (props: Props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const isFormFilled = email !== "" && password !== "";
+
   return (
     <div className="login">
       <div className="login-wrapper">
@@ -15,10 +20,22 @@ const Login = (props: Props) => {
         <div className="login-content">
           <div className="login-form">
             <div className="form-group">
-              <input type="email" id="email" placeholder="Email Address" />
+              <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="form-group">
-              <input type="password" id="password" placeholder="Password" />
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div className="featured">
               <div className="remember-me">
@@ -29,7 +46,9 @@ const Login = (props: Props) => {
                 <a href="/forgot-password">Forgot Password?</a>
               </div>
             </div>
-            <button className="login-btn">Login</button>
+            <button className={`login-btn ${!isFormFilled ? "disabled" : ""}`}>
+              Login
+            </button>
             <a href="/privacy-policy" className="privacy-policy-link">
               Privacy Policy
             </a>
