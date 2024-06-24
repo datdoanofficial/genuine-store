@@ -5,6 +5,9 @@ import faq from "../pages/FAQ";
 import contact from "../pages/Contact";
 import login from "../pages/Auth/Login";
 import register from "../pages/Auth/Register";
+import forgotPassword from "../pages/Auth/ForgotPassword";
+import birthdayRequired from "../pages/Auth/BirthdayRequired";
+import verifyEmail from "../pages/Auth/VerifyEmail";
 import notfound from "../pages/NotFound";
 
 export const routes = [
@@ -39,14 +42,32 @@ export const routes = [
     isShowFooter: true,
   },
   {
-    path: "/sign-in",
+    path: "/login",
     page: login,
     isShowHeader: false,
     isShowFooter: false,
   },
   {
-    path: "/sign-up",
+    path: "/register",
     page: register,
+    isShowHeader: false,
+    isShowFooter: false,
+  },
+  {
+    path: "/login/forgot-password",
+    page: forgotPassword,
+    isShowHeader: false,
+    isShowFooter: false,
+  },
+  {
+    path: "/register/date-of-birth",
+    page: birthdayRequired,
+    isShowHeader: false,
+    isShowFooter: false,
+  },
+  {
+    path: "/register/verify-email",
+    page: verifyEmail,
     isShowHeader: false,
     isShowFooter: false,
   },

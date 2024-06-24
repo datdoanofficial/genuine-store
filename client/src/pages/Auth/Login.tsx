@@ -43,7 +43,7 @@ const Login = (props: Props) => {
                 <label htmlFor="remember">Remember me</label>
               </div>
               <div className="forgot-password">
-                <a href="/forgot-password">Forgot Password?</a>
+                <a href="/login/forgot-password">Forgot Password?</a>
               </div>
             </div>
             <button className={`login-btn ${!isFormFilled ? "disabled" : ""}`}>
@@ -53,7 +53,7 @@ const Login = (props: Props) => {
               Privacy Policy
             </a>
             <div className="sign-up-link">
-              Do you have an Next In account? <a href="/sign-up">Sign Up</a>
+              Do you have an Next In account? <a href="/register">Sign Up</a>
             </div>
             <a href="/" className="back-home-link">
               Back to home

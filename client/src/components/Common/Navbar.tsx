@@ -48,7 +48,7 @@ const Navbar = (props: Props) => {
         <Link to="/cart">
           <span className="solar--bag-3-outline shopping-bag"></span>
         </Link>
-        <PrimaryBtn to="/sign-in">Sign In</PrimaryBtn>
+        <PrimaryBtn to="/login">Sign In</PrimaryBtn>
       </div>
     </div>
   );
