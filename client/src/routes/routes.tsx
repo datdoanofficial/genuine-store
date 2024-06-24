@@ -3,6 +3,8 @@ import store from "../pages/Store";
 import news from "../pages/News";
 import faq from "../pages/FAQ";
 import contact from "../pages/Contact";
+import login from "../pages/Auth/Login";
+import register from "../pages/Auth/Register";
 import notfound from "../pages/NotFound";
 
 export const routes = [
@@ -35,6 +37,18 @@ export const routes = [
     page: contact,
     isShowHeader: true,
     isShowFooter: true,
+  },
+  {
+    path: "/sign-in",
+    page: login,
+    isShowHeader: false,
+    isShowFooter: false,
+  },
+  {
+    path: "/sign-up",
+    page: register,
+    isShowHeader: false,
+    isShowFooter: false,
   },
   {
     path: "*",
