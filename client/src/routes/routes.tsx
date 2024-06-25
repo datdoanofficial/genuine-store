@@ -8,6 +8,7 @@ import register from "../pages/Auth/Register";
 import forgotPassword from "../pages/Auth/ForgotPassword";
 import birthdayRequired from "../pages/Auth/BirthdayRequired";
 import verifyEmail from "../pages/Auth/VerifyEmail";
+import emailSent from "../pages/Auth/EmailSent";
 import notfound from "../pages/NotFound";
 
 export const routes = [
@@ -56,6 +57,12 @@ export const routes = [
   {
     path: "/login/forgot-password",
     page: forgotPassword,
+    isShowHeader: false,
+    isShowFooter: false,
+  },
+  {
+    path: "/login/forgot-password/email-sent",
+    page: emailSent,
     isShowHeader: false,
     isShowFooter: false,
   },
