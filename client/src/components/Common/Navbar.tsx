@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../Common/Logo";
 import PrimaryBtn from "../Common/PrimaryBtn";
 
@@ -9,6 +9,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const navbarRef = useRef<HTMLDivElement>(null); // Use useRef to reference the navbar div
+  const location = useLocation(); // Use useLocation to get the current location
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,16 +31,17 @@ const Navbar = (props: Props) => {
           <Logo />
         </Link>
         <ul>
-          <li>
+          <li className={location.pathname === "/store" ? "active" : ""}>
+            {" "}
             <Link to="/store">Store</Link>
           </li>
-          <li>
+          <li className={location.pathname === "/news" ? "active" : ""}>
             <Link to="/news">News</Link>
           </li>
-          <li>
+          <li className={location.pathname === "/faq" ? "active" : ""}>
             <Link to="/faq">FAQ</Link>
           </li>
-          <li>
+          <li className={location.pathname === "/contact" ? "active" : ""}>
             <Link to="/contact">Contact</Link>
           </li>
         </ul>

@@ -34,10 +34,10 @@
     }
 
     &.banner-animate {
-      animation: fadeIn 0.5s linear;
+      animation: fadeBanner 0.5s linear;
     }
 
-    @keyframes fadeIn {
+    @keyframes fadeBanner {
       from {
         opacity: 0;
         transform: translateX(5%);

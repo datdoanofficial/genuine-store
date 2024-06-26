@@ -82,6 +82,9 @@
             &:hover {
               border: 1px solid #909090;
             }
+            &:focus {
+              border-color: #c4c4c4;
+            }
           }
 
           input {
@@ -101,12 +104,16 @@
             &:hover {
               border: 1px solid #c4c4c4;
             }
+
+            &:focus {
+              border-color: #c4c4c4;
+            }
           }
         }
 
         .error-message {
           width: 100%;
-          color: #fc4813;
+          color: #ff693c;
           font-size: 14px;
           margin-bottom: 10px;
           animation: fadeIn 0.5s ease-out;

@@ -16,13 +16,17 @@ const VerifyEmail = (props: Props) => {
 
   const isFormFilled = codes.every((code) => code.length === 1);
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    // Use setTimeout to ensure the cursor position is set after the input gains focus
-    setTimeout(() => {
-      const valueLength = event.target.value.length;
-      event.target.setSelectionRange(valueLength, valueLength);
-    }, 0);
-  };
+  const handleFocus =
+    (index: number) => (event: React.FocusEvent<HTMLInputElement>) => {
+      // Set the focused index to the current input's index
+      setFocusedIndex(index);
+
+      // Use setTimeout to ensure the cursor position is set after the input gains focus
+      setTimeout(() => {
+        const valueLength = event.target.value.length;
+        event.target.setSelectionRange(valueLength, valueLength);
+      }, 0);
+    };
 
   const handleChange = (value: string, index: number) => {
     if (!hasInteracted) setHasInteracted(true);
@@ -118,14 +122,14 @@ const VerifyEmail = (props: Props) => {
                   maxLength={1}
                   onChange={(e) => handleChange(e.target.value, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  onFocus={handleFocus} // Attach the handleFocus function here
+                  onFocus={handleFocus(index)} // Attach the handleFocus function here
                   onBlur={() => setFocusedIndex(null)}
                   style={{
                     borderColor:
                       wasOnceFilled &&
                       !isFormFilled &&
                       codes.some((code) => code.length === 0)
-                        ? "red" // Set border color to red if wasOnceFilled is true and not all fields are filled
+                        ? "#fe5d2c" // Set border color to red if wasOnceFilled is true and not all fields are filled
                         : focusedIndex === index
                         ? "#c4c4c4"
                         : "#5a5a5a", // Use focus color or default otherwise

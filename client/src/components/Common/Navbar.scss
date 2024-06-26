@@ -26,6 +26,12 @@
     margin-left: 40px;
     display: flex;
 
+    li.active {
+      a {
+        color: $primary-color;
+      }
+    }
+
     li {
       list-style: none;
       margin-right: 30px;
@@ -36,6 +42,7 @@
         text-transform: uppercase;
         font-family: $pontano;
         font-weight: 100;
+        transition: 0.5s;
       }
 
       a:hover {
@@ -51,6 +58,7 @@
     .shopping-bag {
       color: white;
       margin-right: 20px;
+      transition: 0.5s;
 
       &:hover {
         color: $primary-color;

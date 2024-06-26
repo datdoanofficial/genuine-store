@@ -34,19 +34,24 @@
   .slide-items::before {
     left: 0;
     top: 0;
+    height: 100%;
   }
 
   .slide-items::after {
     right: 0;
     top: 0;
+    height: 100%;
     transform: rotateZ(180deg);
   }
 
   .slide-items {
     position: relative;
     width: calc(100% + 200px);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     left: -100px;
-    margin-top: 50px;
 
     .line {
       .icard:hover {

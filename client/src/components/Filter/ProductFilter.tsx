@@ -59,7 +59,7 @@ const ProductFilter = (props: Props) => {
       <div className="select-filter">
         <div className="sortbygenre">
           <select name="genres" id="genres">
-            <option value="" disabled selected>
+            <option value="" disabled selected hidden>
               Genre
             </option>
             <option value="action">Action</option>
@@ -71,7 +71,7 @@ const ProductFilter = (props: Props) => {
         </div>
         <div className="sortbytypes">
           <select name="types" id="types">
-            <option value="" disabled selected>
+            <option value="" disabled selected hidden>
               Types
             </option>
             <option value="digital">Digital</option>
@@ -81,7 +81,7 @@ const ProductFilter = (props: Props) => {
         </div>
         <div className="sortbyplatform">
           <select name="platforms" id="platforms">
-            <option value="" disabled selected>
+            <option value="" disabled selected hidden>
               Platform
             </option>
             <option value="windows">Windows</option>

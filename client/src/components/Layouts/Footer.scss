@@ -47,6 +47,7 @@
         text-decoration: none;
         margin-right: 50px;
         font-size: 18px;
+        transition: 0.5s;
       }
 
       .item-link:hover {
@@ -79,6 +80,7 @@
           margin-right: 20px;
           color: #fff;
           text-decoration: none;
+          transition: 0.5s;
 
           &:hover {
             background-color: $primary-color;

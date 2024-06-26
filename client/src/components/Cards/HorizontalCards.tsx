@@ -25,12 +25,6 @@ const bannerData: card[] = [
 ];
 
 const HorizontalCards = () => {
-  const [isWishlisted, setIsWishlisted] = useState(false);
-
-  const handleWishlistClick = () => {
-    setIsWishlisted(!isWishlisted);
-  };
-
   const [isCardListVisible, setIsCardListVisible] = useState(false);
 
   useEffect(() => {
