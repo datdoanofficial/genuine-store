@@ -74,6 +74,10 @@
             &:hover {
               border: 1px solid #c4c4c4;
             }
+
+            &:focus {
+              border-color: #c4c4c4;
+            }
           }
         }
 
@@ -148,7 +152,7 @@
           }
         }
 
-        .sign-up-link {
+        .sign-in-link {
           margin-top: 30px;
           font-size: 16px;
           color: #8a8a8a;

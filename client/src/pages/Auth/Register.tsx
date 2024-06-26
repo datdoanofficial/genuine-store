@@ -101,8 +101,8 @@ const Register = (props: Props) => {
             <a href="/privacy-policy" className="privacy-policy-link">
               Privacy Policy
             </a>
-            <div className="sign-up-link">
-              Have an Next In account? <a href="/login">Sign In</a>
+            <div className="sign-in-link">
+              Already have an Next In account? <a href="/login">Sign In</a>
             </div>
             <a href="/" className="back-home-link">
               Back to home

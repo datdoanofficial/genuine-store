@@ -37,7 +37,7 @@ const ForgotPassword = (props: Props) => {
               Continue
             </button>
             <div className="sign-in-link">
-              Remember your password? <a href="/register">Sign In</a>
+              Remember your password? <a href="/login">Sign In</a>
             </div>
             <a href="/" className="back-home-link">
               Back to home

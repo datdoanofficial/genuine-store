@@ -1,1 +1,187 @@
 @import "../../common/root.scss";
+
+.verify-email {
+  position: relative;
+  font-family: $pontano;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  .verify-email-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 50px;
+    width: 450px;
+    height: fit-content;
+    background-color: $bg-color;
+    border-radius: 20px;
+
+    .verify-email-heading {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: 150px;
+      }
+
+      .verify-email-title {
+        font-size: 50px;
+        color: $secondary-color;
+        font-family: $mrs-saint-delafield;
+      }
+    }
+
+    .description {
+      width: 100%;
+      margin-top: 30px;
+      line-height: 22px;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: #c4c4c4;
+      background-color: #3a3a3a;
+      border-radius: 5px;
+
+      span {
+        font-weight: 500;
+        color: $text-color;
+      }
+    }
+
+    .verify-email-content {
+      width: 100%;
+      margin-top: 30px;
+
+      .verify-email-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .form-group {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 10px;
+          width: 100%;
+
+          input {
+            width: 100%;
+            height: 60px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            text-align: center;
+            outline: none;
+            border: 1px solid #5a5a5a;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+            color: $text-color;
+            font-size: 16px;
+            font-family: $pontano;
+            font-weight: 300;
+
+            &:hover {
+              border: 1px solid #c4c4c4;
+            }
+
+            &:focus {
+              border-color: #c4c4c4;
+            }
+          }
+        }
+
+        // verify btn
+
+        .verify-btn {
+          width: 100%;
+          height: 60px;
+          margin-top: 0px;
+          border: none;
+          outline: none;
+          background-color: $primary-color;
+          color: #fff;
+          font-size: 16px;
+          font-family: $pontano;
+          font-weight: 300;
+          cursor: pointer;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: background-color 0.5s;
+
+          &.disabled {
+            background-color: rgba($primary-color, 0.5);
+            cursor: default;
+          }
+        }
+
+        .resend-request {
+          margin-top: 30px;
+          line-height: 24px;
+          font-size: 16px;
+          text-align: center;
+          color: #909090;
+          text-decoration: none;
+
+          a {
+            color: #fff;
+            font-weight: 300;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 0.8px;
+
+            &:hover {
+              text-decoration: none;
+              color: $text-color;
+            }
+          }
+        }
+
+        .sign-in-link {
+          margin-top: 30px;
+          font-size: 16px;
+          color: #909090;
+          text-decoration: none;
+
+          a {
+            color: #fff;
+            font-weight: 300;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 0.8px;
+
+            &:hover {
+              text-decoration: none;
+              color: $text-color;
+            }
+          }
+        }
+
+        .back-home-link {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 140px;
+          height: 40px;
+          background: #3a3a3a;
+          margin-top: 30px;
+          font-size: 15px;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 20px;
+          transition: 0.5s;
+
+          &:hover {
+            text-decoration: none;
+            background: #4a4a4a;
+            color: $text-color;
+          }
+        }
+      }
+    }
+  }
+}
