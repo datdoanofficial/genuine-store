@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "../../styles/pages/Auth/VerifyEmail.scss";
 import Logo from "../../components/Common/Logo";
 

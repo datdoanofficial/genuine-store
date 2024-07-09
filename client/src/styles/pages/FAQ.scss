@@ -1,0 +1,101 @@
+@import "../common/root.scss";
+
+.faq-page {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 105px;
+  font-family: $pontano;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 160px);
+  height: fit-content;
+
+  .heading-title {
+    font-size: 36px;
+    font-weight: 400;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .faq-wrapper {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+
+    .faq-list {
+      width: 100%;
+      height: fit-content;
+
+      .faq-item {
+        width: 100%;
+        height: fit-content;
+        background-color: $bg-color;
+        transition: 0.8s all;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #2a2a2a;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0px 4px 20px rgba($primary-color, 0.5);
+        }
+
+        .faq-item-content {
+          .faq-item-question {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 16px;
+            color: white;
+            border-radius: 10px;
+            background-color: #2a2a2a;
+
+            .plus-icon {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              cursor: pointer;
+              background-color: $primary-color;
+              transition: 0.5s all;
+
+              &:hover {
+                background-color: $hover-color;
+              }
+            }
+          }
+
+          .faq-item-answer {
+            width: 100%;
+            height: fit-content;
+            padding: 0 20px;
+            opacity: 0;
+            border-top: 1px solid #3a3a3a;
+            background: #2a2a2a;
+          }
+
+          .faq-item-answer.active {
+            padding: 20px;
+            opacity: 1;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+}

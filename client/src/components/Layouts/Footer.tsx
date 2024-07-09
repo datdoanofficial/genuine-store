@@ -8,6 +8,13 @@ import mastercard_logo from "../../assets/images/logo/logos_mastercard.png";
 type Props = {};
 
 const Footer = (props: Props) => {
+  // Define the scrollToTop function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: Adds a smooth scrolling effect
+    });
+  };
   return (
     <>
       <div className="footer">
@@ -71,11 +78,16 @@ const Footer = (props: Props) => {
                 Enter your email to get notified about our news.
               </div>
             </div>
-            <button className="back-to-top">
+            <button className="back-to-top" onClick={scrollToTop}>
               <span className="bytesize--chevron-top"></span>
             </button>
           </div>
-          <input type="text" placeholder="Enter your email" />
+          <div className="mail-input">
+            <input type="text" placeholder="Enter your email" />
+            <button className="sent-btn">
+              <span className="maki--arrow"></span>
+            </button>
+          </div>
           <div className="payment-method">
             <ul>
               <li>
