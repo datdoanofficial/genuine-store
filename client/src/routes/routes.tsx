@@ -3,6 +3,8 @@ import store from "../pages/Store";
 import news from "../pages/News";
 import faq from "../pages/FAQ";
 import contact from "../pages/Contact";
+import wishlist from "../pages/Wishlist";
+import cart from "../pages/Cart";
 import login from "../pages/Auth/Login";
 import register from "../pages/Auth/Register";
 import forgotPassword from "../pages/Auth/ForgotPassword";
@@ -39,6 +41,18 @@ export const routes = [
   {
     path: "/contact",
     page: contact,
+    isShowHeader: true,
+    isShowFooter: true,
+  },
+  {
+    path: "/wishlist",
+    page: wishlist,
+    isShowHeader: true,
+    isShowFooter: true,
+  },
+  {
+    path: "/cart",
+    page: cart,
     isShowHeader: true,
     isShowFooter: true,
   },

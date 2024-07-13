@@ -42,11 +42,11 @@ const bannerData: Banner[] = [
   },
   {
     src: banner4,
-    name: "Genshin Impact",
+    name: "Avatar: Frontiers of Pandora",
     rating: 5,
     votes: 584,
-    price: "Free",
-    discount: 0,
+    price: "1.190.000đ",
+    discount: 0.1,
   },
 ];
 

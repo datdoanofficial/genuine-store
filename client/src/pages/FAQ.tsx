@@ -34,11 +34,14 @@ const FAQ = (props: Props) => {
 
   const toggleFAQ = (id: number) => {
     setActiveIndex((currentId) => (currentId === id ? null : id));
+    setIsAnswerVisible(!isAnswerVisible);
   };
 
   const getMaxHeight = (id: number): string => {
     return activeIndex === id ? "200px" : "0px";
   };
+
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
   // Calculate the midpoint for splitting the array
   const midpoint = Math.ceil(faqItems.length / 2);
@@ -54,8 +57,12 @@ const FAQ = (props: Props) => {
           <div className="faq-item-content">
             <div className="faq-item-question">
               {item.question}{" "}
-              <div className="plus-icon" onClick={() => toggleFAQ(item.id)}>
-                <span className="tabler--plus"></span>
+              <div className="icon" onClick={() => toggleFAQ(item.id)}>
+                <span
+                  className={
+                    activeIndex === item.id ? "tabler--minus" : "tabler--plus"
+                  }
+                ></span>
               </div>
             </div>
             <div

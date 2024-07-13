@@ -62,7 +62,11 @@
             border-radius: 10px;
             background-color: #2a2a2a;
 
-            .plus-icon {
+            .icon {
+              transition: transform 0.3s ease-in-out;
+            }
+
+            .icon {
               display: flex;
               justify-content: center;
               align-items: center;
@@ -75,6 +79,16 @@
 
               &:hover {
                 background-color: $hover-color;
+              }
+
+              .tabler--plus {
+                transform: rotate(0deg);
+                transition: transform 0.3s ease-in-out;
+              }
+
+              .tabler--minus {
+                transition: transform 0.3s ease-in-out;
+                transform: rotate(180deg);
               }
             }
           }

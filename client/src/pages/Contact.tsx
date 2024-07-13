@@ -107,7 +107,7 @@ const Contact = (props: Props) => {
                 <div className="social-item">
                   <ul>
                     <li>
-                      <Link to="">Facebook</Link>
+                      <Link to="">LinkedIn</Link>
                     </li>
                     <li>
                       <Link to="">Wechat</Link>

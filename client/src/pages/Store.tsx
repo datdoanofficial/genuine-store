@@ -13,7 +13,7 @@ const Store = (props: Props) => {
     <div className="store-page">
       <div className="header-wrapper">
         <SearchBox />
-        <SecondaryBtn to="/wish-list">Wishlist</SecondaryBtn>
+        <SecondaryBtn to="/wishlist">Wishlist</SecondaryBtn>
       </div>
       <ProductFilter />
       <div className="product-list">

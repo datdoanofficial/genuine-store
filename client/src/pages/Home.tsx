@@ -13,7 +13,7 @@ const Home = () => {
     <div className="homepage">
       <div className="header-wrapper">
         <SearchBox />
-        <SecondaryBtn to="/wish-list">Wishlist</SecondaryBtn>
+        <SecondaryBtn to="/wishlist">Wishlist</SecondaryBtn>
       </div>
       <Banner />
       <div className="section-02">

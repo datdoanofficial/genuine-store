@@ -119,7 +119,6 @@
           color: $text-color;
           background-color: transparent;
           transition: 0.5s all;
-          cursor: pointer;
 
           &:focus {
             outline: none;
@@ -270,6 +269,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(#0025d7, 0.4);
+            border: 2px solid #385aff;
             border-radius: 50%;
           }
 
@@ -309,6 +309,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(#0025d7, 0.4);
+            border: 2px solid #385aff;
             border-radius: 50%;
           }
 
@@ -348,6 +349,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(#0025d7, 0.4);
+            border: 2px solid #385aff;
             border-radius: 50%;
           }
 
@@ -387,6 +389,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(#0025d7, 0.4);
+            border: 2px solid #385aff;
             border-radius: 50%;
           }
 

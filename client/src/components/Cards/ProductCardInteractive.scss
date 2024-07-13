@@ -1,0 +1,136 @@
+@import "../../styles/common/root.scss";
+
+.product-cart {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 20px 30px;
+  height: fit-content;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 30px;
+  align-items: center;
+  background-color: $bg-color;
+  border-radius: 10px;
+
+  .product-img {
+    width: 150px;
+    height: 225px;
+    border-radius: 8px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+
+  .product-content {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    justify-content: space-between;
+
+    .name-and-price {
+      font-family: $pontano;
+      font-weight: 300;
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .product-price {
+        width: 100px;
+        height: 30px;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $primary-color;
+        color: $text-color;
+        border-radius: 50px;
+      }
+    }
+
+    .release-date {
+      color: #f5f5f599;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      margin-bottom: 15px;
+      font-size: 14px;
+      width: fit-content;
+      padding: 5px 15px;
+      background-color: #3a3a3a;
+      border-radius: 5px;
+    }
+
+    .genre {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+
+      .label {
+        margin-right: 10px;
+      }
+    }
+
+    .platform {
+      display: flex;
+      align-items: center;
+
+      .label {
+        margin-right: 10px;
+      }
+    }
+
+    .action-btn {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+
+      .remove-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid #f5f5f599;
+        border-radius: 50px;
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #4a4a4a;
+        }
+      }
+
+      .add-to-cart {
+        font-size: 13px;
+        width: 140px;
+        height: 44px;
+        margin-left: 10px;
+        font-family: $pontano;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid #f5f5f599;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: #4a4a4a;
+        }
+      }
+    }
+  }
+}
