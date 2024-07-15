@@ -3,9 +3,11 @@ import "./ProductCardInteractive.scss";
 
 import productImg from "../../assets/images/products/black-myth-wukong.png";
 
-type Props = {};
+type Props = {
+  isInCart: boolean;
+};
 
-const ProductCardInteractive = (props: Props) => {
+const ProductCardInteractive = ({ isInCart }: Props) => {
   return (
     <div className="product-cart">
       <div className="product-img">
@@ -31,7 +33,9 @@ const ProductCardInteractive = (props: Props) => {
           <button className="remove-btn">
             <span className="fluent--delete-20-regular"></span>
           </button>
-          <button className="add-to-cart">Add to cart</button>
+          <button className="add-to-cart">
+            {isInCart ? "Move to wishlist" : "Add to cart"}
+          </button>
         </div>
       </div>
     </div>

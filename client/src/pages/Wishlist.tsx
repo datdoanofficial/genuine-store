@@ -41,7 +41,7 @@ const Wishlist = (props: Props) => {
   return (
     <div className="wishlist-page">
       <div className="wishlist-header">
-        <h1>Wishlist</h1>
+        <h1>My Wishlist</h1>
       </div>
       <div className="wishlist-content">
         <div className="receive-email">
@@ -168,7 +168,7 @@ const Wishlist = (props: Props) => {
           </div>
         </div>
         {Array.from({ length: 10 }, (_, index) => (
-          <ProductCardInteractive key={index} />
+          <ProductCardInteractive isInCart={false} key={index} />
         ))}
       </div>
     </div>
