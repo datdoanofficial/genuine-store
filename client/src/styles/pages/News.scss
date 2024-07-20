@@ -4,20 +4,18 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  top: 105px;
+  top: 125px;
   font-family: $pontano;
   font-weight: 300;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(100% - 160px);
+  width: calc(100% - 200px);
   height: fit-content;
 
   .heading-wrapper {
     width: 100%;
     height: 80vh;
-    margin-top: 20px;
-    padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -70,8 +68,7 @@
   .news {
     width: 100%;
     height: fit-content;
-    margin-top: 40px;
-    padding: 20px;
+    margin-top: 70px;
 
     .title {
       position: relative;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ProductCard.scss";
 import prdImg from "../../assets/images/card/card-demo.png";
 import PriceCalculator from "../Common/PriceCalculator";
@@ -14,21 +15,25 @@ const ProductCard = (props: Props) => {
 
   return (
     <div className="prd-card">
-      <div className="prd-img">
-        <img src={prdImg} alt="" />
-        <button
-          className={`wishlist ${isWishlisted ? "wishlisted" : ""}`}
-          onClick={handleWishlistClick}
-        >
-          <span
-            className={`icon ${
-              isWishlisted ? "tabler--check" : "tabler--plus"
-            }`}
-          ></span>
-        </button>
-      </div>
+      <Link to="/product-details">
+        <div className="prd-img">
+          <img src={prdImg} alt="" />
+          <button
+            className={`wishlist ${isWishlisted ? "wishlisted" : ""}`}
+            onClick={handleWishlistClick}
+          >
+            <span
+              className={`icon ${
+                isWishlisted ? "tabler--check" : "tabler--plus"
+              }`}
+            ></span>
+          </button>
+        </div>
+      </Link>
       <div className="prd-content">
-        <div className="prd-title">The Crew™ Motorfest</div>
+        <Link to="/product-details" className="prd-title">
+          <span>The Crew™ Motorfest</span>
+        </Link>
         <PriceCalculator originalPrice="1.190.000đ" discount={0.1} />
       </div>
     </div>

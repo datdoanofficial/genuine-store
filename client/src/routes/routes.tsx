@@ -5,6 +5,7 @@ import faq from "../pages/FAQ";
 import contact from "../pages/Contact";
 import wishlist from "../pages/Wishlist";
 import cart from "../pages/Cart";
+import productdetails from "../pages/Products/ProductDetail";
 import login from "../pages/Auth/Login";
 import register from "../pages/Auth/Register";
 import forgotPassword from "../pages/Auth/ForgotPassword";
@@ -53,6 +54,12 @@ export const routes = [
   {
     path: "/cart",
     page: cart,
+    isShowHeader: true,
+    isShowFooter: true,
+  },
+  {
+    path: "/product-details",
+    page: productdetails,
     isShowHeader: true,
     isShowFooter: true,
   },

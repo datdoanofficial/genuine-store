@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ProductCardInteractive.scss";
 
 import productImg from "../../assets/images/products/black-myth-wukong.png";
@@ -10,12 +11,14 @@ type Props = {
 const ProductCardInteractive = ({ isInCart }: Props) => {
   return (
     <div className="product-cart">
-      <div className="product-img">
+      <Link to="/product-details" className="product-img">
         <img src={productImg} alt="" />
-      </div>
+      </Link>
       <div className="product-content">
         <div className="name-and-price">
-          <div className="product-name">Black Myth: Wukong</div>
+          <Link to="/product-details" className="product-name">
+            <span>Black Myth: Wukong</span>
+          </Link>
           <div className="product-price">1.299.000đ</div>
         </div>
         <div className="tag">Base Game</div>

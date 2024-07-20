@@ -1,11 +1,13 @@
 import React from "react";
 import "../styles/pages/News.scss";
+import ToolBar from "../components/Common/ToolBar";
 
 type Props = {};
 
 const News = (props: Props) => {
   return (
     <div className="news-page">
+      <ToolBar />
       <div className="heading-wrapper">
         <div className="main-banner">
           <div className="main-banner-item"></div>
