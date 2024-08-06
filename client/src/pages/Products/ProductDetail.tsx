@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../styles/pages/Products/ProductDetail.scss";
 import PriceCalculator from "../../components/Common/PriceCalculator";
 import ToolBar from "../../components/Common/ToolBar";
+import Navigate from "../../components/Common/Navigate";
 import NarakaLogo from "../../assets/images/products/logo/naraka_logo.png";
 
 type Props = {};
@@ -18,25 +19,13 @@ const ProductDetail = (props: Props) => {
             <div className="overview">Overview</div>
             <div className="about">About This Game</div>
             <div className="system-req">System Requirements</div>
-            <div className="related-games">Related Games</div>
+            <div className="rlt-games">Related Games</div>
           </div>
           <div className="product-gallery">
             <div className="main-thumbnail"></div>
             <div className="thumbnail-tools">
               <div className="title">Screenshots & Videos</div>
-              <div className="tools">
-                <div className="navigation-bar">
-                  <div className="nav-item"></div>
-                </div>
-                <div className="arrow">
-                  <div className="arrow-left">
-                    <span className="akar-icons--chevron-left"></span>
-                  </div>
-                  <div className="arrow-right">
-                    <span className="akar-icons--chevron-right"></span>
-                  </div>
-                </div>
-              </div>
+              <Navigate />
             </div>
             <div className="thumbnails">
               <div className="thumbnail"></div>
@@ -77,13 +66,84 @@ const ProductDetail = (props: Props) => {
             <div className="title">System Requirements</div>
             <div className="system-requirement-tbl">
               <div className="tab">
-                <div className="windows">Windows</div>
+                <div className="windows active">Windows</div>
                 <div className="macos">Mac Os</div>
               </div>
               <div className="content">
-                <div className="mininum">Mininum</div>
-                <div className="recommended">Recommended</div>
+                <div className="mininum">
+                  <div className="title">Mininum</div>
+                  <div className="os-version">
+                    <span>OS version</span>
+                    <div className="inner">Windows 10 64-bit</div>
+                  </div>
+                  <div className="cpu">
+                    <span>CPU</span>
+                    <div className="inner">
+                      Intel i5 4th generation, AMD FX 6300 or equivalent
+                    </div>
+                  </div>
+                  <div className="memory">
+                    <span>Memory</span>
+                    <div className="inner">8 GB RAM</div>
+                  </div>
+                  <div className="gpu">
+                    <span>GPU</span>
+                    <div className="inner">
+                      NVIDIA GeForce GTX 750TI, Intel Arc A380, AMD HD 6950 or
+                      equivalent
+                    </div>
+                  </div>
+                  <div className="storage">
+                    <span>Storage</span>
+                    <div className="inner">20 GB available space</div>
+                  </div>
+                </div>
+                <div className="recommended">
+                  <div className="title">Recommended</div>
+                  <div className="os-version">
+                    <span>OS version</span>
+                    <div className="inner">Windows 10 64-bit</div>
+                  </div>
+                  <div className="cpu">
+                    <span>CPU</span>
+                    <div className="inner">
+                      Intel i7 7th generation or equivalent
+                    </div>
+                  </div>
+                  <div className="memory">
+                    <span>Memory</span>
+                    <div className="inner">16 GB RAM</div>
+                  </div>
+                  <div className="gpu">
+                    <span>GPU</span>
+                    <div className="inner">
+                      NVIDIA GeForce GTX 1060 6G, Intel Arc A750, AMD RX480 or
+                      equivalent
+                    </div>
+                  </div>
+                  <div className="storage">
+                    <span>Storage</span>
+                    <div className="inner">20 GB available space</div>
+                  </div>
+                </div>
               </div>
+              <div className="copy-right">
+                &copy; 2021 Hangzhou 24 Entertainment Network Technology Co.Ltd.
+                All Rights Reserved. (R) & (C) BLE,LLC. All Rights Reserved.
+              </div>
+            </div>
+          </div>
+          {/* Related Games */}
+          <div className="related-games">
+            <div className="related-heading">
+              <div className="title">Related Games</div>
+              <Navigate />
+            </div>
+            <div className="related-contain">
+              <div className="product-item">1</div>
+              <div className="product-item">2</div>
+              <div className="product-item">3</div>
+              <div className="product-item">4</div>
             </div>
           </div>
         </div>

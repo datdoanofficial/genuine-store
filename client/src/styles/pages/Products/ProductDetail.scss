@@ -47,7 +47,7 @@
         }
       }
 
-      .related-games {
+      .rlt-games {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -123,71 +123,6 @@
           font-size: 24px;
           font-weight: 400;
         }
-
-        .tools {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: fit-content;
-          height: fit-content;
-
-          .navigation-bar {
-            width: 80px;
-            height: 8px;
-            margin-right: 30px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            background-color: #2a2a2a;
-            border-radius: 50px;
-            transition: 0.5s;
-
-            .nav-item {
-              height: 100%;
-              width: 100%;
-              background-color: #fff;
-              border-radius: 50px;
-            }
-          }
-
-          .arrow {
-            display: flex;
-            width: fit-content;
-            height: 40px;
-
-            .arrow-left {
-              width: 40px;
-              height: 40px;
-              margin-right: 10px;
-              background-color: #2a2a2a;
-              border-radius: 50%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              transition: 0.5s;
-
-              &:hover {
-                background-color: #3a3a3a;
-              }
-            }
-
-            .arrow-right {
-              width: 40px;
-              height: 40px;
-              background-color: #2a2a2a;
-              border-radius: 50%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              transition: 0.5s;
-
-              &:hover {
-                background-color: #3a3a3a;
-              }
-            }
-          }
-        }
       }
 
       .thumbnails {
@@ -238,7 +173,7 @@
           height: fit-content;
           padding: 20px 25px;
           background-color: $bg-color;
-          border-radius: 5px;
+          border-radius: 10px;
 
           .title {
             font-family: $pontano;
@@ -258,7 +193,7 @@
           height: fit-content;
           padding: 20px 25px;
           background-color: $bg-color;
-          border-radius: 5px;
+          border-radius: 10px;
 
           .title {
             font-family: $pontano;
@@ -287,9 +222,170 @@
       }
 
       .system-requirement-tbl {
+        margin-top: 30px;
         width: 100%;
         height: fit-content;
         background-color: $bg-color;
+        border-radius: 10px;
+        padding: 50px 50px;
+
+        .tab {
+          display: flex;
+
+          .windows {
+            margin-right: 10px;
+            padding: 5px 20px;
+            border-radius: 50px;
+            background-color: #3a3a3a;
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover {
+              background-color: $primary-color;
+            }
+          }
+
+          .macos {
+            padding: 5px 20px;
+            border-radius: 50px;
+            background-color: #3a3a3a;
+            cursor: pointer;
+            transition: 0.5s;
+
+            &:hover {
+              background-color: $primary-color;
+            }
+          }
+
+          .active {
+            background-color: $primary-color;
+          }
+        }
+
+        .content {
+          margin-top: 40px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
+
+          .mininum {
+            .title {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 18px;
+              color: $secondary-color;
+            }
+          }
+
+          .recommended {
+            .title {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 18px;
+              color: $secondary-color;
+            }
+          }
+
+          .os-version {
+            margin-top: 30px;
+
+            span {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 16px;
+              color: #8a8a8a;
+            }
+          }
+
+          .cpu {
+            margin-top: 20px;
+
+            span {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 16px;
+              color: #8a8a8a;
+            }
+          }
+
+          .memory {
+            margin-top: 20px;
+
+            span {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 16px;
+              color: #8a8a8a;
+            }
+          }
+
+          .gpu {
+            margin-top: 20px;
+
+            span {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 16px;
+              color: #8a8a8a;
+            }
+          }
+
+          .storage {
+            margin-top: 20px;
+
+            span {
+              font-family: $pontano;
+              font-weight: 300;
+              font-size: 16px;
+              color: #8a8a8a;
+            }
+          }
+
+          .inner {
+            margin-top: 5px;
+          }
+        }
+
+        .copy-right {
+          font-size: 16px;
+          margin-top: 40px;
+          padding-top: 40px;
+          color: #8a8a8a;
+          border-top: 1px solid #3a3a3a;
+        }
+      }
+    }
+
+    // Related Games
+
+    .related-games {
+      width: 100%;
+      height: fit-content;
+      margin-top: 40px;
+
+      .related-heading {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+          font-family: $pontano;
+          font-size: 30px;
+          font-weight: 500;
+        }
+      }
+
+      .related-contain {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+
+        .product-item {
+          width: 100%;
+          aspect-ratio: 1 / 1.5;
+          border-radius: 10px;
+          background-color: #2a2a2a;
+        }
       }
     }
   }
@@ -380,7 +476,7 @@
         padding: 20px 25px;
         background-color: $bg-color;
         border: 2px solid #4a4a4a;
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
         transition: 0.5s;
 
@@ -432,7 +528,7 @@
           color: #fff;
           font-size: 15px;
           text-transform: uppercase;
-          border-radius: 5px;
+          border-radius: 10px;
           transition: 0.5s;
           cursor: pointer;
 
@@ -453,7 +549,7 @@
           color: #fff;
           font-size: 15px;
           text-transform: uppercase;
-          border-radius: 5px;
+          border-radius: 10px;
           transition: 0.5s;
           cursor: pointer;
 
@@ -505,7 +601,7 @@
         padding: 20px 25px;
         background-color: $bg-color;
         border: 2px solid #4a4a4a;
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
         transition: 0.5s;
 
@@ -550,7 +646,6 @@
       width: 100%;
       height: fit-content;
       border-top: 1px solid #2a2a2a;
-      border-bottom: 1px solid #2a2a2a;
       display: flex;
       flex-direction: column;
 
@@ -573,8 +668,8 @@
           width: 100%;
           height: fit-content;
           border: 1px solid $secondary-color;
-          padding: 20px 20px;
-          border-radius: 5px;
+          padding: 20px 25px;
+          border-radius: 10px;
 
           .product-name {
             font-size: 16px;
@@ -603,7 +698,7 @@
           text-transform: uppercase;
           border: none;
           outline: none;
-          border-radius: 5px;
+          border-radius: 10px;
           transition: 0.5s;
           cursor: pointer;
 

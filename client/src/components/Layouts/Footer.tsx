@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 import Logo from "../Common/Logo";
+import momoicon from "../../assets/images/icon/arcticons_momo_color.png";
 import DevBrand from "../../assets/images/logo/datdoan.png";
 import mastercard_logo from "../../assets/images/logo/logos_mastercard.png";
 
@@ -103,7 +104,7 @@ const Footer = (props: Props) => {
                 <span className="ri--wechat-pay-fill weixinpay-icon"></span>
               </li>
               <li>
-                <span className="arcticons--momo momo-icon"></span>
+                <img src={momoicon} className="momo-icon" alt="" />
               </li>
             </ul>
           </div>

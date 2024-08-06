@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/pages/Wishlist.scss";
-
+import ToolBar from "../components/Common/ToolBar";
 import ToggleSwitch from "../components/Common/ToggleSwitch";
 import ProductCardInteractive from "../components/Cards/ProductCardInteractive";
 
@@ -41,6 +41,7 @@ const Wishlist = (props: Props) => {
   return (
     <div className="wishlist-page">
       <div className="wishlist-header">
+        <ToolBar />
         <h1>My Wishlist</h1>
       </div>
       <div className="wishlist-content">
