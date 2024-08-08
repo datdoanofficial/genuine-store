@@ -8,6 +8,8 @@ import visa_icon from "../assets/images/logo/visa.png";
 import mastercard_icon from "../assets/images/logo/mastercard.png";
 import jcb_icon from "../assets/images/logo/jcb.png";
 import american_express_icon from "../assets/images/logo/american-express.png";
+import qr_payment from "../assets/images/icon/qr-payment.png";
+import btn_paypal from "../assets/images/logo/btn-paypal.png";
 
 type Props = {};
 
@@ -16,12 +18,52 @@ const Checkout = (props: Props) => {
   const [taxes, setTaxes] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [cardNumber, setCardNumber] = useState("");
+  const [cardErrorMessage, setCardErrorMessage] = useState("");
   const [cardType, setCardType] = useState("");
   const [expiryPlaceholder, setExpiryPlaceholder] = useState("Expiration");
   const [expiryDate, setExpiryDate] = useState("");
   const [exErrorMessage, setErrorMessage] = useState("");
   const [cvv, setCvv] = useState("");
   const [cvvErrorMessage, setCvvErrorMessage] = useState("");
+  const productCount = 9; // Number of products in the order
+  const [orderCode, setOrderCode] = useState(""); // Order code
+
+  const handleButtonClick = () => {
+    if (selectedPaymentMethod === "paypal") {
+      window.location.href = "https://www.paypal.com"; // Navigate to PayPal
+    } else {
+      // Handle place order logic
+    }
+  };
+
+  // order code
+
+  useEffect(() => {
+    const generateOrderCode = () => {
+      const now = new Date();
+      const year = now.getFullYear().toString().slice(-2); // Get last two digits of the year
+      const month = (now.getMonth() + 1).toString().padStart(2, "0"); // Get month and pad with leading zero if needed
+      const day = now.getDate().toString().padStart(2, "0"); // Get day and pad with leading zero if needed
+      const date = `${month}${day}`; // Format date as MMDD
+      const orderNumber = 1; // Replace with actual logic to get the order number
+      const formattedOrderNumber = orderNumber.toString().padStart(4, "0"); // Format order number as 4 digits
+
+      return `NI${year}${date}${formattedOrderNumber}`;
+    };
+
+    const code = generateOrderCode();
+    setOrderCode(code);
+  }, []);
+
+  // copy to clipboard
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard");
+    });
+  };
+
+  // card number check
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\s+/g, ""); // Remove all spaces
@@ -31,16 +73,22 @@ const Checkout = (props: Props) => {
       value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
       setCardNumber(value);
       if (value.replace(/\s+/g, "").length === 16) {
-        identifyCardType(value.replace(/\s+/g, ""));
+        const cardType = identifyCardType(value.replace(/\s+/g, ""));
+        if (cardType) {
+          setCardErrorMessage(""); // Clear error message if card number is valid
+        } else {
+          setCardErrorMessage("Invalid card number");
+        }
       } else {
         setCardType("");
+        setCardErrorMessage("Card number must be 16 digits");
       }
     }
   };
 
-  // check cardType
+  // check card type
 
-  const identifyCardType = (number: string) => {
+  const identifyCardType = (number: string): string | null => {
     const cardPatterns: { [key: string]: RegExp } = {
       visa: /^4[0-9]{12}(?:[0-9]{3})?$/,
       mastercard: /^5[1-5][0-9]{14}$/,
@@ -51,10 +99,11 @@ const Checkout = (props: Props) => {
     for (const [type, pattern] of Object.entries(cardPatterns)) {
       if (pattern.test(number)) {
         setCardType(type);
-        return;
+        return type;
       }
     }
-    setCardType("unknown");
+    setCardType("");
+    return null;
   };
 
   // expiration
@@ -83,7 +132,6 @@ const Checkout = (props: Props) => {
     }
 
     if (value.length === 4) {
-      let currentYear = new Date().getFullYear() % 100; // Get last two digits of current year
       let year = parseInt(value.slice(2), 10);
       if (year < 24) {
         // 24 represents the year 2024
@@ -203,7 +251,7 @@ const Checkout = (props: Props) => {
             </div>
             {/* Conditional rendering of form inputs based on selected payment method */}
             {selectedPaymentMethod === "credit-card" && (
-              <div className="credit-card-form">
+              <div className="credit-card-form form-control">
                 <div className="heading">
                   <div className="title">Card Details</div>
                   <div className="type">
@@ -264,6 +312,17 @@ const Checkout = (props: Props) => {
                     maxLength={19} // 16 digits + 3 spaces
                     placeholder="Card Number"
                   />
+                  {cardErrorMessage && (
+                    <div
+                      style={{
+                        color: "#fe5d2c",
+                        marginTop: "10px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {cardErrorMessage}
+                    </div>
+                  )}
                 </div>
 
                 <div className="ex-cvv">
@@ -282,7 +341,7 @@ const Checkout = (props: Props) => {
                         <div
                           className="exErrorMessage"
                           style={{
-                            color: "#eb001b",
+                            color: "#fe5d2c",
                             marginTop: "10px",
                             fontSize: "14px",
                           }}
@@ -302,7 +361,7 @@ const Checkout = (props: Props) => {
                         <div
                           className="cvvErrorMessage"
                           style={{
-                            color: "#eb001b",
+                            color: "#fe5d2c",
                             marginTop: "10px",
                             fontSize: "14px",
                           }}
@@ -376,7 +435,44 @@ const Checkout = (props: Props) => {
               </div>
               <div className="title">PayPal</div>
             </div>
+            {/* Conditional rendering of form inputs based on selected payment method */}
+            {selectedPaymentMethod === "paypal" && (
+              <div className="paypal-form form-control">
+                <div className="save-payment">
+                  <span>
+                    Required: Save this payment method for future purchases?
+                  </span>
+                  <div className="save-options">
+                    <label>
+                      <input type="radio" name="save-payment" value="yes" />
+                      <span>Yes</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="save-payment" value="no" />
+                      <span>No</span>
+                    </label>
+                  </div>
+                  <div className="notice">
+                    By choosing to save your payment information, this payment
+                    method will be selected as the default for all purchases
+                    made using Next In payment, including purchases in the Next
+                    In Store. You can delete your saved payment information
+                    anytime on this payment screen or by logging in to your Next
+                    In account, and selecting payment management in your account
+                    settings. <Link to="/">Learn more</Link>.
+                  </div>
+                  <div className="about-paypal">
+                    For more information about PayPal, visit{" "}
+                    <Link to="https://www.paypal.com/" target="_blank">
+                      PayPal's official website
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* scan qr */}
           <div
             className="scan-qr select-payment"
             onClick={() => handlePaymentMethodChange("scan-qr")}
@@ -412,6 +508,76 @@ const Checkout = (props: Props) => {
               </div>
               <div className="title">QR Code</div>
             </div>
+            {/* Conditional rendering of form inputs based on selected payment method */}
+            {selectedPaymentMethod === "scan-qr" && (
+              <div className="qr-form form-control">
+                <div className="scan-qr-code">
+                  <div className="guide">
+                    <div className="step-1 step">
+                      <label>Step 01:</label>Open Your Banking App
+                    </div>
+                    <div className="step-2 step">
+                      <label>Step 02:</label>Locate the QR Code Scanner
+                    </div>
+                    <div className="step-3 step">
+                      <label>Step 03:</label>Scan the QR Code
+                    </div>
+                    <div className="img-container">
+                      <img src={qr_payment} alt="" />
+                    </div>
+                    <div className="step-4 step">
+                      <label>Step 04:</label>Confirm Payment Details
+                    </div>
+                    <div className="step-5 step">
+                      <label>Step 05:</label>Complete Payment
+                    </div>
+                  </div>
+                </div>
+                <div className="information-scan-qr">
+                  <div className="heading">Banking transfer information</div>
+                  <div className="content">
+                    <div className="bank-name inner">
+                      Bank Name:<span className="text">Techcombank</span>
+                    </div>
+                    <div className="account-name inner">
+                      Account Name: <span className="text">DOAN GIA DAT</span>
+                    </div>
+                    <div className="account-number inner">
+                      Account No:<span className="text">1089101099</span>
+                      <span
+                        className="mingcute--copy-fill iconify"
+                        onClick={() => copyToClipboard("1089101099")}
+                      ></span>
+                    </div>
+                    <div className="amount inner">
+                      Amount:{" "}
+                      <span className="text">
+                        {totalPrice.toLocaleString()}đ
+                      </span>
+                      <span
+                        className="mingcute--copy-fill iconify"
+                        onClick={() =>
+                          copyToClipboard(
+                            totalPrice.toString().replace(/,/g, "")
+                          )
+                        }
+                      ></span>
+                    </div>
+                    <div className="code-orders inner">
+                      Code Orders: <span className="text">{orderCode}</span>
+                      <span
+                        className="mingcute--copy-fill iconify"
+                        onClick={() => copyToClipboard(orderCode)}
+                      ></span>
+                    </div>
+                    <div className="note">
+                      <label>Note:</label> Please include the order number in
+                      the transfer description
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div
             className="momo select-payment"
@@ -488,9 +654,14 @@ const Checkout = (props: Props) => {
         </div>
       </div>
       <div className="order-summary">
-        <div className="title">Order Summary</div>
+        <div className="header">
+          <div className="title">Order Summary</div>
+          <div className="count-items">
+            <span>({productCount})</span>items
+          </div>
+        </div>
         <div className="product-summary">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {Array.from({ length: productCount }).map((_, index) => (
             <div className="product-item" key={index}>
               <div className="product-poster">
                 <img src={productPoster} alt="" />
@@ -546,7 +717,13 @@ const Checkout = (props: Props) => {
             </Link>
             .
           </span>
-          <button className="place-order-btn">Place Order</button>
+          <button className="place-order-btn" onClick={handleButtonClick}>
+            {selectedPaymentMethod === "paypal" ? (
+              <img src={btn_paypal} alt="PayPal" style={{ width: "70%" }} />
+            ) : (
+              "Place Order"
+            )}
+          </button>
         </div>
       </div>
     </div>

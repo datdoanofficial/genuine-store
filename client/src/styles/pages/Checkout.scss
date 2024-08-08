@@ -22,7 +22,7 @@
       justify-content: space-between;
 
       .title {
-        font-size: 14px;
+        font-size: 16px;
         background-color: $primary-color;
         padding: 10px 30px;
         border-radius: 50px;
@@ -100,14 +100,69 @@
           }
         }
 
-        // credit card form
+        // form control
 
-        .credit-card-form {
+        .form-control {
           width: 100%;
           height: fit-content;
           padding: 0 60px;
           margin-top: 20px;
 
+          .save-payment {
+            .save-options {
+              display: flex;
+              margin-top: 15px;
+
+              label {
+                font-size: 16px;
+                margin-right: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                input {
+                  margin-right: 10px;
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+            }
+
+            .notice {
+              font-size: 14px;
+              color: #f5f5f599;
+              margin-top: 20px;
+              margin-bottom: 30px;
+
+              a {
+                color: $primary-light;
+
+                &:hover {
+                  text-decoration: none;
+                }
+              }
+            }
+
+            .about-paypal {
+              font-size: 14px;
+              color: #f5f5f599;
+              margin-top: 20px;
+              margin-bottom: 30px;
+
+              a {
+                color: $primary-light;
+
+                &:hover {
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+
+        // credit card form
+
+        .credit-card-form {
           .heading {
             width: 100%;
             margin-bottom: 20px;
@@ -126,7 +181,7 @@
 
               img {
                 margin-left: 10px;
-                width: 50px;
+                width: 40px;
                 border-radius: 4px;
               }
             }
@@ -157,6 +212,7 @@
 
           .ex-cvv {
             margin-top: 20px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
 
@@ -190,37 +246,112 @@
               }
             }
           }
+        }
 
-          .save-payment {
-            margin-top: 30px;
+        // paypal form
 
-            .save-options {
-              display: flex;
-              margin-top: 15px;
+        // scan qr code form
 
-              label {
-                font-size: 16px;
-                margin-right: 20px;
+        .qr-form {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+
+          .scan-qr-code {
+            width: 100%;
+
+            .guide {
+              width: 100%;
+              font-size: 14px;
+
+              .step {
+                margin-bottom: 20px;
+                padding-left: 20px;
                 display: flex;
                 align-items: center;
-                cursor: pointer;
+                width: 100%;
+                height: 30px;
+                background-color: #4a4a4a;
+                border-radius: 10px;
 
-                input {
-                  margin-right: 10px;
-                  width: 20px;
-                  height: 20px;
+                label {
+                  color: $primary-light;
+                  margin-right: 5px;
+                }
+              }
+
+              .img-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border-radius: 10px;
+                  margin-bottom: 20px;
+                  width: 50%;
                 }
               }
             }
+          }
+          .information-scan-qr {
+            width: 100%;
+            height: calc(100% - 20px);
+            padding: 25px 25px;
+            font-size: 14px;
+            background-color: #4a4a4a;
+            border-radius: 10px;
 
-            .notice {
-              font-size: 14px;
-              color: #f5f5f599;
-              margin-top: 20px;
-              margin-bottom: 30px;
+            .heading {
+              font-size: 16px;
+              font-weight: 700;
+              color: $text-color;
+              text-transform: uppercase;
+              display: flex;
+              justify-content: center;
+              text-align: center;
+              margin-bottom: 20px;
+            }
 
-              a {
-                color: $primary-color;
+            .content {
+              .inner {
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+
+                .text {
+                  margin-left: 10px;
+                  border-radius: 50px;
+                  font-size: 14px;
+                  font-weight: 300;
+                  color: $text-color;
+                  background-color: $primary-color;
+                  padding: 5px 10px;
+                }
+
+                .iconify {
+                  font-size: 22px;
+                  margin-left: 5px;
+                  cursor: pointer;
+                }
+              }
+
+              .note {
+                border-radius: 10px;
+                font-weight: 300;
+                margin-top: 20px;
+                color: $text-color;
+                border: 1px solid $secondary-color;
+                padding: 10px 15px;
+
+                label {
+                  font-weight: 500;
+                  color: $secondary-color;
+                }
               }
             }
           }
@@ -348,17 +479,34 @@
     }
   }
 
+  // order summary
+
   .order-summary {
     position: relative;
     width: 100%;
     background: #2a2a2a;
     border-radius: 10px;
 
-    .title {
-      padding: 25px 25px;
-      font-size: 18px;
-      font-weight: 500;
-      text-transform: uppercase;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        padding: 25px 25px;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .count-items {
+        font-weight: 300;
+        padding: 25px 25px;
+
+        span {
+          margin-right: 5px;
+        }
+      }
     }
 
     .product-summary {
@@ -407,7 +555,7 @@
           .product-price {
             font-size: 16px;
             font-weight: 300;
-            color: $secondary-color;
+            color: $primary-light;
           }
         }
       }
@@ -472,7 +620,7 @@
         padding: 10px 0px;
         font-weight: 700;
         font-size: 16px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         .total {
           margin-bottom: 30px;
@@ -534,7 +682,7 @@
         text-align: center;
 
         .link {
-          color: $secondary-color;
+          color: $primary-light;
           text-decoration-thickness: 1px;
           text-underline-offset: 2px;
 
@@ -558,14 +706,13 @@
       font-family: $pontano;
       border-top: 4px solid #3a3a3a;
       outline: none;
-      cursor: pointer;
 
       span {
         font-size: 16px;
       }
 
       .license-agreement {
-        color: $secondary-color;
+        color: $primary-light;
         text-underline-offset: 2px;
         text-decoration-thickness: 1px;
         transition: 0.5s;
