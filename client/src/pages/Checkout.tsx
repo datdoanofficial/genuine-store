@@ -10,6 +10,8 @@ import jcb_icon from "../assets/images/logo/jcb.png";
 import american_express_icon from "../assets/images/logo/american-express.png";
 import qr_payment from "../assets/images/icon/qr-payment.png";
 import btn_paypal from "../assets/images/logo/btn-paypal.png";
+import btn_momo from "../assets/images/logo/btn-momo.png";
+import btn_wechatpay from "../assets/images/logo/btn-wechatpay.png";
 
 type Props = {};
 
@@ -27,13 +29,14 @@ const Checkout = (props: Props) => {
   const [cvvErrorMessage, setCvvErrorMessage] = useState("");
   const productCount = 9; // Number of products in the order
   const [orderCode, setOrderCode] = useState(""); // Order code
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState("creditCard"); // Default payment method
+  const [savePaymentSelected, setSavePaymentSelected] = useState<
+    boolean | null
+  >(null); // Track if user clicked Yes or No
 
-  const handleButtonClick = () => {
-    if (selectedPaymentMethod === "paypal") {
-      window.location.href = "https://www.paypal.com"; // Navigate to PayPal
-    } else {
-      // Handle place order logic
-    }
+  const handleSavePaymentClick = (selection: boolean) => {
+    setSavePaymentSelected(selection);
   };
 
   // order code
@@ -174,10 +177,9 @@ const Checkout = (props: Props) => {
 
   // select payment method
 
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
-
   const handlePaymentMethodChange = (method: string) => {
     setSelectedPaymentMethod(method);
+    setSavePaymentSelected(null); // Reset save payment selection when payment method changes
   };
 
   useEffect(() => {
@@ -374,15 +376,26 @@ const Checkout = (props: Props) => {
                 </div>
                 <div className="save-payment">
                   <span>
-                    Required: Save this payment method for future purchases?
+                    <span className="rq">*</span>Required: Save this payment
+                    method for future purchases?
                   </span>
                   <div className="save-options">
                     <label>
-                      <input type="radio" name="save-payment" value="yes" />
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="yes"
+                        onChange={() => handleSavePaymentClick(true)}
+                      />
                       <span>Yes</span>
                     </label>
                     <label>
-                      <input type="radio" name="save-payment" value="no" />
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="no"
+                        onChange={() => handleSavePaymentClick(false)}
+                      />
                       <span>No</span>
                     </label>
                   </div>
@@ -399,79 +412,6 @@ const Checkout = (props: Props) => {
               </div>
             )}
           </div>
-
-          <div
-            className="paypal select-payment"
-            onClick={() => handlePaymentMethodChange("paypal")}
-            style={{
-              border:
-                selectedPaymentMethod === "paypal"
-                  ? "2px solid #385aff"
-                  : "2px solid transparent",
-            }}
-          >
-            <div
-              className="main-heading"
-              style={{
-                pointerEvents:
-                  selectedPaymentMethod === "paypal" ? "none" : "auto",
-              }}
-            >
-              <div
-                className="checkbox"
-                style={{
-                  backgroundColor:
-                    selectedPaymentMethod === "paypal"
-                      ? "#385aff"
-                      : "transparent",
-                }}
-              >
-                {selectedPaymentMethod === "paypal" && (
-                  <span className="mingcute--check-fill iconify"></span>
-                )}
-              </div>
-              <div className="paypal-icon">
-                <span className="simple-icons--paypal iconify"></span>
-              </div>
-              <div className="title">PayPal</div>
-            </div>
-            {/* Conditional rendering of form inputs based on selected payment method */}
-            {selectedPaymentMethod === "paypal" && (
-              <div className="paypal-form form-control">
-                <div className="save-payment">
-                  <span>
-                    Required: Save this payment method for future purchases?
-                  </span>
-                  <div className="save-options">
-                    <label>
-                      <input type="radio" name="save-payment" value="yes" />
-                      <span>Yes</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="save-payment" value="no" />
-                      <span>No</span>
-                    </label>
-                  </div>
-                  <div className="notice">
-                    By choosing to save your payment information, this payment
-                    method will be selected as the default for all purchases
-                    made using Next In payment, including purchases in the Next
-                    In Store. You can delete your saved payment information
-                    anytime on this payment screen or by logging in to your Next
-                    In account, and selecting payment management in your account
-                    settings. <Link to="/">Learn more</Link>.
-                  </div>
-                  <div className="about-paypal">
-                    For more information about PayPal, visit{" "}
-                    <Link to="https://www.paypal.com/" target="_blank">
-                      PayPal's official website
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
           {/* scan qr */}
           <div
             className="scan-qr select-payment"
@@ -579,6 +519,91 @@ const Checkout = (props: Props) => {
               </div>
             )}
           </div>
+          {/* paypal */}
+          <div
+            className="paypal select-payment"
+            onClick={() => handlePaymentMethodChange("paypal")}
+            style={{
+              border:
+                selectedPaymentMethod === "paypal"
+                  ? "2px solid #385aff"
+                  : "2px solid transparent",
+            }}
+          >
+            <div
+              className="main-heading"
+              style={{
+                pointerEvents:
+                  selectedPaymentMethod === "paypal" ? "none" : "auto",
+              }}
+            >
+              <div
+                className="checkbox"
+                style={{
+                  backgroundColor:
+                    selectedPaymentMethod === "paypal"
+                      ? "#385aff"
+                      : "transparent",
+                }}
+              >
+                {selectedPaymentMethod === "paypal" && (
+                  <span className="mingcute--check-fill iconify"></span>
+                )}
+              </div>
+              <div className="paypal-icon">
+                <span className="simple-icons--paypal iconify"></span>
+              </div>
+              <div className="title">PayPal</div>
+            </div>
+            {/* Conditional rendering of form inputs based on selected payment method */}
+            {selectedPaymentMethod === "paypal" && (
+              <div className="paypal-form form-control">
+                <div className="save-payment">
+                  <span>
+                    <span className="rq">*</span>Required: Save this payment
+                    method for future purchases?
+                  </span>
+                  <div className="save-options">
+                    <label>
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="yes"
+                        onChange={() => handleSavePaymentClick(true)}
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="no"
+                        onChange={() => handleSavePaymentClick(false)}
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                  <div className="notice">
+                    By choosing to save your payment information, this payment
+                    method will be selected as the default for all purchases
+                    made using Next In payment, including purchases in the Next
+                    In Store. You can delete your saved payment information
+                    anytime on this payment screen or by logging in to your Next
+                    In account, and selecting payment management in your account
+                    settings. <Link to="/">Learn more</Link>.
+                  </div>
+                  <div className="about">
+                    For more information about PayPal, visit{" "}
+                    <Link to="https://www.paypal.com/" target="_blank">
+                      PayPal's official website
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* momo */}
           <div
             className="momo select-payment"
             onClick={() => handlePaymentMethodChange("momo")}
@@ -614,7 +639,54 @@ const Checkout = (props: Props) => {
               </div>
               <div className="title">Momo</div>
             </div>
+            {/* Conditional rendering of form inputs based on selected payment method */}
+            {selectedPaymentMethod === "momo" && (
+              <div className="momo-form form-control">
+                <div className="save-payment">
+                  <span>
+                    <span className="rq">*</span>Required: Save this payment
+                    method for future purchases?
+                  </span>
+                  <div className="save-options">
+                    <label>
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="yes"
+                        onChange={() => handleSavePaymentClick(true)}
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="no"
+                        onChange={() => handleSavePaymentClick(false)}
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                  <div className="notice">
+                    By choosing to save your payment information, this payment
+                    method will be selected as the default for all purchases
+                    made using Next In payment, including purchases in the Next
+                    In Store. You can delete your saved payment information
+                    anytime on this payment screen or by logging in to your Next
+                    In account, and selecting payment management in your account
+                    settings. <Link to="/">Learn more</Link>.
+                  </div>
+                  <div className="about">
+                    For more information about Momo, visit{" "}
+                    <Link to="https://www.momo.vn/" target="_blank">
+                      Momo's official website
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
+          {/* weixin pay */}
           <div
             className="weixin-pay select-payment"
             onClick={() => handlePaymentMethodChange("weixin-pay")}
@@ -648,11 +720,59 @@ const Checkout = (props: Props) => {
               <div className="weixin-pay-icon">
                 <span className="ri--wechat-pay-fill iconify"></span>
               </div>
-              <div className="title">Weixin Pay</div>
+              <div className="title">WeChat Pay</div>
             </div>
+            {/* Conditional rendering of form inputs based on selected payment method */}
+            {selectedPaymentMethod === "weixin-pay" && (
+              <div className="weixin-form form-control">
+                <div className="save-payment">
+                  <span>
+                    <span className="rq">*</span>Required: Save this payment
+                    method for future purchases?
+                  </span>
+                  <div className="save-options">
+                    <label>
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="yes"
+                        onChange={() => handleSavePaymentClick(true)}
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="save-payment"
+                        value="no"
+                        onChange={() => handleSavePaymentClick(false)}
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                  <div className="notice">
+                    By choosing to save your payment information, this payment
+                    method will be selected as the default for all purchases
+                    made using Next In payment, including purchases in the Next
+                    In Store. You can delete your saved payment information
+                    anytime on this payment screen or by logging in to your Next
+                    In account, and selecting payment management in your account
+                    settings. <Link to="/">Learn more</Link>.
+                  </div>
+                  <div className="about">
+                    For more information about Wechat Pay, visit{" "}
+                    <Link to="https://pay.weixin.qq.com" target="_blank">
+                      Wechat Pay's official website
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* order summary */}
       <div className="order-summary">
         <div className="header">
           <div className="title">Order Summary</div>
@@ -710,16 +830,49 @@ const Checkout = (props: Props) => {
         {/* field btn */}
         <div className="field-btn">
           <span>
-            By clicking "Place Order" below, I represent that I am over 18 and
-            an authorized user of this payment method, I agree to the{" "}
+            By clicking "
+            {selectedPaymentMethod === "paypal"
+              ? "PayPal"
+              : selectedPaymentMethod === "momo"
+              ? "Momo"
+              : selectedPaymentMethod === "weixin-pay"
+              ? "WeChat Pay"
+              : "Place Order"}
+            " below, I represent that I am over 18 and an authorized user of
+            this payment method, I agree to the{" "}
             <Link className="license-agreement" to="/">
               End User License Agreement
             </Link>
             .
           </span>
-          <button className="place-order-btn" onClick={handleButtonClick}>
+          <button
+            className={`place-order-btn ${
+              savePaymentSelected === null &&
+              selectedPaymentMethod !== "scan-qr"
+                ? "disabled"
+                : ""
+            }`}
+            disabled={
+              savePaymentSelected === null &&
+              selectedPaymentMethod !== "scan-qr"
+            }
+          >
             {selectedPaymentMethod === "paypal" ? (
-              <img src={btn_paypal} alt="PayPal" style={{ width: "70%" }} />
+              <img src={btn_paypal} alt="PayPal" style={{ width: "80%" }} />
+            ) : selectedPaymentMethod === "momo" ? (
+              <img
+                src={btn_momo}
+                alt="Momo"
+                style={{ width: "80%", borderRadius: "10px" }}
+              />
+            ) : selectedPaymentMethod === "weixin-pay" ? (
+              <img
+                src={btn_wechatpay}
+                alt="WeChat Pay"
+                style={{ width: "80%", borderRadius: "10px" }}
+              />
+            ) : selectedPaymentMethod === "scan-qr" ? (
+              "Check Status"
             ) : (
               "Place Order"
             )}
