@@ -548,13 +548,12 @@
         height: fit-content;
         padding: 20px 25px;
         background-color: $bg-color;
-        border: 2px solid #4a4a4a;
         border-radius: 10px;
         cursor: pointer;
         transition: 0.5s;
 
         &:hover {
-          border: 2px solid $secondary-color;
+          background-color: #3a3a3a;
         }
 
         .title {
@@ -679,7 +678,7 @@
         transition: 0.5s;
 
         &:hover {
-          border: 2px solid $secondary-color;
+          background-color: #3a3a3a;
         }
 
         .title {
@@ -707,6 +706,15 @@
             background-color: $primary-color;
             border-radius: 50px;
           }
+        }
+
+        .free-price {
+          width: fit-content;
+          height: fit-content;
+          padding: 3px 12px;
+          border-radius: 4px;
+          font-size: 12px;
+          background-color: $primary-color;
         }
       }
     }

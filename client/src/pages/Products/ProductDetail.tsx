@@ -30,6 +30,36 @@ const ProductDetail = (props: Props) => {
   const [activeTab, setActiveTab] = useState("windows"); // Create active tab windows or macos
   const [selectedThumbnail, setSelectedThumbnail] = useState(thumbnail0);
   const [animateClass, setAnimateClass] = useState("");
+  // State to track the current step
+  const [currentStep, setCurrentStep] = useState(1);
+  // State to track if an item is selected in step 2
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  // State to track the product name
+  const [productName, setProductName] = useState("NARAKA: BLADEPOINT");
+
+  // Function to handle the transition to step 2
+  const goToStep2 = () => {
+    setCurrentStep(2);
+  };
+
+  // Function to handle item selection in step 2
+  const handleItemSelection = (item: string) => {
+    setSelectedItem(item);
+  };
+
+  // Function to get the price based on the selected item
+  const getPrice = (item: string | null) => {
+    switch (item) {
+      case "Standard Edition":
+        return "Free";
+      case "Deluxe Edition":
+        return <PriceCalculator originalPrice="620.000đ" discount={0.3} />;
+      case "Ultimate Edition":
+        return <PriceCalculator originalPrice="920.000đ" discount={0.3} />;
+      default:
+        return null;
+    }
+  };
 
   // Array of thumbnails
   const thumbnails = [
@@ -427,7 +457,7 @@ const ProductDetail = (props: Props) => {
               <span className="mingcute--flag-4-fill iconify"></span>Report
             </button>
           </div>
-          {/* step 01 */}
+          {/* Step 01 */}
           <div className="step-1">
             <label>Step 1</label>
             <div className="add-btn">
@@ -436,10 +466,16 @@ const ProductDetail = (props: Props) => {
               </button>
               <button className="add-to-cart">Add to cart</button>
             </div>
-            <div className="buy-item">
+            <div
+              className="buy-item"
+              onClick={goToStep2}
+              style={{
+                border:
+                  currentStep === 2 ? "1px solid #ffbb38" : "1px solid #4a4a4a",
+              }}
+            >
               <div className="title">
-                <span className="icons8--buy iconify"></span>Buy NARAKA:
-                BLADEPOINT
+                <span className="icons8--buy iconify"></span>Buy {productName}
               </div>
               <div className="price">
                 <label>Starting at</label>
@@ -451,58 +487,89 @@ const ProductDetail = (props: Props) => {
             </Link>
           </div>
 
-          {/* step 02 */}
-
-          <div className="step-2">
-            <label>Step 2</label>
-            <div className="heading">Select an edition</div>
-            <div className="select-item">
-              <div className="title">Standard Edition</div>
-              <div className="price">Free</div>
-            </div>
-            <div className="select-item">
-              <div className="title">Deluxe Edition</div>
-              <div className="price">
-                <PriceCalculator originalPrice="620.000đ" discount={0.3} />
-              </div>
-            </div>
-            <div className="select-item">
-              <div className="title">Ultimate Edition</div>
-              <div className="price">
-                <PriceCalculator originalPrice="920.000đ" discount={0.3} />
-              </div>
-            </div>
-          </div>
-
-          {/* proceed */}
-
-          <div className="proceed">
-            <div className="empty">Make a selection to proceed</div>
-            <div className="selected">
-              <span>Your selection</span>
-              <div className="product">
-                <div className="product-name">
-                  NARAKA: BLADEPOINT - Ultimate Edition
+          {/* Step 02 */}
+          {currentStep === 2 && (
+            <div className="step-2">
+              <label>Step 2</label>
+              <div className="heading">Select an edition</div>
+              <div
+                className="select-item"
+                onClick={() => handleItemSelection("Standard Edition")}
+                style={{
+                  border:
+                    selectedItem === "Standard Edition"
+                      ? "1px solid #ffbb38"
+                      : "1px solid #4a4a4a",
+                }}
+              >
+                <div className="title">Standard Edition</div>
+                <div
+                  className={`price ${"Free" === "Free" ? "free-price" : ""}`}
+                >
+                  Free
                 </div>
+              </div>
+              <div
+                className="select-item"
+                onClick={() => handleItemSelection("Deluxe Edition")}
+                style={{
+                  border:
+                    selectedItem === "Deluxe Edition"
+                      ? "1px solid #ffbb38"
+                      : "1px solid #4a4a4a",
+                }}
+              >
+                <div className="title">Deluxe Edition</div>
+                <div className="price">
+                  <PriceCalculator originalPrice="620.000đ" discount={0.3} />
+                </div>
+              </div>
+              <div
+                className="select-item"
+                onClick={() => handleItemSelection("Ultimate Edition")}
+                style={{
+                  border:
+                    selectedItem === "Ultimate Edition"
+                      ? "1px solid #ffbb38"
+                      : "1px solid #4a4a4a",
+                }}
+              >
+                <div className="title">Ultimate Edition</div>
                 <div className="price">
                   <PriceCalculator originalPrice="920.000đ" discount={0.3} />
                 </div>
               </div>
-              <label className="taxes-label">
-                Taxes calculated at checkout
-              </label>
-              <button className="checkout-btn">Check out</button>
             </div>
-            <div className="description">
-              This game includes optional in-game purchases of virtual currency
-              that can be used to acquire virtual in-game items.
+          )}
+
+          {/* Proceed Section */}
+          {selectedItem && (
+            <div className="proceed">
+              <div className="empty">Make a selection to proceed</div>
+              <div className="selected">
+                <span>Your selection</span>
+                <div className="product">
+                  <div className="product-name">
+                    {productName} - {selectedItem}
+                  </div>
+                  <div className="price">{getPrice(selectedItem)}</div>
+                </div>
+                <label className="taxes-label">
+                  Taxes calculated at checkout
+                </label>
+                <button className="checkout-btn">Check out</button>
+              </div>
+              <div className="description">
+                This game includes optional in-game purchases of virtual
+                currency that can be used to acquire virtual in-game items.
+              </div>
+              <div className="accept">
+                By clicking “Check out”, you agree to the game’s{" "}
+                <Link to="">Legal Disclosures</Link> and{" "}
+                <Link to="">Terms of Sale</Link>.
+              </div>
             </div>
-            <div className="accept">
-              By clicking “Check out”, you agree to the game’s{" "}
-              <Link to="">Legal Disclosures</Link> and{" "}
-              <Link to="">Terms of Sale</Link>.
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
