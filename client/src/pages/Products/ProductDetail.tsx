@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/pages/Products/ProductDetail.scss";
 import PriceCalculator from "../../components/Common/PriceCalculator";
@@ -6,36 +6,187 @@ import ToolBar from "../../components/Common/ToolBar";
 import Navigate from "../../components/Common/Navigate";
 import NarakaLogo from "../../assets/images/products/logo/naraka_logo.png";
 
+// Import images and videos from assets/images directory
+
+import thumbnail0 from "../../assets/images/products/thumbnails/naraka_thumbnails_00.jpg";
+import thumbnail1 from "../../assets/images/products/thumbnails/naraka_thumbnails_01.jpg";
+import thumbnail2 from "../../assets/images/products/thumbnails/naraka_thumbnails_02.jpg";
+import thumbnail3 from "../../assets/images/products/thumbnails/naraka_thumbnails_03.jpg";
+import thumbnail4 from "../../assets/images/products/thumbnails/naraka_thumbnails_04.jpg";
+import thumbnail5 from "../../assets/images/products/thumbnails/naraka_thumbnails_05.jpg";
+import thumbnail6 from "../../assets/images/products/thumbnails/naraka_thumbnails_06.jpg";
+import thumbnail7 from "../../assets/images/products/thumbnails/naraka_thumbnails_07.jpg";
+
 type Props = {};
 
 const ProductDetail = (props: Props) => {
+  const overviewRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const systemReqRef = useRef<HTMLDivElement>(null);
+  const relatedGamesRef = useRef<HTMLDivElement>(null);
+  const relatedProduct = Array(16).fill(null); // Create an array with 16 elements
+  const [thumbnailIndex, setThumbnailIndex] = useState(0);
+  const [relatedProductIndex, setRelatedProductIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("windows"); // Create active tab windows or macos
+  const [selectedThumbnail, setSelectedThumbnail] = useState(thumbnail0);
+  const [animateClass, setAnimateClass] = useState("");
+
+  // Array of thumbnails
+  const thumbnails = [
+    thumbnail0,
+    thumbnail1,
+    thumbnail2,
+    thumbnail3,
+    thumbnail4,
+    thumbnail5,
+    thumbnail6,
+    thumbnail7,
+  ];
+
+  // Handle thumbnail click
+  const handleThumbnailClick = (thumbnail: string, index: number) => {
+    const direction =
+      index > thumbnails.indexOf(selectedThumbnail) ? "right" : "left";
+    setAnimateClass(direction === "right" ? "animate-right" : "animate-left");
+    setSelectedThumbnail(thumbnail);
+    setTimeout(() => setAnimateClass(""), 500); // Reset animation state after animation duration
+  };
+
+  // thumnail navigate
+
+  const handleThumbnailNavigate = (direction: string) => {
+    if (direction === "left" && thumbnailIndex > 0) {
+      setThumbnailIndex(thumbnailIndex - 4);
+    } else if (
+      direction === "right" &&
+      thumbnailIndex < thumbnails.length - 4
+    ) {
+      setThumbnailIndex(thumbnailIndex + 4);
+    }
+  };
+
+  // related product navigate
+
+  const handleRelatedProductNavigate = (direction: "left" | "right") => {
+    setRelatedProductIndex((prevIndex) => {
+      if (direction === "right") {
+        return Math.min(prevIndex + 4, relatedProduct.length - 4);
+      } else {
+        return Math.max(prevIndex - 4, 0);
+      }
+    });
+  };
+
+  const [activeSection, setActiveSection] = useState<string>("overview");
+
+  // scroll to section
+
+  const scrollToSection = (
+    ref: React.RefObject<HTMLDivElement>,
+    section: string
+  ) => {
+    const element = ref.current;
+    if (element) {
+      const top =
+        element.getBoundingClientRect().top + window.pageYOffset - 130; // 130px offset
+      window.scrollTo({ top, behavior: "smooth" });
+      setActiveSection(section);
+    }
+  };
+
+  // handle tab click
+
+  // Content existence check
+  const hasWindowsContent = true; // Assume Windows content exists
+  const hasMacOsContent = false; // Assume Mac Os content does not exist
+
+  const handleTabClick = (tab: string) => {
+    if (
+      (tab === "windows" && hasWindowsContent) ||
+      (tab === "macos" && hasMacOsContent)
+    ) {
+      setActiveTab(tab);
+    }
+  };
+
   return (
     <div className="product-details">
       <ToolBar />
-      <div className="product-container">
+      <div className="product-container" ref={overviewRef}>
         <div className="product-content">
           <div className="product-name">NARAKA: BLADEPOINT</div>
           <div className="prd-bar">
-            <div className="overview">Overview</div>
-            <div className="about">About This Game</div>
-            <div className="system-req">System Requirements</div>
-            <div className="rlt-games">Related Games</div>
+            <div
+              className={`overview ${
+                activeSection === "overview" ? "active" : ""
+              }`}
+              onClick={() => scrollToSection(overviewRef, "overview")}
+            >
+              Overview
+            </div>
+            <div
+              className={`about ${activeSection === "about" ? "active" : ""}`}
+              onClick={() => scrollToSection(aboutRef, "about")}
+            >
+              About This Game
+            </div>
+            <div
+              className={`system-req ${
+                activeSection === "system-req" ? "active" : ""
+              }`}
+              onClick={() => scrollToSection(systemReqRef, "system-req")}
+            >
+              System Requirements
+            </div>
+            <div
+              className={`rlt-games ${
+                activeSection === "rlt-games" ? "active" : ""
+              }`}
+              onClick={() => scrollToSection(relatedGamesRef, "rlt-games")}
+            >
+              Related Games
+            </div>
           </div>
           <div className="product-gallery">
-            <div className="main-thumbnail"></div>
+            <div className={`main-thumbnail ${animateClass}`}>
+              <img src={selectedThumbnail} alt="Selected Thumbnail" />
+            </div>
             <div className="thumbnail-tools">
               <div className="title">Screenshots & Videos</div>
-              <Navigate />
+              <Navigate
+                onNavigate={handleThumbnailNavigate}
+                disableLeft={thumbnailIndex === 0}
+                disableRight={thumbnailIndex >= thumbnails.length - 4}
+                totalProducts={thumbnails.length}
+              />
             </div>
             <div className="thumbnails">
-              <div className="thumbnail"></div>
-              <div className="thumbnail"></div>
-              <div className="thumbnail"></div>
-              <div className="thumbnail"></div>
+              {thumbnails
+                .slice(thumbnailIndex, thumbnailIndex + 4)
+                .map((thumbnail, index) => (
+                  <div
+                    key={index}
+                    className="thumbnail"
+                    onClick={() =>
+                      handleThumbnailClick(thumbnail, thumbnailIndex + index)
+                    }
+                    style={{
+                      outline:
+                        thumbnail === selectedThumbnail
+                          ? "1px solid #f5f5f599"
+                          : "1px solid transparent",
+                    }}
+                  >
+                    <img
+                      src={thumbnail}
+                      alt={`Thumbnail ${thumbnailIndex + index + 1}`}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
           {/* About this game */}
-          <div className="about-game">
+          <div className="about-game" ref={aboutRef}>
             <div className="title">About This Game</div>
             <div className="content">
               NARAKA: BLADEPOINT offers you a Battle Royale experience unlike
@@ -55,77 +206,163 @@ const ProductDetail = (props: Props) => {
                 <div className="title">Features</div>
                 <div className="feature-items">
                   <div className="feature">
-                    Competitive Cross Platform, Online Multiplayer
+                    Competitive, Cross Platform, Online Multiplayer
                   </div>
                 </div>
               </div>
             </div>
           </div>
           {/* System requirements */}
-          <div className="system-requirements">
+          <div className="system-requirements" ref={systemReqRef}>
             <div className="title">System Requirements</div>
             <div className="system-requirement-tbl">
               <div className="tab">
-                <div className="windows active">Windows</div>
-                <div className="macos">Mac Os</div>
+                <div
+                  className={`windows ${
+                    activeTab === "windows" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("windows")}
+                  style={{
+                    cursor: hasWindowsContent ? "pointer" : "not-allowed",
+                    pointerEvents: hasWindowsContent ? "all" : "none",
+                  }}
+                >
+                  Windows
+                </div>
+                <div
+                  className={`macos ${activeTab === "macos" ? "active" : ""}`}
+                  onClick={() => handleTabClick("macos")}
+                  style={{
+                    cursor: hasMacOsContent ? "pointer" : "not-allowed",
+                    pointerEvents: hasMacOsContent ? "all" : "none",
+                  }}
+                >
+                  Mac Os
+                </div>
               </div>
               <div className="content">
-                <div className="mininum">
-                  <div className="title">Mininum</div>
-                  <div className="os-version">
-                    <span>OS version</span>
-                    <div className="inner">Windows 10 64-bit</div>
-                  </div>
-                  <div className="cpu">
-                    <span>CPU</span>
-                    <div className="inner">
-                      Intel i5 4th generation, AMD FX 6300 or equivalent
+                {/* Windows Tab */}
+                {activeTab === "windows" && (
+                  <div className="windows-content">
+                    <div className="mininum">
+                      <div className="title">Mininum</div>
+                      <div className="os-version">
+                        <span>OS version</span>
+                        <div className="inner">Windows 10 64-bit</div>
+                      </div>
+                      <div className="cpu">
+                        <span>CPU</span>
+                        <div className="inner">
+                          Intel i5 4th generation, AMD FX 6300 or equivalent
+                        </div>
+                      </div>
+                      <div className="memory">
+                        <span>Memory</span>
+                        <div className="inner">8 GB RAM</div>
+                      </div>
+                      <div className="gpu">
+                        <span>GPU</span>
+                        <div className="inner">
+                          NVIDIA GeForce GTX 750TI, Intel Arc A380, AMD HD 6950
+                          or equivalent
+                        </div>
+                      </div>
+                      <div className="storage">
+                        <span>Storage</span>
+                        <div className="inner">20 GB available space</div>
+                      </div>
+                    </div>
+                    <div className="recommended">
+                      <div className="title">Recommended</div>
+                      <div className="os-version">
+                        <span>OS version</span>
+                        <div className="inner">Windows 10 64-bit</div>
+                      </div>
+                      <div className="cpu">
+                        <span>CPU</span>
+                        <div className="inner">
+                          Intel i7 7th generation or equivalent
+                        </div>
+                      </div>
+                      <div className="memory">
+                        <span>Memory</span>
+                        <div className="inner">16 GB RAM</div>
+                      </div>
+                      <div className="gpu">
+                        <span>GPU</span>
+                        <div className="inner">
+                          NVIDIA GeForce GTX 1060 6G, Intel Arc A750, AMD RX480
+                          or equivalent
+                        </div>
+                      </div>
+                      <div className="storage">
+                        <span>Storage</span>
+                        <div className="inner">20 GB available space</div>
+                      </div>
                     </div>
                   </div>
-                  <div className="memory">
-                    <span>Memory</span>
-                    <div className="inner">8 GB RAM</div>
-                  </div>
-                  <div className="gpu">
-                    <span>GPU</span>
-                    <div className="inner">
-                      NVIDIA GeForce GTX 750TI, Intel Arc A380, AMD HD 6950 or
-                      equivalent
+                )}
+                {/* Mac Os Tab */}
+                {activeTab === "macos" && (
+                  <div className="macos-content">
+                    <div className="mininum">
+                      <div className="title">Mininum</div>
+                      <div className="os-version">
+                        <span>OS version</span>
+                        <div className="inner">MacOs 10 64-bit</div>
+                      </div>
+                      <div className="cpu">
+                        <span>CPU</span>
+                        <div className="inner">
+                          Intel i5 4th generation, AMD FX 6300 or equivalent
+                        </div>
+                      </div>
+                      <div className="memory">
+                        <span>Memory</span>
+                        <div className="inner">8 GB RAM</div>
+                      </div>
+                      <div className="gpu">
+                        <span>GPU</span>
+                        <div className="inner">
+                          NVIDIA GeForce GTX 750TI, Intel Arc A380, AMD HD 6950
+                          or equivalent
+                        </div>
+                      </div>
+                      <div className="storage">
+                        <span>Storage</span>
+                        <div className="inner">20 GB available space</div>
+                      </div>
+                    </div>
+                    <div className="recommended">
+                      <div className="title">Recommended</div>
+                      <div className="os-version">
+                        <span>OS version</span>
+                        <div className="inner">MacOs Sonoma</div>
+                      </div>
+                      <div className="cpu">
+                        <span>CPU</span>
+                        <div className="inner">
+                          Intel i7 7th generation or equivalent
+                        </div>
+                      </div>
+                      <div className="memory">
+                        <span>Memory</span>
+                        <div className="inner">16 GB RAM</div>
+                      </div>
+                      <div className="gpu">
+                        <span>GPU</span>
+                        <div className="inner">
+                          NVIDIA GeForce GTX 1060 6G, Intel Arc A750, AMD RX480
+                          or equivalent
+                        </div>
+                      </div>
+                      <div className="storage">
+                        <span>Storage</span>
+                        <div className="inner">20 GB available space</div>
+                      </div>
                     </div>
                   </div>
-                  <div className="storage">
-                    <span>Storage</span>
-                    <div className="inner">20 GB available space</div>
-                  </div>
-                </div>
-                <div className="recommended">
-                  <div className="title">Recommended</div>
-                  <div className="os-version">
-                    <span>OS version</span>
-                    <div className="inner">Windows 10 64-bit</div>
-                  </div>
-                  <div className="cpu">
-                    <span>CPU</span>
-                    <div className="inner">
-                      Intel i7 7th generation or equivalent
-                    </div>
-                  </div>
-                  <div className="memory">
-                    <span>Memory</span>
-                    <div className="inner">16 GB RAM</div>
-                  </div>
-                  <div className="gpu">
-                    <span>GPU</span>
-                    <div className="inner">
-                      NVIDIA GeForce GTX 1060 6G, Intel Arc A750, AMD RX480 or
-                      equivalent
-                    </div>
-                  </div>
-                  <div className="storage">
-                    <span>Storage</span>
-                    <div className="inner">20 GB available space</div>
-                  </div>
-                </div>
+                )}
               </div>
               <div className="copy-right">
                 &copy; 2021 Hangzhou 24 Entertainment Network Technology Co.Ltd.
@@ -134,16 +371,24 @@ const ProductDetail = (props: Props) => {
             </div>
           </div>
           {/* Related Games */}
-          <div className="related-games">
+          <div className="related-games" ref={relatedGamesRef}>
             <div className="related-heading">
               <div className="title">Related Games</div>
-              <Navigate />
+              <Navigate
+                onNavigate={handleRelatedProductNavigate}
+                disableLeft={relatedProductIndex === 0}
+                disableRight={relatedProductIndex >= relatedProduct.length - 4}
+                totalProducts={relatedProduct.length}
+              />
             </div>
             <div className="related-contain">
-              <div className="product-item">1</div>
-              <div className="product-item">2</div>
-              <div className="product-item">3</div>
-              <div className="product-item">4</div>
+              {relatedProduct
+                .slice(relatedProductIndex, relatedProductIndex + 4)
+                .map((_, index) => (
+                  <div key={index} className="product-item">
+                    {relatedProductIndex + index + 1}
+                  </div>
+                ))}
             </div>
           </div>
         </div>
