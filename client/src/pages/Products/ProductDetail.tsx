@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/pages/Products/ProductDetail.scss";
 import PriceCalculator from "../../components/Common/PriceCalculator";
+import VotesCount from "../../components/Common/VotesCount";
 import ToolBar from "../../components/Common/ToolBar";
 import Navigate from "../../components/Common/Navigate";
 import NarakaLogo from "../../assets/images/products/logo/naraka_logo.png";
@@ -16,6 +17,174 @@ import thumbnail4 from "../../assets/images/products/thumbnails/naraka_thumbnail
 import thumbnail5 from "../../assets/images/products/thumbnails/naraka_thumbnails_05.jpg";
 import thumbnail6 from "../../assets/images/products/thumbnails/naraka_thumbnails_06.jpg";
 import thumbnail7 from "../../assets/images/products/thumbnails/naraka_thumbnails_07.jpg";
+
+// Import images for related product
+
+import rltProduct0 from "../../assets/images/products/rlt-product.png";
+import rltProduct1 from "../../assets/images/products/rlt-product-01.png";
+import rltProduct2 from "../../assets/images/products/rlt-product-02.png";
+import rltProduct3 from "../../assets/images/products/rlt-product-03.png";
+import rltProduct4 from "../../assets/images/products/rlt-product-04.png";
+import rltProduct5 from "../../assets/images/products/rlt-product-05.png";
+import rltProduct6 from "../../assets/images/products/rlt-product-06.png";
+import rltProduct7 from "../../assets/images/products/rlt-product-07.png";
+import rltProduct8 from "../../assets/images/products/rlt-product-08.png";
+import rltProduct9 from "../../assets/images/products/rlt-product-09.png";
+import rltProduct10 from "../../assets/images/products/rlt-product-10.png";
+import rltProduct11 from "../../assets/images/products/rlt-product-11.png";
+import rltProduct12 from "../../assets/images/products/rlt-product-12.png";
+import rltProduct13 from "../../assets/images/products/rlt-product-13.png";
+import rltProduct14 from "../../assets/images/products/rlt-product-14.png";
+import rltProduct15 from "../../assets/images/products/rlt-product-15.png";
+
+const relatedProductImg = [
+  rltProduct0,
+  rltProduct1,
+  rltProduct2,
+  rltProduct3,
+  rltProduct4,
+  rltProduct5,
+  rltProduct6,
+  rltProduct7,
+  rltProduct8,
+  rltProduct9,
+  rltProduct10,
+  rltProduct11,
+  rltProduct12,
+  rltProduct13,
+  rltProduct14,
+  rltProduct15,
+];
+
+type card = {
+  src: string;
+  name: string;
+  rating: number;
+  votes: number;
+  price: string;
+  discount?: number;
+};
+
+const products: card[] = [
+  {
+    src: rltProduct0,
+    name: "Battlefield 4™ Premium Edition",
+    rating: 5,
+    votes: 115,
+    price: "950.000đ",
+    discount: 0.7,
+  },
+  {
+    src: rltProduct1,
+    name: "Black Myth: Wukong",
+    rating: 5,
+    votes: 1052,
+    price: "1.299.000đ",
+  },
+  {
+    src: rltProduct2,
+    name: "Ghost of Tsushima",
+    rating: 5,
+    votes: 866,
+    price: "1.524.000đ",
+    discount: 0.2,
+  },
+  {
+    src: rltProduct3,
+    name: "Sekiro™: Shadows Die Twice",
+    rating: 5,
+    votes: 225,
+    price: "1.499.000đ",
+  },
+  {
+    src: rltProduct4,
+    name: "Nioh 2 – The Complete Edition",
+    rating: 5,
+    votes: 130,
+    price: "992.000đ",
+    discount: 0.3,
+  },
+  {
+    src: rltProduct5,
+    name: "Sifu",
+    rating: 4,
+    votes: 62,
+    price: "373.000đ",
+  },
+  {
+    src: rltProduct6,
+    name: "Die by the Blade",
+    rating: 4,
+    votes: 127,
+    price: "209.000đ",
+  },
+  {
+    src: rltProduct7,
+    name: "FOR HONOR™",
+    rating: 4,
+    votes: 214,
+    price: "749.000đ",
+    discount: 0.2,
+  },
+  {
+    src: rltProduct8,
+    name: "Prince of Persia The Lost Crown",
+    rating: 4,
+    votes: 150,
+    price: "690.000đ",
+    discount: 0.4,
+  },
+  {
+    src: rltProduct9,
+    name: "PUBG: BATTLEGROUNDS",
+    rating: 5,
+    votes: 1242,
+    price: "Free",
+  },
+  {
+    src: rltProduct10,
+    name: "Fornite",
+    rating: 5,
+    votes: 618,
+    price: "Free",
+  },
+  {
+    src: rltProduct11,
+    name: "Stumble Upon Rumble",
+    rating: 4,
+    votes: 75,
+    price: "Free",
+  },
+  {
+    src: rltProduct12,
+    name: "Gigantic: Rampage Edition",
+    rating: 5,
+    votes: 274,
+    price: "209.000đ",
+  },
+  {
+    src: rltProduct13,
+    name: "Apex Legends™",
+    rating: 5,
+    votes: 825,
+    price: "Free",
+  },
+  {
+    src: rltProduct14,
+    name: "RoboSquad Revolution",
+    rating: 4,
+    votes: 210,
+    price: "313.000đ",
+    discount: 0.2,
+  },
+  {
+    src: rltProduct15,
+    name: "Fall Guys",
+    rating: 5,
+    votes: 384,
+    price: "Free",
+  },
+];
 
 type Props = {};
 
@@ -35,7 +204,7 @@ const ProductDetail = (props: Props) => {
   // State to track if an item is selected in step 2
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   // State to track the product name
-  const [productName, setProductName] = useState("NARAKA: BLADEPOINT");
+  const [productName] = useState("NARAKA: BLADEPOINT");
 
   // Function to handle the transition to step 2
   const goToStep2 = () => {
@@ -72,6 +241,46 @@ const ProductDetail = (props: Props) => {
     thumbnail6,
     thumbnail7,
   ];
+
+  // Handle left control click
+  const handleLeftControlClick = () => {
+    setSelectedThumbnail((prevThumbnail) => {
+      const currentIndex = thumbnails.indexOf(prevThumbnail);
+      if (currentIndex === 0) {
+        // If the current thumbnail is the first one, do nothing
+        return prevThumbnail;
+      }
+      const newIndex =
+        (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+      if (newIndex < thumbnailIndex) {
+        setThumbnailIndex((prevIndex) => {
+          const newIndex =
+            (prevIndex - 4 + thumbnails.length) % thumbnails.length;
+          return newIndex < 0 ? thumbnails.length - 4 : newIndex;
+        });
+      }
+      return thumbnails[newIndex];
+    });
+  };
+
+  // Handle right control click
+  const handleRightControlClick = () => {
+    setSelectedThumbnail((prevThumbnail) => {
+      const currentIndex = thumbnails.indexOf(prevThumbnail);
+      if (currentIndex === thumbnails.length - 1) {
+        // If the current thumbnail is the last one, do nothing
+        return prevThumbnail;
+      }
+      const newIndex = (currentIndex + 1) % thumbnails.length;
+      if (newIndex >= thumbnailIndex + 4) {
+        setThumbnailIndex((prevIndex) => {
+          const newIndex = (prevIndex + 4) % thumbnails.length;
+          return newIndex === 0 ? 0 : newIndex;
+        });
+      }
+      return thumbnails[newIndex];
+    });
+  };
 
   // Handle thumbnail click
   const handleThumbnailClick = (thumbnail: string, index: number) => {
@@ -124,6 +333,8 @@ const ProductDetail = (props: Props) => {
     }
   };
 
+  // handle main thumbnail navigate
+
   // handle tab click
 
   // Content existence check
@@ -137,6 +348,20 @@ const ProductDetail = (props: Props) => {
     ) {
       setActiveTab(tab);
     }
+  };
+
+  // Current range for thumbnails
+
+  const currentRangeThumbnail = {
+    start: thumbnailIndex,
+    end: Math.min(thumbnailIndex + 3, thumbnails.length - 1),
+  };
+
+  // Current range for related products
+
+  const currentRangeRltProduct = {
+    start: relatedProductIndex,
+    end: Math.min(relatedProductIndex + 4 - 1, relatedProduct.length - 1),
   };
 
   return (
@@ -179,7 +404,23 @@ const ProductDetail = (props: Props) => {
           </div>
           <div className="product-gallery">
             <div className={`main-thumbnail ${animateClass}`}>
-              <img src={selectedThumbnail} alt="Selected Thumbnail" />
+              <div className="left-control">
+                <span
+                  className="akar-icons--chevron-left"
+                  onClick={handleLeftControlClick}
+                ></span>
+              </div>
+              <img
+                src={selectedThumbnail}
+                alt="Selected Thumbnail"
+                className={`thumbnail ${animateClass}`}
+              />
+              <div className="right-control">
+                <span
+                  className="akar-icons--chevron-right"
+                  onClick={handleRightControlClick}
+                ></span>
+              </div>
             </div>
             <div className="thumbnail-tools">
               <div className="title">Screenshots & Videos</div>
@@ -188,6 +429,7 @@ const ProductDetail = (props: Props) => {
                 disableLeft={thumbnailIndex === 0}
                 disableRight={thumbnailIndex >= thumbnails.length - 4}
                 totalProducts={thumbnails.length}
+                currentRange={currentRangeThumbnail}
               />
             </div>
             <div className="thumbnails">
@@ -205,6 +447,7 @@ const ProductDetail = (props: Props) => {
                         thumbnail === selectedThumbnail
                           ? "1px solid #f5f5f599"
                           : "1px solid transparent",
+                      opacity: thumbnail === selectedThumbnail ? 1 : 0.3,
                     }}
                   >
                     <img
@@ -409,14 +652,33 @@ const ProductDetail = (props: Props) => {
                 disableLeft={relatedProductIndex === 0}
                 disableRight={relatedProductIndex >= relatedProduct.length - 4}
                 totalProducts={relatedProduct.length}
+                currentRange={currentRangeRltProduct}
               />
             </div>
             <div className="related-contain">
               {relatedProduct
                 .slice(relatedProductIndex, relatedProductIndex + 4)
-                .map((_, index) => (
+                .map((product, index) => (
                   <div key={index} className="product-item">
-                    {relatedProductIndex + index + 1}
+                    <img
+                      src={relatedProductImg[relatedProductIndex + index]}
+                      alt={`Related Product ${index + 1}`}
+                    />
+                  </div>
+                ))}
+              {products
+                .slice(relatedProductIndex, relatedProductIndex + 4)
+                .map((product, index) => (
+                  <div key={index} className="related-prd-content">
+                    <Link to="/product-details" className="prd-title">
+                      <span>{product.name}</span>
+                    </Link>
+                    <VotesCount rating={product.rating} votes={product.votes} />
+                    <PriceCalculator
+                      originalPrice={product.price}
+                      discount={product.discount}
+                      className="price-calculator"
+                    />
                   </div>
                 ))}
             </div>
@@ -457,6 +719,7 @@ const ProductDetail = (props: Props) => {
               <span className="mingcute--flag-4-fill iconify"></span>Report
             </button>
           </div>
+
           {/* Step 01 */}
           <div className="step-1">
             <label>Step 1</label>
@@ -471,7 +734,7 @@ const ProductDetail = (props: Props) => {
               onClick={goToStep2}
               style={{
                 border:
-                  currentStep === 2 ? "1px solid #ffbb38" : "1px solid #4a4a4a",
+                  currentStep === 2 ? "2px solid #385aff" : "2px solid #4a4a4a",
               }}
             >
               <div className="title">
@@ -498,12 +761,13 @@ const ProductDetail = (props: Props) => {
                 style={{
                   border:
                     selectedItem === "Standard Edition"
-                      ? "1px solid #ffbb38"
-                      : "1px solid #4a4a4a",
+                      ? "2px solid #385aff"
+                      : "2px solid #4a4a4a",
                 }}
               >
                 <div className="title">Standard Edition</div>
                 <div
+                  // eslint-disable-next-line no-self-compare
                   className={`price ${"Free" === "Free" ? "free-price" : ""}`}
                 >
                   Free
@@ -515,8 +779,8 @@ const ProductDetail = (props: Props) => {
                 style={{
                   border:
                     selectedItem === "Deluxe Edition"
-                      ? "1px solid #ffbb38"
-                      : "1px solid #4a4a4a",
+                      ? "2px solid #385aff"
+                      : "2px solid #4a4a4a",
                 }}
               >
                 <div className="title">Deluxe Edition</div>
@@ -530,8 +794,8 @@ const ProductDetail = (props: Props) => {
                 style={{
                   border:
                     selectedItem === "Ultimate Edition"
-                      ? "1px solid #ffbb38"
-                      : "1px solid #4a4a4a",
+                      ? "2px solid #385aff"
+                      : "2px solid #4a4a4a",
                 }}
               >
                 <div className="title">Ultimate Edition</div>
@@ -552,7 +816,13 @@ const ProductDetail = (props: Props) => {
                   <div className="product-name">
                     {productName} - {selectedItem}
                   </div>
-                  <div className="price">{getPrice(selectedItem)}</div>
+                  <div
+                    className={`price ${
+                      getPrice(selectedItem) === "Free" ? "free-price" : ""
+                    }`}
+                  >
+                    {getPrice(selectedItem)}
+                  </div>
                 </div>
                 <label className="taxes-label">
                   Taxes calculated at checkout

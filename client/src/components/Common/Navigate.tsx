@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navigate.scss";
 
 type Props = {
@@ -6,6 +6,7 @@ type Props = {
   disableLeft: boolean;
   disableRight: boolean;
   totalProducts: number;
+  currentRange: { start: number; end: number }; // Add currentRange prop
 };
 
 const Navigate = ({
@@ -13,12 +14,19 @@ const Navigate = ({
   disableLeft,
   disableRight,
   totalProducts,
+  currentRange,
 }: Props) => {
   const [position, setPosition] = useState(0);
 
   const segments = Math.ceil(totalProducts / 4);
   const barWidth = 80 / segments;
   const stepSize = barWidth; // Step size is equal to bar width
+
+  useEffect(() => {
+    // Update position based on the currentRange
+    const newPosition = Math.floor(currentRange.start / 4);
+    setPosition(newPosition);
+  }, [currentRange]);
 
   const handleNavigate = (direction: "left" | "right") => {
     if (direction === "left" && position > 0) {

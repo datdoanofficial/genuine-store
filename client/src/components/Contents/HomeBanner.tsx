@@ -4,6 +4,7 @@ import banner1 from "../../assets/images/banner/banner-01.png";
 import banner2 from "../../assets/images/banner/banner-02.png";
 import banner3 from "../../assets/images/banner/banner-03.png";
 import banner4 from "../../assets/images/banner/banner-04.png";
+import VotesCount from "../Common/VotesCount";
 import "./HomeBanner.scss";
 
 type Banner = {
@@ -107,10 +108,7 @@ const HomeBanner = () => {
           ></div>
           <div className="card-content">
             <div className="name">{banner.name}</div>
-            <div className="rating">
-              <span className="stars">{renderStars(banner.rating)}</span>
-              <span className="total-rating">{banner.votes} votes</span>
-            </div>
+            <VotesCount rating={banner.rating} votes={banner.votes} />
             {/* Other banner elements */}
             <div className="price">
               {hasDiscount && isPriceNotFree && (
@@ -153,14 +151,6 @@ const HomeBanner = () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [animateBanner]);
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: rating }, () => (
-      <i className="solar--star-bold" />
-    )).map((star, index) => (
-      <React.Fragment key={index}>{star}</React.Fragment>
-    ));
-  };
 
   const handleCardItemClick = (index: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current);

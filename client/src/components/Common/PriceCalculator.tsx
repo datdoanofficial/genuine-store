@@ -4,6 +4,7 @@ import "./PriceCalculator.scss";
 type PriceProps = {
   originalPrice: string; // Assuming the price format is similar to "1.190.000đ"
   discount?: number; // Discount as a decimal (e.g., 0.1 for 10% off)
+  className?: string; // Add className prop
 };
 
 const PriceCalculator: React.FC<PriceProps> = ({ originalPrice, discount }) => {
@@ -30,11 +31,13 @@ const PriceCalculator: React.FC<PriceProps> = ({ originalPrice, discount }) => {
   return (
     <div className="prd-price">
       {discount && (
-        <div className="discount">{`${(Number(discount) * 100).toFixed(
-          0
-        )}%`}</div>
+        <>
+          <div className="discount">{`${(Number(discount) * 100).toFixed(
+            0
+          )}%`}</div>
+          <div className="original-price">{originalPrice}</div>
+        </>
       )}
-      <div className="original-price">{originalPrice}</div>
       <div className="final-price">{finalPrice}</div>
     </div>
   );

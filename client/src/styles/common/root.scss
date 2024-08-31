@@ -6,7 +6,7 @@ $hover-color: rgba(#385aff, 0.7);
 $primary-light: #88aaff;
 $secondary-color: #ffbb38;
 $bg-color: #2a2a2a;
-$bg-hover: #3a3a3a;
+$bg-hover: #363636;
 $text-color: #fff;
 $text-fade: #d2d2d2;
 $text-placeholder: #c4c4c4;
@@ -67,7 +67,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// right arrow icon
+// right arrow icon <span className="gravity-ui--arrow-right"></span>
 
 .gravity-ui--arrow-right {
   display: inline-block;
@@ -83,7 +83,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// left arrow icon
+// left arrow icon <span className="gravity-ui--arrow-left"></span>
 
 .gravity-ui--arrow-left {
   display: inline-block;
@@ -510,7 +510,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// chevron left <span class="akar-icons--chevron-left"></span>
+// chevron left <span className="akar-icons--chevron-left"></span>
 
 .akar-icons--chevron-left {
   display: inline-block;
@@ -526,7 +526,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// chevron right <span class="akar-icons--chevron-right"></span>
+// chevron right <span className="akar-icons--chevron-right"></span>
 
 .akar-icons--chevron-right {
   display: inline-block;

@@ -1,0 +1,24 @@
+@import "../../styles/common/root.scss";
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-family: $pontano;
+  font-weight: 300;
+  margin-top: 10px;
+
+  .stars {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+
+    .solar--star-bold {
+      margin-right: 2px;
+    }
+  }
+
+  .total-rating {
+    margin-left: 5px;
+    font-size: 14px;
+  }
+}

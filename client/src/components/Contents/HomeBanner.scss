@@ -3,7 +3,7 @@
 .home-banner {
   position: relative;
   width: 100%;
-  height: 67vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,10 +50,10 @@
   }
 
   .card-information {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    bottom: 60px;
     width: 90%;
-    height: 120px;
+    height: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
@@ -105,7 +105,7 @@
       }
 
       .name {
-        padding: 15px 25px 12px 25px;
+        padding: 15px 25px 5px 25px;
         font-family: $pontano;
         font-weight: 300;
         font-size: 16px;
@@ -125,18 +125,18 @@
           font-size: 14px;
 
           .solar--star-bold {
-            margin-right: 3px;
+            margin-right: 2px;
           }
         }
 
         .total-rating {
-          margin-left: 10px;
+          margin-left: 5px;
           font-size: 14px;
         }
       }
 
       .price {
-        position: absolute;
+        position: relative;
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
@@ -148,6 +148,7 @@
         height: 40px;
         width: calc(100% - 50px);
         border-top: 1px solid #404040;
+        margin-top: 15px;
 
         .discount {
           width: 40px;
@@ -161,6 +162,7 @@
           margin-right: 10px;
           border-radius: 3px;
         }
+
         .original-price {
           text-decoration: line-through;
           margin-right: 10px;
