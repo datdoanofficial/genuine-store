@@ -23,3 +23,24 @@
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); // Add a glow effect
   }
 }
+
+@media screen and (max-width: 768px) {
+  .icard {
+    width: 331px;
+    height: 170px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .icard {
+    width: 312px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .icard {
+    width: 292px;
+    height: 150px;
+  }
+}

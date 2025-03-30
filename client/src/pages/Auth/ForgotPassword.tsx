@@ -14,7 +14,6 @@ const ForgotPassword = (props: Props) => {
       <div className="forgot-pwd-wrapper">
         <div className="forgot-pwd-heading">
           <Logo />
-          <div className="forgot-pwd-title">Forgot Pwd</div>
         </div>
         <div className="description">
           Please fill in the email that you used to register. You will be sent

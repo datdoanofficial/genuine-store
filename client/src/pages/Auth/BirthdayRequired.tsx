@@ -79,7 +79,6 @@ const BirthdayRequired = (props: Props) => {
       <div className="birthday-wrapper">
         <div className="birthday-heading">
           <Logo />
-          <div className="birthday-title">Birthday</div>
         </div>
         <div className="birthday-content">
           <div className="main-form">

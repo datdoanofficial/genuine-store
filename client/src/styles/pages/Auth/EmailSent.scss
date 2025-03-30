@@ -24,17 +24,12 @@
     .email-sent-heading {
       position: relative;
       width: 100%;
+      margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
 
       img {
         width: 150px;
-      }
-
-      .email-sent-title {
-        font-size: 45px;
-        color: $secondary-color;
-        font-family: $mrs-saint-delafield;
       }
     }
 

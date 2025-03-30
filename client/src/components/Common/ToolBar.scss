@@ -1,7 +1,7 @@
 @import "../../styles/common/root.scss";
 
 .toolbar {
-  width: 100%;
+  width: calc(100% - 6rem);
   height: fit-content;
 
   .header-wrapper {
@@ -9,5 +9,46 @@
     height: 100px;
     display: flex;
     justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .toolbar {
+    width: calc(100% - 4rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .toolbar {
+    width: calc(100% - 3rem);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .toolbar {
+    width: calc(100% - 2rem);
+
+    .header-wrapper {
+      height: 80px;
+    }
+
+    .secondary-btn {
+      padding: 0;
+      min-width: auto;
+      width: 46px;
+      height: 46px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .solar--heart-linear {
+        font-size: 22px;
+        margin: 0;
+        transition: 0.5s;
+      }
+    }
   }
 }

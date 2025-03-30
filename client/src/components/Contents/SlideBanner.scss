@@ -36,8 +36,6 @@
 
 .card-list {
   margin-top: 50px;
-  width: fit-content;
-  height: 375px;
   display: grid;
   grid-template-columns: 40px 1fr;
   gap: 30px;
@@ -89,6 +87,14 @@
     }
   }
 
+  .mobile-only {
+    display: none;
+
+    @media (max-width: 480px) {
+      display: flex;
+    }
+  }
+
   //card item
 
   .card-item {
@@ -97,30 +103,28 @@
     display: flex;
     justify-content: center;
     gap: 30px;
-    transition: transform 0.5s ease-in-out; // Smooth transition for sliding
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .card {
-      width: 370px;
-      height: 375px;
+      width: 100%;
       border-radius: 10px;
 
       .card-inner {
         width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template-rows: 190px 1fr;
-        gap: 30px;
         font-family: $pontano;
         font-weight: 300;
 
         .img-thumb {
           width: 100%;
           height: 100%;
+          margin-bottom: 0.6rem;
           border-radius: 10px;
 
           img {
             width: 100%;
-            height: 100%;
             border-radius: inherit;
           }
         }
@@ -143,6 +147,110 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .card-list {
+    .card-item {
+      gap: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    .title {
+      font-size: 28px;
+    }
+
+    .secondary-btn {
+      font-size: 14px;
+      width: 114px;
+      height: 40px;
+    }
+  }
+
+  .card-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .navigation {
+      display: none;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .card-item {
+      transition: 0.5s all;
+
+      .card {
+        transition: 0.5s all;
+      }
+    }
+
+    // Add styles for dot navigation
+    .dot-navigation {
+      display: none; // Hidden by default
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      width: 100%;
+
+      @media (max-width: 480px) {
+        display: flex; // Show only on mobile
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #8a8a8a;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.active {
+          background-color: $primary-color;
+          transform: scale(1.2);
+        }
+
+        &:hover {
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .heading {
+    .title {
+      font-size: 25px;
+    }
+
+    .secondary-btn {
+      font-size: 14px;
+      width: 110px;
+      height: 38px;
+    }
+  }
+
+  .card-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .navigation {
+      display: none;
+    }
+
+    .desktop-only {
+      display: none;
     }
   }
 }

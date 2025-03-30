@@ -10,15 +10,95 @@
   .stars {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 0.45rem;
 
     .solar--star-bold {
-      margin-right: 2px;
+      margin-right: 0.05rem;
     }
   }
 
   .total-rating {
     margin-left: 5px;
-    font-size: 14px;
+    font-size: 0.45rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .rating {
+    .stars {
+      font-size: 14px;
+
+      .solar--star-bold {
+        margin-right: 0.1rem;
+      }
+    }
+
+    .total-rating {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .rating {
+    .stars {
+      font-size: 13px;
+
+      .solar--star-bold {
+        margin-right: 0.1rem;
+      }
+    }
+
+    .total-rating {
+      font-size: 13px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .rating {
+    .stars {
+      font-size: 14px;
+
+      .solar--star-bold {
+        margin-right: 0.1rem;
+      }
+    }
+
+    .total-rating {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .rating {
+    .stars {
+      font-size: 18px;
+
+      .solar--star-bold {
+        margin-right: 5px;
+      }
+    }
+
+    .total-rating {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .rating {
+    .stars {
+      font-size: 16px;
+
+      .solar--star-bold {
+        margin-right: 5px;
+      }
+    }
+
+    .total-rating {
+      font-size: 16px;
+    }
   }
 }

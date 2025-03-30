@@ -30,7 +30,6 @@ const Register = (props: Props) => {
       <div className="regis-wrapper">
         <div className="regis-heading">
           <Logo />
-          <div className="regis-title">Register</div>
         </div>
         <div className="regis-content">
           <div className="regis-form">

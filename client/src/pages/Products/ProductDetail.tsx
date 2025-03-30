@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/pages/Products/ProductDetail.scss";
 import PriceCalculator from "../../components/Common/PriceCalculator";
 import VotesCount from "../../components/Common/VotesCount";
 import ToolBar from "../../components/Common/ToolBar";
 import Navigate from "../../components/Common/Navigate";
+import RltNavigate from "../../components/Common/RltNavigate";
 import NarakaLogo from "../../assets/images/products/logo/naraka_logo.png";
 
 // Import images and videos from assets/images directory
@@ -193,7 +194,6 @@ const ProductDetail = (props: Props) => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const systemReqRef = useRef<HTMLDivElement>(null);
   const relatedGamesRef = useRef<HTMLDivElement>(null);
-  const relatedProduct = Array(16).fill(null); // Create an array with 16 elements
   const [thumbnailIndex, setThumbnailIndex] = useState(0);
   const [relatedProductIndex, setRelatedProductIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("windows"); // Create active tab windows or macos
@@ -205,6 +205,39 @@ const ProductDetail = (props: Props) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   // State to track the product name
   const [productName] = useState("NARAKA: BLADEPOINT");
+  const [totalProducts, setTotalProducts] = useState(16);
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 425) {
+        setItemsPerPage(1);
+        setTotalProducts(16);
+      } else if (window.innerWidth <= 640) {
+        setItemsPerPage(2);
+        setTotalProducts(16);
+      } else if (window.innerWidth <= 768) {
+        setItemsPerPage(3);
+        setTotalProducts(15);
+      } else if (window.innerWidth <= 900) {
+        setItemsPerPage(2);
+        setTotalProducts(14);
+      } else if (window.innerWidth <= 1240) {
+        setItemsPerPage(3);
+        setTotalProducts(15);
+      } else {
+        setItemsPerPage(4);
+        setTotalProducts(16);
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Create dynamic array based on total products
+  const relatedProduct = Array(totalProducts).fill(null);
 
   // Function to handle the transition to step 2
   const goToStep2 = () => {
@@ -309,9 +342,12 @@ const ProductDetail = (props: Props) => {
   const handleRelatedProductNavigate = (direction: "left" | "right") => {
     setRelatedProductIndex((prevIndex) => {
       if (direction === "right") {
-        return Math.min(prevIndex + 4, relatedProduct.length - 4);
+        return Math.min(
+          prevIndex + itemsPerPage,
+          relatedProduct.length - itemsPerPage
+        );
       } else {
-        return Math.max(prevIndex - 4, 0);
+        return Math.max(prevIndex - itemsPerPage, 0);
       }
     });
   };
@@ -358,10 +394,12 @@ const ProductDetail = (props: Props) => {
   };
 
   // Current range for related products
-
   const currentRangeRltProduct = {
     start: relatedProductIndex,
-    end: Math.min(relatedProductIndex + 4 - 1, relatedProduct.length - 1),
+    end: Math.min(
+      relatedProductIndex + itemsPerPage - 1,
+      relatedProduct.length - 1
+    ),
   };
 
   return (
@@ -383,7 +421,7 @@ const ProductDetail = (props: Props) => {
               className={`about ${activeSection === "about" ? "active" : ""}`}
               onClick={() => scrollToSection(aboutRef, "about")}
             >
-              About This Game
+              About
             </div>
             <div
               className={`system-req ${
@@ -391,7 +429,7 @@ const ProductDetail = (props: Props) => {
               }`}
               onClick={() => scrollToSection(systemReqRef, "system-req")}
             >
-              System Requirements
+              Requirements
             </div>
             <div
               className={`rlt-games ${
@@ -647,17 +685,19 @@ const ProductDetail = (props: Props) => {
           <div className="related-games" ref={relatedGamesRef}>
             <div className="related-heading">
               <div className="title">Related Games</div>
-              <Navigate
+              <RltNavigate
                 onNavigate={handleRelatedProductNavigate}
                 disableLeft={relatedProductIndex === 0}
-                disableRight={relatedProductIndex >= relatedProduct.length - 4}
+                disableRight={
+                  relatedProductIndex >= relatedProduct.length - itemsPerPage
+                }
                 totalProducts={relatedProduct.length}
                 currentRange={currentRangeRltProduct}
               />
             </div>
             <div className="related-contain">
               {relatedProduct
-                .slice(relatedProductIndex, relatedProductIndex + 4)
+                .slice(relatedProductIndex, relatedProductIndex + itemsPerPage)
                 .map((product, index) => (
                   <div key={index} className="product-item">
                     <img
@@ -667,7 +707,7 @@ const ProductDetail = (props: Props) => {
                   </div>
                 ))}
               {products
-                .slice(relatedProductIndex, relatedProductIndex + 4)
+                .slice(relatedProductIndex, relatedProductIndex + itemsPerPage)
                 .map((product, index) => (
                   <div key={index} className="related-prd-content">
                     <Link to="/product-details" className="prd-title">

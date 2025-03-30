@@ -12,7 +12,7 @@ const Store = (props: Props) => {
       <ToolBar />
       <ProductFilter />
       <div className="product-list">
-        {Array.from({ length: 27 }, (_, index) => (
+        {Array.from({ length: 12 }, (_, index) => (
           <ProductCard key={index} />
         ))}
       </div>

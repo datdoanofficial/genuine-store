@@ -72,11 +72,11 @@
   }
 
   .prd-content {
-    margin: 20px 0;
+    margin: 10px 0 30px 0;
 
     .prd-title {
       width: fit-content;
-      font-size: 18px;
+      font-size: 0.55rem;
       line-height: 28px;
       font-family: $pontano;
       font-weight: 300;
@@ -92,6 +92,89 @@
 
     .prd-price {
       margin-top: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .prd-card {
+    .prd-content {
+      .prd-title {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .prd-card {
+    .prd-content {
+      .prd-title {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .prd-card {
+    .prd-content {
+      .prd-title {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .prd-card {
+    .prd-content {
+      .prd-title {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .prd-card {
+    .prd-img {
+      .wishlist {
+        right: 20px;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+    }
+    .prd-content {
+      margin: 30px 0 50px 0;
+
+      .prd-title {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .prd-card {
+    .prd-img {
+      .wishlist {
+        right: 15px;
+        top: 15px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+    }
+
+    .prd-content {
+      margin: 20px 0 40px 0;
+
+      .prd-title {
+        font-size: 18px;
+      }
     }
   }
 }

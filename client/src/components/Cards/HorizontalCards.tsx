@@ -278,6 +278,12 @@ const HorizontalCards = () => {
 
   return (
     <div className={`horizontal-cards ${isCardListVisible ? "appear" : ""}`}>
+      <div className="heading">
+        <p>Explore Worlds</p>
+        <button className="arrow-right">
+          <span className="gravity-ui--arrow-right"></span>
+        </button>
+      </div>
       <div className="content">
         <div className="title">Explore Worlds</div>
         <div className="description">

@@ -15,7 +15,6 @@ const Login = (props: Props) => {
       <div className="login-wrapper">
         <div className="login-heading">
           <Logo />
-          <div className="login-title">Login</div>
         </div>
         <div className="login-content">
           <div className="login-form">

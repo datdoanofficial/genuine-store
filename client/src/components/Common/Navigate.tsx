@@ -17,13 +17,32 @@ const Navigate = ({
   currentRange,
 }: Props) => {
   const [position, setPosition] = useState(0);
-
-  const segments = Math.ceil(totalProducts / 4);
-  const barWidth = 80 / segments;
-  const stepSize = barWidth; // Step size is equal to bar width
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isMobile, setIsMobile] = useState(false);
+  const [barMetrics, setBarMetrics] = useState({
+    baseWidth: 80,
+    translateX: 0,
+  });
 
   useEffect(() => {
-    // Update position based on the currentRange
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+      setBarMetrics({
+        baseWidth: window.innerWidth <= 1024 ? 60 : 80,
+        translateX: window.innerWidth <= 1024 ? 0 : 0,
+      });
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const segments = Math.ceil(totalProducts / 4);
+  const barWidth = barMetrics.baseWidth / segments;
+  const stepSize = barWidth;
+
+  useEffect(() => {
     const newPosition = Math.floor(currentRange.start / 4);
     setPosition(newPosition);
   }, [currentRange]);
@@ -45,7 +64,9 @@ const Navigate = ({
           className="bar"
           style={{
             width: `${barWidth}px`,
-            transform: `translateX(${position * stepSize}px)`,
+            transform: `translateX(${
+              position * stepSize + barMetrics.translateX
+            }px)`,
           }}
         ></div>
       </div>

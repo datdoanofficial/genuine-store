@@ -1,40 +1,170 @@
 @import "../../styles/common/root.scss";
 
 .feature-topic {
-  margin-left: 70px;
-  margin-top: 80px;
-  height: 150px;
-  display: grid;
-  grid-template-columns: repeat(3, 370px);
-  gap: 30px;
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  position: relative;
+  width: calc(100% - 70px);
+  left: 70px;
+  margin-top: 70px;
+  overflow: hidden;
 
-  &.appear {
-    opacity: 1;
-    transform: translateX(0);
+  .topic-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+      display: flex;
+      gap: 0;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    @media (max-width: 640px) {
+      overflow: hidden;
+    }
   }
 
   .topic-card {
-    position: relative;
-    z-index: 20;
-    width: fit-content;
-    height: 100%;
-    background: #2a2a2a;
-    border-radius: 10px;
-    transition: 0.8s all;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
 
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0px 4px 20px rgba($primary-color, 0.5);
+    @media (max-width: 1024px) {
+      flex: 0 0 calc(50% - 10px);
+      transform-origin: left center;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.3s ease-in-out;
+
+      &:nth-child(3) {
+        // Animation for the third card
+        transition: all 0.3s ease-in-out;
+        transform: translateX(0);
+
+        &.hidden {
+          transform: translateX(200%);
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    }
+
+    @media (max-width: 640px) {
+      flex: 0 0 100%;
+      margin-right: 0;
     }
 
     img {
-      width: 100%;
       height: 100%;
-      border-radius: inherit;
+      width: 100%;
+      border-radius: 8px;
     }
+  }
+
+  .topic-navigation {
+    margin-top: 10px;
+    display: none;
+
+    @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-right: 10px;
+      top: 50%;
+      left: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    @media (max-width: 480px) {
+      display: none; // Hide arrows on mobile
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: none;
+      border: 1px solid #8a8a8a;
+      color: #8a8a8a;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover:not(.disabled) {
+        background-color: #385aff;
+        color: #fff;
+        border: 1px solid #385aff;
+      }
+
+      &.disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      &:last-child {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .dot-navigation {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+
+    @media (max-width: 480px) {
+      display: flex;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #8a8a8a;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &.active {
+        background-color: $primary-color;
+        transform: scale(1.2);
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .feature-topic {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .feature-topic {
+    width: 100%;
+    left: 0;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .feature-topic {
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
   }
 }

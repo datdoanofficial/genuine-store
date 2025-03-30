@@ -72,7 +72,7 @@ const Contact = (props: Props) => {
           <div className="banner"></div>
           <div className="contact-in4">
             <div className="email">
-              <div className="mail-icon">
+              <div className="mail-icon icon">
                 <span className="formkit--email"></span>
               </div>
               <div className="text">
@@ -81,7 +81,7 @@ const Contact = (props: Props) => {
               </div>
             </div>
             <div className="phone">
-              <div className="phone-icon">
+              <div className="phone-icon icon">
                 <span className="ph--phone-light"></span>
               </div>
               <div className="text">
@@ -90,16 +90,16 @@ const Contact = (props: Props) => {
               </div>
             </div>
             <div className="address">
-              <div className="address-icon">
+              <div className="address-icon icon">
                 <span className="ph--building-office"></span>
               </div>
               <div className="text">
                 <div className="label">Address</div>
-                <div className="address-txt">Unknown, Ho Chi Minh City</div>
+                <div className="address-txt">Ho Chi Minh City</div>
               </div>
             </div>
             <div className="social">
-              <div className="social-icon">
+              <div className="social-icon icon">
                 <span className="solar--global-outline"></span>
               </div>
               <div className="text">
@@ -108,9 +108,6 @@ const Contact = (props: Props) => {
                   <ul>
                     <li>
                       <Link to="">LinkedIn</Link>
-                    </li>
-                    <li>
-                      <Link to="">Wechat</Link>
                     </li>
                     <li>
                       <Link to="">Instagram</Link>

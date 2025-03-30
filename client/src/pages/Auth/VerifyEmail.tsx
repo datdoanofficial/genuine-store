@@ -102,7 +102,6 @@ const VerifyEmail = (props: Props) => {
       <div className="verify-email-wrapper">
         <div className="verify-email-heading">
           <Logo />
-          <div className="verify-email-title">Verify</div>
         </div>
         <div className="description">
           To complete account setup, you need to verify{" "}

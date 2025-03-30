@@ -10,7 +10,6 @@ const EmailSent = (props: Props) => {
       <div className="email-sent-wrapper">
         <div className="email-sent-heading">
           <Logo />
-          <div className="email-sent-title">Email Sent</div>
         </div>
         <div className="description">
           An email has been sent to your email address with instructions on how

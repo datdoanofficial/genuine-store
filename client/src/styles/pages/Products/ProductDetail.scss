@@ -5,16 +5,25 @@
   left: 50%;
   transform: translateX(-50%);
   top: 125px;
-  margin-bottom: 220px;
-  font-family: $pontano;
+  margin-bottom: 250px;
+  font-family: "Pontano Sans", sans-serif;
   font-weight: 300;
-  width: calc(100% - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 
   .product-container {
     display: grid;
+    width: calc(100% - 6rem);
     grid-template-columns: 3.5fr 1.5fr;
-    grid-gap: 50px;
+    gap: 50px;
+
+    @media screen and (max-width: 375px) {
+      width: calc(100% - 2rem) !important;
+    }
   }
 
   .product-content {
@@ -28,6 +37,7 @@
     .prd-bar {
       margin-top: 20px;
       display: flex;
+      font-size: 14px;
       width: 100%;
 
       .overview {
@@ -35,7 +45,7 @@
         align-items: center;
         justify-content: center;
         margin-right: 20px;
-        padding: 0 30px;
+        padding: 0 1rem;
         height: 36px;
         background-color: $bg-color;
         border-radius: 50px;
@@ -56,7 +66,7 @@
         align-items: center;
         justify-content: center;
         margin-right: 20px;
-        padding: 0 24px;
+        padding: 0 1rem;
         height: 36px;
         border-radius: 50px;
         background-color: $bg-color;
@@ -77,7 +87,7 @@
         align-items: center;
         justify-content: center;
         margin-right: 20px;
-        padding: 0 24px;
+        padding: 0 1rem;
         height: 36px;
         border-radius: 50px;
         background-color: $bg-color;
@@ -97,8 +107,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 20px;
-        padding: 0 30px;
+        padding: 0 1rem;
         height: 36px;
         border-radius: 50px;
         background-color: $bg-color;
@@ -123,7 +132,6 @@
       .main-thumbnail {
         position: relative;
         width: 100%;
-        height: 480px;
         border-radius: 20px;
         transition: 0.5s;
         overflow: hidden;
@@ -258,6 +266,7 @@
       }
     }
 
+    // about game
     .about-game {
       margin-top: 50px;
 
@@ -279,15 +288,17 @@
       .genres-features {
         margin-top: 30px;
         width: 100%;
-        height: fit-content;
+        height: 100%;
+        font-size: 14px;
+        line-height: 22px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
 
         .genres {
           width: 100%;
-          height: fit-content;
-          padding: 20px 25px;
+          height: 100%;
+          padding: 0.6rem 0.8rem;
           background-color: $bg-color;
           border-radius: 10px;
 
@@ -306,8 +317,8 @@
 
         .features {
           width: 100%;
-          height: fit-content;
-          padding: 20px 25px;
+          height: 100%;
+          padding: 0.6rem 0.8rem;
           background-color: $bg-color;
           border-radius: 10px;
 
@@ -326,9 +337,11 @@
       }
     }
 
+    // system requirements
     .system-requirements {
       width: 100%;
       height: fit-content;
+      font-size: 16px;
       margin-top: 40px;
 
       .title {
@@ -412,6 +425,7 @@
 
           .os-version {
             margin-top: 30px;
+            line-height: 24px;
 
             span {
               font-family: $pontano;
@@ -423,6 +437,7 @@
 
           .cpu {
             margin-top: 20px;
+            line-height: 24px;
 
             span {
               font-family: $pontano;
@@ -434,6 +449,7 @@
 
           .memory {
             margin-top: 20px;
+            line-height: 24px;
 
             span {
               font-family: $pontano;
@@ -445,6 +461,7 @@
 
           .gpu {
             margin-top: 20px;
+            line-height: 24px;
 
             span {
               font-family: $pontano;
@@ -456,6 +473,7 @@
 
           .storage {
             margin-top: 20px;
+            line-height: 24px;
 
             span {
               font-family: $pontano;
@@ -472,6 +490,7 @@
 
         .copy-right {
           font-size: 16px;
+          line-height: 24px;
           margin-top: 40px;
           padding-top: 40px;
           color: #8a8a8a;
@@ -489,6 +508,7 @@
 
       .related-heading {
         display: flex;
+        align-items: center;
         justify-content: space-between;
 
         .title {
@@ -501,8 +521,31 @@
       .related-contain {
         margin-top: 30px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.4rem;
+
+        @media screen and (max-width: 1240px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and (max-width: 900px) {
+          gap: 0.8rem;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: 768px) {
+          gap: 0.6rem;
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and (max-width: 640px) {
+          gap: 0.6rem;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: 425px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
 
         .product-item {
           width: 100%;
@@ -527,23 +570,36 @@
 
           .rating {
             margin-top: 15px;
+
+            .stars {
+              font-size: 0.4rem;
+            }
+
+            .total-rating {
+              font-size: 0.4rem;
+            }
           }
 
           .prd-price {
-            font-size: 14px;
+            font-size: 0.4rem;
             margin-top: 20px;
 
+            .original-price {
+              margin-right: 0.2rem;
+            }
+
             .discount {
-              width: 34px;
-              height: 20px;
-              font-size: 10px;
+              width: 1rem;
+              height: 0.6rem;
+              font-size: 0.3rem;
+              margin-right: 0.2rem;
             }
           }
 
           .prd-title {
             width: fit-content;
             font-family: $pontano;
-            font-size: 16px;
+            font-size: 0.45rem;
             font-weight: 300;
             color: $text-color;
             text-decoration: none;
@@ -559,6 +615,7 @@
     }
   }
 
+  // product checkout
   .product-checkout {
     width: 100%;
     height: fit-content;
@@ -635,6 +692,7 @@
       padding: 30px 0px;
       width: 100%;
       height: fit-content;
+      font-size: 18px;
       border-top: 1px solid #2a2a2a;
       display: flex;
       flex-direction: column;
@@ -643,6 +701,7 @@
         margin-top: 20px;
         width: 100%;
         height: fit-content;
+        font-size: 14px;
         padding: 20px 25px;
         background-color: $bg-color;
         border-radius: 10px;
@@ -655,8 +714,8 @@
 
         .title {
           display: flex;
-          align-items: center;
-          font-size: 18px;
+          font-size: 16px;
+          line-height: 24px;
           font-weight: 500;
 
           .iconify {
@@ -695,7 +754,7 @@
           background: $primary-color;
           border: none;
           color: #fff;
-          font-size: 15px;
+          font-size: 14px;
           text-transform: uppercase;
           border-radius: 10px;
           transition: 0.5s;
@@ -716,7 +775,7 @@
           background: none;
           border: 1px solid #5a5a5a;
           color: #fff;
-          font-size: 15px;
+          font-size: 14px;
           text-transform: uppercase;
           border-radius: 10px;
           transition: 0.5s;
@@ -737,6 +796,7 @@
       .in4-link {
         width: fit-content;
         margin-top: 20px;
+        font-size: 14px;
         color: #f5f5f599;
         text-decoration-thickness: 1px;
         text-underline-offset: 3px;
@@ -753,13 +813,14 @@
       padding: 30px 0px;
       width: 100%;
       height: fit-content;
+      font-size: 18px;
       border-top: 1px solid #2a2a2a;
       display: flex;
       flex-direction: column;
 
       .heading {
-        margin-top: 10px;
-        font-size: 24px;
+        margin-top: 20px;
+        font-size: 22px;
         font-weight: 400;
       }
 
@@ -767,6 +828,7 @@
         margin-top: 20px;
         width: 100%;
         height: fit-content;
+        font-size: 14px;
         padding: 20px 25px;
         background-color: $bg-color;
         border: 2px solid #4a4a4a;
@@ -781,7 +843,8 @@
         .title {
           display: flex;
           align-items: center;
-          font-size: 18px;
+          font-size: 16px;
+          line-height: 24px;
           font-weight: 500;
 
           .iconify {
@@ -851,6 +914,7 @@
 
           .product-name {
             font-size: 16px;
+            line-height: 24px;
             font-weight: 500;
           }
 
@@ -919,6 +983,2448 @@
           &:hover {
             color: rgba($color: $primary-light, $alpha: 0.8);
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .product-details {
+    // product content
+    .product-content {
+      // product name
+      .product-name {
+        font-size: 36px;
+      }
+      // product bar
+      .prd-bar {
+        font-size: 16px;
+
+        .overview {
+          padding: 0 1rem;
+          margin-right: 0.4rem;
+        }
+
+        .about {
+          padding: 0 1rem;
+          margin-right: 0.4rem;
+        }
+
+        .system-req {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .rlt-games {
+          padding: 0 0.7rem;
+        }
+      }
+
+      // about game
+      .about-game {
+        .title {
+          font-size: 28px;
+        }
+
+        .content {
+          margin-top: 30px;
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .genres-features {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+          gap: 30px;
+
+          .genres {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .genre-items {
+              margin-top: 10px;
+            }
+          }
+
+          .features {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .feature-items {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      // system requirements
+      .system-requirements {
+        font-size: 16px;
+        margin-top: 40px;
+
+        .title {
+          font-size: 30px;
+        }
+
+        .system-requirement-tbl {
+          margin-top: 30px;
+          padding: 1.5rem 1.5rem;
+
+          .tab {
+            .windows {
+              margin-right: 10px;
+              padding: 5px 20px;
+            }
+
+            .macos {
+              padding: 5px 20px;
+            }
+          }
+
+          .content {
+            margin-top: 40px;
+
+            .windows-content {
+              gap: 50px;
+            }
+
+            .macos-content {
+              gap: 50px;
+            }
+
+            .mininum {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .recommended {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .os-version {
+              margin-top: 30px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .cpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .memory {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .gpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .storage {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .inner {
+              margin-top: 5px;
+            }
+          }
+
+          .copy-right {
+            font-size: 16px;
+            margin-top: 40px;
+            padding-top: 40px;
+          }
+        }
+      }
+    }
+    // product container
+    .product-container {
+      width: calc(100% - 4rem);
+      gap: 30px;
+
+      // related games
+      .related-games {
+        .related-contain {
+          .related-prd-content {
+            .rating {
+              margin-top: 15px;
+
+              .stars {
+                font-size: 0.5rem;
+              }
+
+              .total-rating {
+                font-size: 0.5rem;
+              }
+            }
+
+            .prd-price {
+              font-size: 0.5rem;
+
+              .original-price {
+                margin-right: 0.2rem;
+              }
+
+              .discount {
+                width: 1.2rem;
+                height: 0.8rem;
+                font-size: 0.35rem;
+                margin-right: 0.2rem;
+              }
+            }
+
+            .prd-title {
+              font-size: 0.55rem;
+            }
+          }
+        }
+      }
+    }
+
+    // product checkout
+    .product-checkout {
+      .product-logo {
+        img {
+          margin-bottom: 15px;
+          width: 90%;
+        }
+      }
+
+      .product-info {
+        margin-top: 20px;
+
+        .line {
+          font-size: 16px;
+        }
+      }
+
+      // step 01
+      .step-1 {
+        margin-top: 40px;
+        padding: 30px 0px;
+        font-size: 18px;
+
+        .add-btn {
+          gap: 0.3rem;
+          margin-top: 20px;
+
+          .add-to-cart {
+            height: 50px;
+            font-size: 14px;
+          }
+
+          .add-to-wishlist {
+            height: 50px;
+            font-size: 14px;
+
+            .iconify {
+              font-size: 22px;
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .buy-item {
+          margin-top: 20px;
+          font-size: 14px;
+          padding: 0.6rem 0.8rem;
+
+          .title {
+            font-size: 14px;
+
+            .iconify {
+              margin-right: 10px;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              padding: 3px 12px;
+              font-size: 12px;
+            }
+          }
+        }
+
+        .in4-link {
+          font-size: 14px;
+        }
+      }
+
+      // step 02
+      .step-2 {
+        margin-top: 10px;
+        padding: 30px 0px;
+        width: 100%;
+        height: fit-content;
+        font-size: 18px;
+        border-top: 1px solid #2a2a2a;
+        display: flex;
+        flex-direction: column;
+
+        .heading {
+          margin-top: 20px;
+          font-size: 22px;
+          font-weight: 400;
+        }
+
+        .select-item {
+          margin-top: 20px;
+          font-size: 14px;
+          padding: 0.6rem 0.8rem;
+
+          .title {
+            font-size: 16px;
+            line-height: 24px;
+
+            .iconify {
+              margin-right: 10px;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            .prd-price {
+              font-size: 14px;
+
+              .discount {
+                font-size: 10px;
+                width: 1.4rem;
+                height: 0.8rem;
+              }
+            }
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              padding: 4px 20px;
+            }
+          }
+
+          .free-price {
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      // proceed
+
+      .proceed {
+        margin-top: 10px;
+        padding: 30px 0px;
+
+        .empty {
+          font-size: 16px;
+        }
+
+        .selected {
+          span {
+            font-size: 14px;
+          }
+
+          .product {
+            margin: 20px 0;
+            padding: 0.6rem 0.8rem;
+
+            .product-name {
+              font-size: 14px;
+              line-height: 24px;
+            }
+
+            .price {
+              margin-top: 15px;
+
+              .prd-price {
+                font-size: 14px;
+
+                .discount {
+                  font-size: 10px;
+                  width: 1.4rem;
+                  height: 0.8rem;
+                }
+              }
+            }
+
+            .free-price {
+              padding: 3px 12px;
+              font-size: 12px;
+            }
+          }
+
+          .taxes-label {
+            font-size: 14px;
+          }
+
+          .checkout-btn {
+            margin: 10px 0;
+            font-size: 15px;
+          }
+        }
+
+        .description {
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        .accept {
+          margin-top: 20px;
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .product-details {
+    // product content
+    .product-content {
+      // product name
+      .product-name {
+        font-size: 36px;
+      }
+      // product bar
+      .prd-bar {
+        font-size: 0.58rem;
+
+        .overview {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .about {
+          padding: 0 0.8rem;
+          margin-right: 0.4rem;
+        }
+
+        .system-req {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .rlt-games {
+          padding: 0 0.7rem;
+        }
+      }
+
+      // product gallery
+      .product-gallery {
+        margin-top: 30px;
+        width: 100%;
+
+        .main-thumbnail {
+          .left-control,
+          .right-control {
+            width: 40px;
+
+            span {
+              font-size: 20px;
+            }
+          }
+        }
+
+        .thumbnail-tools {
+          margin-top: 30px;
+
+          .title {
+            font-size: 20px;
+          }
+
+          .tools {
+            .navigation-bar {
+              width: 60px;
+              margin-right: 20px;
+
+              .bar {
+                width: 30px !important;
+              }
+            }
+          }
+        }
+
+        .thumbnails {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+      }
+
+      // about game
+      .about-game {
+        .title {
+          font-size: 26px;
+        }
+
+        .content {
+          margin-top: 30px;
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .genres-features {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+          gap: 20px;
+
+          .genres {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .genre-items {
+              margin-top: 10px;
+            }
+          }
+
+          .features {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .feature-items {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      // system requirements
+      .system-requirements {
+        font-size: 16px;
+        margin-top: 40px;
+
+        .title {
+          font-size: 26px;
+        }
+
+        .system-requirement-tbl {
+          margin-top: 30px;
+          padding: 1.5rem 1.5rem;
+
+          .tab {
+            .windows {
+              margin-right: 10px;
+              padding: 5px 20px;
+            }
+
+            .macos {
+              padding: 5px 20px;
+            }
+          }
+
+          .content {
+            margin-top: 40px;
+
+            .windows-content {
+              gap: 50px;
+            }
+
+            .macos-content {
+              gap: 50px;
+            }
+
+            .mininum {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .recommended {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .os-version {
+              margin-top: 30px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .cpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .memory {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .gpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .storage {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .inner {
+              margin-top: 5px;
+            }
+          }
+
+          .copy-right {
+            font-size: 16px;
+            margin-top: 40px;
+            padding-top: 40px;
+          }
+        }
+      }
+    }
+    // product container
+    .product-container {
+      width: calc(100% - 4rem);
+      grid-template-columns: 3.5fr 1.7fr;
+      gap: 20px;
+
+      // related games
+      .related-games {
+        .related-heading {
+          .title {
+            font-size: 26px;
+          }
+        }
+        .related-contain {
+          .related-prd-content {
+            .rating {
+              margin-top: 15px;
+
+              .stars {
+                font-size: 0.5rem;
+              }
+
+              .total-rating {
+                font-size: 0.5rem;
+              }
+            }
+
+            .prd-price {
+              font-size: 0.5rem;
+
+              .original-price {
+                margin-right: 0.2rem;
+              }
+
+              .discount {
+                width: 1.2rem;
+                height: 0.8rem;
+                font-size: 0.35rem;
+                margin-right: 0.2rem;
+              }
+            }
+
+            .prd-title {
+              font-size: 0.55rem;
+            }
+          }
+        }
+      }
+    }
+
+    // product checkout
+    .product-checkout {
+      .product-logo {
+        img {
+          margin-bottom: 15px;
+          width: 90%;
+        }
+      }
+
+      .product-info {
+        margin-top: 20px;
+
+        .line {
+          font-size: 16px;
+        }
+      }
+
+      // step 01
+      .step-1 {
+        margin-top: 40px;
+        padding: 1rem 0;
+        font-size: 18px;
+
+        .add-btn {
+          gap: 0.3rem;
+          margin-top: 20px;
+
+          .add-to-cart {
+            height: 46px;
+            font-size: 0.5rem;
+          }
+
+          .add-to-wishlist {
+            height: 46px;
+            font-size: 0.5rem;
+
+            .iconify {
+              font-size: 20px;
+              margin-right: 0.3rem;
+            }
+          }
+        }
+
+        .buy-item {
+          margin-top: 20px;
+          font-size: 14px;
+          padding: 0.6rem 0.7rem;
+
+          .title {
+            font-size: 0.6rem;
+
+            .iconify {
+              display: none;
+              margin-right: 0.3rem;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              padding: 3px 12px;
+              font-size: 12px;
+            }
+          }
+        }
+
+        .in4-link {
+          font-size: 14px;
+        }
+      }
+
+      // step 02
+      .step-2 {
+        margin-top: 10px;
+        padding: 30px 0px;
+        width: 100%;
+        height: fit-content;
+        font-size: 18px;
+        border-top: 1px solid #2a2a2a;
+        display: flex;
+        flex-direction: column;
+
+        .heading {
+          margin-top: 20px;
+          font-size: 22px;
+          font-weight: 400;
+        }
+
+        .select-item {
+          margin-top: 20px;
+          font-size: 14px;
+          padding: 0.6rem 0.7rem;
+
+          .title {
+            font-size: 0.6rem;
+            line-height: 24px;
+
+            .iconify {
+              margin-right: 10px;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            .prd-price {
+              font-size: 14px;
+
+              .discount {
+                font-size: 10px;
+                width: 1.4rem;
+                height: 0.8rem;
+              }
+            }
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              padding: 4px 20px;
+            }
+          }
+
+          .free-price {
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      // proceed
+
+      .proceed {
+        margin-top: 10px;
+        padding: 30px 0px;
+
+        .empty {
+          font-size: 14px;
+        }
+
+        .selected {
+          span {
+            font-size: 14px;
+          }
+
+          .product {
+            margin: 20px 0;
+            padding: 0.6rem 0.7rem;
+
+            .product-name {
+              font-size: 0.6rem;
+              line-height: 24px;
+            }
+
+            .price {
+              margin-top: 15px;
+
+              .prd-price {
+                font-size: 14px;
+
+                .discount {
+                  font-size: 10px;
+                  width: 1.4rem;
+                  height: 0.8rem;
+                }
+              }
+            }
+
+            .free-price {
+              padding: 3px 12px;
+              font-size: 12px;
+            }
+          }
+
+          .taxes-label {
+            font-size: 14px;
+          }
+
+          .checkout-btn {
+            margin: 10px 0;
+            font-size: 15px;
+          }
+        }
+
+        .description {
+          font-size: 14px;
+          line-height: 18px;
+        }
+
+        .accept {
+          margin-top: 20px;
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .product-details
+    .product-content
+    .related-games
+    .related-contain
+    .related-prd-content {
+    .prd-title {
+      font-size: 0.7rem;
+    }
+
+    .rating {
+      .stars {
+        font-size: 0.6rem;
+      }
+
+      .total-rating {
+        font-size: 0.6rem;
+      }
+    }
+
+    .prd-price {
+      font-size: 0.6rem;
+
+      .original-price {
+        margin-right: 0.3rem;
+      }
+
+      .discount {
+        width: 1.4rem;
+        height: 0.9rem;
+        font-size: 0.4rem;
+        margin-right: 0.3rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-details {
+    // product content
+    .product-content {
+      // product name
+      .product-name {
+        font-size: 36px;
+      }
+      // product bar
+      .prd-bar {
+        font-size: 0.7rem;
+
+        .overview {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .about {
+          padding: 0 1rem;
+          margin-right: 0.4rem;
+        }
+
+        .system-req {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .rlt-games {
+          padding: 0 0.7rem;
+        }
+      }
+
+      // product gallery
+      .product-gallery {
+        margin-top: 30px;
+        width: 100%;
+
+        .main-thumbnail {
+          .left-control,
+          .right-control {
+            width: 40px;
+
+            span {
+              font-size: 20px;
+            }
+          }
+        }
+
+        .thumbnail-tools {
+          margin-top: 30px;
+
+          .title {
+            font-size: 20px;
+          }
+
+          .tools {
+            .navigation-bar {
+              width: 60px;
+              margin-right: 20px;
+
+              .bar {
+                width: 30px !important;
+              }
+            }
+          }
+        }
+
+        .thumbnails {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+      }
+
+      // about game
+      .about-game {
+        .title {
+          font-size: 24px;
+        }
+
+        .content {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+        }
+
+        .genres-features {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+          gap: 10px;
+
+          .genres {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .genre-items {
+              margin-top: 10px;
+            }
+          }
+
+          .features {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .feature-items {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      // system requirements
+      .system-requirements {
+        font-size: 14px;
+        margin-top: 40px;
+
+        .title {
+          font-size: 24px;
+        }
+
+        .system-requirement-tbl {
+          margin-top: 30px;
+          padding: 1.5rem 1.5rem;
+
+          .tab {
+            .windows {
+              margin-right: 10px;
+              padding: 5px 20px;
+            }
+
+            .macos {
+              padding: 5px 20px;
+            }
+          }
+
+          .content {
+            gap: 10px;
+
+            .windows-content {
+              gap: 30px;
+            }
+
+            .macos-content {
+              gap: 50px;
+            }
+
+            .mininum {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .recommended {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .os-version {
+              margin-top: 30px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .cpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .memory {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .gpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .storage {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .inner {
+              margin-top: 5px;
+            }
+          }
+
+          .copy-right {
+            font-size: 16px;
+            margin-top: 40px;
+            padding-top: 40px;
+          }
+        }
+      }
+    }
+    // product container
+    .product-container {
+      grid-template-columns: 1fr;
+
+      // related games
+      .related-games {
+        .related-heading {
+          .title {
+            font-size: 24px;
+          }
+        }
+        .related-contain {
+          .related-prd-content {
+            .rating {
+              margin-top: 15px;
+
+              .stars {
+                font-size: 12px;
+              }
+
+              .total-rating {
+                font-size: 14px;
+              }
+            }
+
+            .prd-price {
+              font-size: 13px;
+
+              .original-price {
+                margin-right: 0.3rem;
+              }
+
+              .discount {
+                width: fit-content;
+                height: fit-content;
+                padding: 0.2rem 0.3rem;
+                font-size: 10px;
+                margin-right: 0.3rem;
+              }
+            }
+
+            .prd-title {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    // product checkout
+    .product-checkout {
+      margin-top: 30px;
+
+      .product-logo {
+        img {
+          margin-bottom: 15px;
+          width: 50%;
+        }
+      }
+
+      .product-info {
+        margin-top: 20px;
+
+        .line {
+          font-size: 18px;
+        }
+      }
+
+      .product-button {
+        gap: 10px;
+      }
+
+      // step 01
+      .step-1 {
+        margin-top: 40px;
+        padding: 1rem 0;
+        font-size: 20px;
+
+        .add-btn {
+          gap: 10px;
+          margin-top: 20px;
+
+          .add-to-cart {
+            height: 50px;
+            font-size: 14px;
+          }
+
+          .add-to-wishlist {
+            height: 50px;
+            font-size: 14px;
+
+            .iconify {
+              font-size: 20px;
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .buy-item {
+          margin-top: 20px;
+          font-size: 16px;
+          padding: 1rem 1.5rem;
+
+          .title {
+            align-items: center;
+            font-size: 18px;
+
+            .iconify {
+              display: block;
+
+              margin-right: 0.3rem;
+              font-size: 30px;
+            }
+          }
+
+          .price {
+            margin-top: 25px;
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              padding: 3px 14px;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .in4-link {
+          font-size: 16px;
+        }
+      }
+
+      // step 02
+      .step-2 {
+        margin-top: 10px;
+        padding: 30px 0px;
+        font-size: 20px;
+
+        .heading {
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 400;
+        }
+
+        .select-item {
+          margin-top: 20px;
+          font-size: 18px;
+          padding: 1rem 1.5rem;
+
+          .title {
+            font-size: 18px;
+            line-height: 24px;
+
+            .iconify {
+              margin-right: 10px;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            .prd-price {
+              font-size: 16px;
+
+              .discount {
+                padding: 0.2rem 0.4rem;
+                font-size: 12px;
+                width: fit-content;
+                height: fit-content;
+              }
+            }
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              padding: 4px 20px;
+            }
+          }
+
+          .free-price {
+            padding: 3px 12px;
+            font-size: 14px;
+          }
+        }
+      }
+
+      // proceed
+
+      .proceed {
+        margin-top: 10px;
+        padding: 30px 0px;
+
+        .empty {
+          font-size: 18px;
+        }
+
+        .selected {
+          span {
+            font-size: 18px;
+          }
+
+          .product {
+            margin: 20px 0;
+            padding: 1rem 1.5rem;
+
+            .product-name {
+              font-size: 18px;
+              line-height: 24px;
+            }
+
+            .price {
+              margin-top: 15px;
+
+              .prd-price {
+                font-size: 16px;
+
+                .discount {
+                  padding: 0.2rem 0.4rem;
+                  font-size: 12px;
+                  width: fit-content;
+                  height: fit-content;
+                }
+              }
+            }
+
+            .free-price {
+              padding: 3px 12px;
+              font-size: 14px;
+            }
+          }
+
+          .taxes-label {
+            font-size: 16px;
+          }
+
+          .checkout-btn {
+            margin: 10px 0;
+            font-size: 16px;
+          }
+        }
+
+        .description {
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        .accept {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .product-details {
+    // product container
+    .product-container {
+      grid-template-columns: 1fr;
+
+      // related games
+      .related-games {
+        .related-heading {
+          .title {
+            font-size: 24px;
+          }
+        }
+        .related-contain {
+          .related-prd-content {
+            .rating {
+              margin-top: 15px;
+
+              .stars {
+                font-size: 14px;
+              }
+
+              .total-rating {
+                font-size: 14px;
+              }
+            }
+
+            .prd-price {
+              font-size: 14px;
+
+              .original-price {
+                margin-right: 0.3rem;
+              }
+
+              .discount {
+                width: fit-content;
+                height: fit-content;
+                padding: 0.2rem 0.3rem;
+                font-size: 12px;
+                margin-right: 0.3rem;
+              }
+            }
+
+            .prd-title {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .product-details {
+    // product content
+    .product-content {
+      // product name
+      .product-name {
+        display: flex;
+        justify-content: center;
+        font-size: 32px;
+      }
+      // product bar
+      .prd-bar {
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+
+        .overview {
+          padding: 1rem 0;
+          margin-bottom: 0.5rem;
+        }
+
+        .about {
+          padding: 1rem 0;
+          margin-bottom: 0.5rem;
+        }
+
+        .system-req {
+          padding: 1rem 0;
+          margin-bottom: 0.5rem;
+        }
+
+        .rlt-games {
+          padding: 1rem 0;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      // product gallery
+      .product-gallery {
+        margin-top: 30px;
+        width: 100%;
+
+        .main-thumbnail {
+          .left-control,
+          .right-control {
+            width: 40px;
+
+            span {
+              font-size: 20px;
+            }
+          }
+        }
+
+        .thumbnail-tools {
+          margin-top: 30px;
+
+          .title {
+            font-size: 20px;
+          }
+
+          .tools {
+            .navigation-bar {
+              width: 60px;
+              margin-right: 20px;
+
+              .bar {
+                width: 30px !important;
+              }
+            }
+          }
+        }
+
+        .thumbnails {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+      }
+
+      // about game
+      .about-game {
+        .title {
+          font-size: 24px;
+        }
+
+        .content {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+        }
+
+        .genres-features {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+          gap: 10px;
+
+          .genres {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .genre-items {
+              margin-top: 10px;
+            }
+          }
+
+          .features {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .feature-items {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      // system requirements
+      .system-requirements {
+        font-size: 14px;
+        margin-top: 40px;
+
+        .title {
+          font-size: 24px;
+        }
+
+        .system-requirement-tbl {
+          margin-top: 30px;
+          padding: 1.5rem 1.5rem;
+
+          .tab {
+            .windows {
+              margin-right: 10px;
+              padding: 5px 20px;
+            }
+
+            .macos {
+              padding: 5px 20px;
+            }
+          }
+
+          .content {
+            gap: 10px;
+
+            .windows-content {
+              gap: 30px;
+            }
+
+            .macos-content {
+              gap: 50px;
+            }
+
+            .mininum {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .recommended {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .os-version {
+              margin-top: 30px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .cpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .memory {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .gpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .storage {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .inner {
+              margin-top: 5px;
+            }
+          }
+
+          .copy-right {
+            font-size: 16px;
+            margin-top: 40px;
+            padding-top: 40px;
+          }
+        }
+      }
+    }
+    // product container
+    .product-container {
+      width: calc(100% - 3rem);
+      grid-template-columns: 1fr;
+
+      // related games
+      .related-games {
+        .related-heading {
+          .title {
+            font-size: 24px;
+          }
+        }
+        .related-contain {
+          .related-prd-content {
+            .rating {
+              margin-top: 15px;
+
+              .stars {
+                font-size: 12px;
+              }
+
+              .total-rating {
+                font-size: 14px;
+              }
+            }
+
+            .prd-price {
+              font-size: 13px;
+
+              .original-price {
+                margin-right: 0.3rem;
+              }
+
+              .discount {
+                width: fit-content;
+                height: fit-content;
+                padding: 0.2rem 0.3rem;
+                font-size: 10px;
+                margin-right: 0.3rem;
+              }
+            }
+
+            .prd-title {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    // product checkout
+    .product-checkout {
+      margin-top: 30px;
+
+      .product-logo {
+        img {
+          margin-bottom: 15px;
+          width: 50%;
+        }
+      }
+
+      .product-info {
+        margin-top: 20px;
+
+        .line {
+          font-size: 18px;
+        }
+      }
+
+      .product-button {
+        gap: 10px;
+      }
+
+      // step 01
+      .step-1 {
+        margin-top: 40px;
+        padding: 1rem 0;
+        font-size: 20px;
+
+        .add-btn {
+          gap: 10px;
+          margin-top: 20px;
+
+          .add-to-cart {
+            height: 50px;
+            font-size: 14px;
+          }
+
+          .add-to-wishlist {
+            height: 50px;
+            font-size: 14px;
+
+            .iconify {
+              font-size: 20px;
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .buy-item {
+          margin-top: 20px;
+          font-size: 16px;
+          padding: 1rem 1.5rem;
+
+          .title {
+            align-items: center;
+            font-size: 18px;
+
+            .iconify {
+              display: block;
+
+              margin-right: 0.3rem;
+              font-size: 30px;
+            }
+          }
+
+          .price {
+            margin-top: 25px;
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              padding: 3px 14px;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .in4-link {
+          font-size: 16px;
+        }
+      }
+
+      // step 02
+      .step-2 {
+        margin-top: 10px;
+        padding: 30px 0px;
+        font-size: 20px;
+
+        .heading {
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 400;
+        }
+
+        .select-item {
+          margin-top: 20px;
+          font-size: 18px;
+          padding: 1rem 1.5rem;
+
+          .title {
+            font-size: 18px;
+            line-height: 24px;
+
+            .iconify {
+              margin-right: 10px;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            .prd-price {
+              font-size: 16px;
+
+              .discount {
+                padding: 0.2rem 0.4rem;
+                font-size: 12px;
+                width: fit-content;
+                height: fit-content;
+              }
+            }
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              padding: 4px 20px;
+            }
+          }
+
+          .free-price {
+            padding: 3px 12px;
+            font-size: 14px;
+          }
+        }
+      }
+
+      // proceed
+
+      .proceed {
+        margin-top: 10px;
+        padding: 30px 0px;
+
+        .empty {
+          font-size: 18px;
+        }
+
+        .selected {
+          span {
+            font-size: 18px;
+          }
+
+          .product {
+            margin: 20px 0;
+            padding: 1rem 1.5rem;
+
+            .product-name {
+              font-size: 18px;
+              line-height: 24px;
+            }
+
+            .price {
+              margin-top: 15px;
+
+              .prd-price {
+                font-size: 16px;
+
+                .discount {
+                  padding: 0.2rem 0.4rem;
+                  font-size: 12px;
+                  width: fit-content;
+                  height: fit-content;
+                }
+              }
+            }
+
+            .free-price {
+              padding: 3px 12px;
+              font-size: 14px;
+            }
+          }
+
+          .taxes-label {
+            font-size: 16px;
+          }
+
+          .checkout-btn {
+            margin: 10px 0;
+            font-size: 16px;
+          }
+        }
+
+        .description {
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        .accept {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .product-details {
+    // product content
+    .product-content {
+      // product name
+      .product-name {
+        font-size: 28px;
+      }
+      // product bar
+      .prd-bar {
+        font-size: 14px;
+
+        .overview {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .about {
+          padding: 0 1rem;
+          margin-right: 0.4rem;
+        }
+
+        .system-req {
+          padding: 0 0.7rem;
+          margin-right: 0.4rem;
+        }
+
+        .rlt-games {
+          padding: 0 0.7rem;
+        }
+      }
+
+      // product gallery
+      .product-gallery {
+        margin-top: 30px;
+        width: 100%;
+
+        .main-thumbnail {
+          .left-control,
+          .right-control {
+            width: 40px;
+
+            span {
+              font-size: 20px;
+            }
+          }
+        }
+
+        .thumbnail-tools {
+          margin-top: 40px;
+
+          .title {
+            display: none;
+            font-size: 20px;
+          }
+
+          .tools {
+            .navigation-bar {
+              width: 60px;
+              margin-right: 20px;
+
+              .bar {
+                width: 30px !important;
+              }
+            }
+          }
+        }
+
+        .thumbnails {
+          margin-top: 40px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+      }
+
+      // about game
+      .about-game {
+        .title {
+          font-size: 20px;
+        }
+
+        .content {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+        }
+
+        .genres-features {
+          margin-top: 30px;
+          font-size: 14px;
+          line-height: 22px;
+          gap: 10px;
+
+          .genres {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .genre-items {
+              margin-top: 10px;
+            }
+          }
+
+          .features {
+            padding: 0.6rem 0.8rem;
+
+            .title {
+              font-size: 16px;
+            }
+
+            .feature-items {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      // system requirements
+      .system-requirements {
+        font-size: 14px;
+        margin-top: 40px;
+
+        .title {
+          font-size: 24px;
+        }
+
+        .system-requirement-tbl {
+          margin-top: 30px;
+          padding: 1.5rem 1.5rem;
+
+          .tab {
+            .windows {
+              margin-right: 10px;
+              padding: 5px 20px;
+            }
+
+            .macos {
+              padding: 5px 20px;
+            }
+          }
+
+          .content {
+            gap: 10px;
+
+            .windows-content {
+              gap: 30px;
+            }
+
+            .macos-content {
+              gap: 50px;
+            }
+
+            .mininum {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .recommended {
+              .title {
+                font-size: 18px;
+              }
+            }
+
+            .os-version {
+              margin-top: 30px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .cpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .memory {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .gpu {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .storage {
+              margin-top: 20px;
+
+              span {
+                font-size: 16px;
+              }
+            }
+
+            .inner {
+              margin-top: 5px;
+            }
+          }
+
+          .copy-right {
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 40px;
+          }
+        }
+      }
+    }
+    // product container
+    .product-container {
+      width: calc(100% - 3rem);
+      grid-template-columns: 1fr;
+
+      // related games
+      .related-games {
+        .related-heading {
+          .title {
+            display: none;
+            font-size: 20px;
+          }
+        }
+        .related-contain {
+          .related-prd-content {
+            margin-top: 10px;
+            .rating {
+              margin-top: 15px;
+
+              .stars {
+                font-size: 16px;
+              }
+
+              .total-rating {
+                font-size: 16px;
+              }
+            }
+
+            .prd-price {
+              font-size: 18px;
+
+              .original-price {
+                margin-right: 0.6rem;
+              }
+
+              .discount {
+                width: fit-content;
+                height: fit-content;
+                padding: 0.3rem 0.6rem;
+                font-size: 14px;
+                margin-right: 0.6rem;
+              }
+            }
+
+            .prd-title {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    // product checkout
+    .product-checkout {
+      margin-top: 50px;
+
+      .product-logo {
+        img {
+          margin-bottom: 15px;
+          width: 50%;
+        }
+      }
+
+      .product-info {
+        margin-top: 20px;
+
+        .line {
+          font-size: 18px;
+        }
+      }
+
+      .product-button {
+        gap: 10px;
+      }
+
+      // step 01
+      .step-1 {
+        margin-top: 40px;
+        padding: 1rem 0;
+        font-size: 20px;
+
+        .add-btn {
+          gap: 10px;
+          margin-top: 20px;
+
+          .add-to-cart {
+            height: 50px;
+            font-size: 14px;
+          }
+
+          .add-to-wishlist {
+            height: 50px;
+            font-size: 14px;
+
+            .iconify {
+              font-size: 20px;
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .buy-item {
+          margin-top: 20px;
+          font-size: 16px;
+          padding: 1rem 1.5rem;
+
+          .title {
+            align-items: center;
+            font-size: 18px;
+
+            .iconify {
+              display: block;
+
+              margin-right: 0.3rem;
+              font-size: 30px;
+            }
+          }
+
+          .price {
+            margin-top: 25px;
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              padding: 3px 14px;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .in4-link {
+          font-size: 16px;
+        }
+      }
+
+      // step 02
+      .step-2 {
+        margin-top: 10px;
+        padding: 30px 0px;
+        font-size: 20px;
+
+        .heading {
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 400;
+        }
+
+        .select-item {
+          margin-top: 20px;
+          font-size: 18px;
+          padding: 1rem 1.5rem;
+
+          .title {
+            font-size: 18px;
+            line-height: 24px;
+
+            .iconify {
+              margin-right: 10px;
+              font-size: 26px;
+            }
+          }
+
+          .price {
+            margin-top: 20px;
+
+            .prd-price {
+              font-size: 16px;
+
+              .discount {
+                padding: 0.2rem 0.4rem;
+                font-size: 12px;
+                width: fit-content;
+                height: fit-content;
+              }
+            }
+
+            label {
+              margin-right: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              padding: 4px 20px;
+            }
+          }
+
+          .free-price {
+            padding: 3px 12px;
+            font-size: 14px;
+          }
+        }
+      }
+
+      // proceed
+
+      .proceed {
+        margin-top: 10px;
+        padding: 30px 0px;
+
+        .empty {
+          font-size: 18px;
+        }
+
+        .selected {
+          span {
+            font-size: 18px;
+          }
+
+          .product {
+            margin: 20px 0;
+            padding: 1rem 1.5rem;
+
+            .product-name {
+              font-size: 18px;
+              line-height: 24px;
+            }
+
+            .price {
+              margin-top: 15px;
+
+              .prd-price {
+                font-size: 16px;
+
+                .discount {
+                  padding: 0.2rem 0.4rem;
+                  font-size: 12px;
+                  width: fit-content;
+                  height: fit-content;
+                }
+              }
+            }
+
+            .free-price {
+              padding: 3px 12px;
+              font-size: 14px;
+            }
+          }
+
+          .taxes-label {
+            font-size: 16px;
+          }
+
+          .checkout-btn {
+            margin: 10px 0;
+            font-size: 16px;
+          }
+        }
+
+        .description {
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        .accept {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 22px;
         }
       }
     }

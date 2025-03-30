@@ -66,21 +66,65 @@ const SlideBanner = (props: Props) => {
     freeGames5,
     freeGames6,
   ];
-  const [visibleRange, setVisibleRange] = useState({ start: 0, end: 2 }); // Initially showing first 3 cards
 
+  const [screenSize, setScreenSize] = useState<"desktop" | "tablet" | "mobile">(
+    "desktop"
+  );
+  const [visibleRange, setVisibleRange] = useState({
+    start: 0,
+    end: screenSize === "mobile" ? 0 : screenSize === "tablet" ? 1 : 2,
+  });
+
+  // Update useEffect to handle both breakpoints
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 640) {
+        setScreenSize("mobile");
+      } else if (window.innerWidth <= 1024) {
+        setScreenSize("tablet");
+      } else {
+        setScreenSize("desktop");
+      }
+
+      setVisibleRange((prev) => ({
+        start: prev.start,
+        end:
+          window.innerWidth <= 640
+            ? prev.start
+            : window.innerWidth <= 1024
+            ? prev.start + 1
+            : prev.start + 2,
+      }));
+    };
+
+    // Initial check
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Update navigation handlers
   const handleLeftArrowClick = () => {
     setVisibleRange((prevRange) => {
       const newStart = (prevRange.start - 1 + cards.length) % cards.length;
-      const newEnd = (prevRange.end - 1 + cards.length) % cards.length;
-      return { start: newStart, end: newEnd };
+      const itemsToShow =
+        screenSize === "mobile" ? 0 : screenSize === "tablet" ? 1 : 2;
+      return {
+        start: newStart,
+        end: (newStart + itemsToShow) % cards.length,
+      };
     });
   };
 
   const handleRightArrowClick = () => {
     setVisibleRange((prevRange) => {
       const newStart = (prevRange.start + 1) % cards.length;
-      const newEnd = (prevRange.end + 1) % cards.length;
-      return { start: newStart, end: newEnd };
+      const itemsToShow =
+        screenSize === "mobile" ? 0 : screenSize === "tablet" ? 1 : 2;
+      return {
+        start: newStart,
+        end: (newStart + itemsToShow) % cards.length,
+      };
     });
   };
 
@@ -109,6 +153,18 @@ const SlideBanner = (props: Props) => {
     };
   }, []);
 
+  // Add dot click handler
+  const [currentDot, setCurrentDot] = useState(0);
+
+  // Add dot click handler
+  const handleDotClick = (index: number) => {
+    setVisibleRange({
+      start: index,
+      end: index,
+    });
+    setCurrentDot(index);
+  };
+
   return (
     <div className={`free-games-list ${isCardListVisible ? "appear" : ""}`}>
       {/* title */}
@@ -118,7 +174,8 @@ const SlideBanner = (props: Props) => {
       </div>
       {/* card list */}
       <div className="card-list">
-        <div className="navigation">
+        {/* Hide navigation arrows on mobile */}
+        <div className="navigation desktop-only">
           <div className="left-arrow" onClick={handleLeftArrowClick}>
             <span className="gravity-ui--arrow-left"></span>
           </div>
@@ -148,6 +205,16 @@ const SlideBanner = (props: Props) => {
               </div>
             );
           })}
+        </div>
+        {/* Add dot navigation for mobile */}
+        <div className="dot-navigation mobile-only">
+          {cards.map((_, index) => (
+            <div
+              key={index}
+              className={`dot ${currentDot === index ? "active" : ""}`}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
         </div>
       </div>
     </div>

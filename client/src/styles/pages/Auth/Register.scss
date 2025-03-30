@@ -25,17 +25,12 @@
     .regis-heading {
       position: relative;
       width: 100%;
+      margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
 
       img {
         width: 150px;
-      }
-
-      .regis-title {
-        font-size: 50px;
-        color: $secondary-color;
-        font-family: $mrs-saint-delafield;
       }
     }
     .regis-content {
