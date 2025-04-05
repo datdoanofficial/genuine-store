@@ -541,6 +541,28 @@
         font-size: 28px;
       }
     }
+
+    .line-wrapper {
+      .line {
+        .card {
+          .card-info {
+            .rating {
+              .stars {
+                font-size: 14px;
+
+                .solar--star-bold {
+                  margin-right: 3px;
+                }
+              }
+
+              .total-rating {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
