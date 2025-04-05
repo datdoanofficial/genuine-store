@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ProductCardInteractive.scss";
 
-import productImg from "../../assets/images/products/black-myth-wukong.png";
+import productImg from "../../assets/images/products/black-myth-wukong.webp";
 
 type Props = {
   isInCart: boolean;

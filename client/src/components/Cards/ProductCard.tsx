@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./ProductCard.scss";
-import prdImg from "../../assets/images/card/card-demo-11.png";
+import prdImg from "../../assets/images/card/card-demo-11.webp";
 import PriceCalculator from "../Common/PriceCalculator";
 import VotesCount from "../Common/VotesCount";
 

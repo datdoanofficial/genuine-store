@@ -1,15 +1,15 @@
 // Adjusted imports
 import React, { useState, useEffect, useRef } from "react";
-import banner1 from "../../assets/images/banner/banner-01.png";
-import banner2 from "../../assets/images/banner/banner-02.png";
-import banner3 from "../../assets/images/banner/banner-03.png";
-import banner4 from "../../assets/images/banner/banner-04.png";
+import banner1 from "../../assets/images/banner/banner-01.webp";
+import banner2 from "../../assets/images/banner/banner-02.webp";
+import banner3 from "../../assets/images/banner/banner-03.webp";
+import banner4 from "../../assets/images/banner/banner-04.webp";
 
 // Add tablet banner imports
-import tabletBanner1 from "../../assets/images/banner/tablet-banner-01.png";
-import tabletBanner2 from "../../assets/images/banner/tablet-banner-02.png";
-import tabletBanner3 from "../../assets/images/banner/tablet-banner-03.png";
-import tabletBanner4 from "../../assets/images/banner/tablet-banner-04.png";
+import tabletBanner1 from "../../assets/images/banner/tablet-banner-01.webp";
+import tabletBanner2 from "../../assets/images/banner/tablet-banner-02.webp";
+import tabletBanner3 from "../../assets/images/banner/tablet-banner-03.webp";
+import tabletBanner4 from "../../assets/images/banner/tablet-banner-04.webp";
 
 import VotesCount from "../Common/VotesCount";
 import "./HomeBanner.scss";

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../styles/pages/Checkout.scss";
 import { Link } from "react-router-dom";
-import momoicon from "../assets/images/icon/arcticons_momo.png";
-import productPoster from "../assets/images/card/card-demo.png";
+import momoicon from "../assets/images/icon/arcticons_momo.webp";
+import productPoster from "../assets/images/card/card-demo.webp";
 
-import visa_icon from "../assets/images/logo/visa.png";
-import mastercard_icon from "../assets/images/logo/mastercard.png";
-import jcb_icon from "../assets/images/logo/jcb.png";
-import american_express_icon from "../assets/images/logo/american-express.png";
-import qr_payment from "../assets/images/icon/qr-payment.png";
-import btn_paypal from "../assets/images/logo/btn-paypal.png";
-import btn_momo from "../assets/images/logo/btn-momo.png";
-import btn_wechatpay from "../assets/images/logo/btn-wechatpay.png";
+import visa_icon from "../assets/images/logo/visa.webp";
+import mastercard_icon from "../assets/images/logo/mastercard.webp";
+import jcb_icon from "../assets/images/logo/jcb.webp";
+import american_express_icon from "../assets/images/logo/american-express.webp";
+import qr_payment from "../assets/images/icon/qr-payment.webp";
+import btn_paypal from "../assets/images/logo/btn-paypal.webp";
+import btn_momo from "../assets/images/logo/btn-momo.webp";
+import btn_wechatpay from "../assets/images/logo/btn-wechatpay.webp";
 
 type Props = {};
 

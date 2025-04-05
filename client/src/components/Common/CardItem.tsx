@@ -1,6 +1,6 @@
 import React from "react";
 import "./CardItem.scss";
-import cardDemo from "../../assets/images/card/freegames-01.png";
+import cardDemo from "../../assets/images/card/freegames-01.webp";
 
 type Props = {};
 

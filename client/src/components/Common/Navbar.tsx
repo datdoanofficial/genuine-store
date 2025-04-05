@@ -106,7 +106,11 @@ const Navbar = (props: Props) => {
                   <span className="solar--bag-3-outline shopping-bag icon"></span>
                   Cart
                 </Link>
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="sign-in-btn"
+                >
                   <PrimaryBtn to="/login">Sign In</PrimaryBtn>
                 </Link>
               </div>

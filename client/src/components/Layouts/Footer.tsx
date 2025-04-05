@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 import Logo from "../Common/Logo";
-import momoicon from "../../assets/images/icon/arcticons_momo_color.png";
-import DevBrand from "../../assets/images/logo/datdoan.png";
-import mastercard_logo from "../../assets/images/logo/logos_mastercard.png";
+import momoicon from "../../assets/images/icon/arcticons_momo_color.webp";
+import DevBrand from "../../assets/images/logo/datdoan.webp";
+import mastercard_logo from "../../assets/images/logo/logos_mastercard.webp";
 
 type Props = {};
 

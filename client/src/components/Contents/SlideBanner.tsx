@@ -3,12 +3,12 @@ import "./SlideBanner.scss";
 import SecondaryBtn from "../Common/SecondaryBtn";
 import SmallBtn from "../Common/SmallBtn";
 
-import freeGames1 from "../../assets/images/card/freegames-01.png";
-import freeGames2 from "../../assets/images/card/freegames-02.png";
-import freeGames3 from "../../assets/images/card/freegames-03.png";
-import freeGames4 from "../../assets/images/card/freegames-04.png";
-import freeGames5 from "../../assets/images/card/freegames-05.png";
-import freeGames6 from "../../assets/images/card/freegames-06.png";
+import freeGames1 from "../../assets/images/card/freegames-01.webp";
+import freeGames2 from "../../assets/images/card/freegames-02.webp";
+import freeGames3 from "../../assets/images/card/freegames-03.webp";
+import freeGames4 from "../../assets/images/card/freegames-04.webp";
+import freeGames5 from "../../assets/images/card/freegames-05.webp";
+import freeGames6 from "../../assets/images/card/freegames-06.webp";
 type Props = {};
 
 const SlideBanner = (props: Props) => {

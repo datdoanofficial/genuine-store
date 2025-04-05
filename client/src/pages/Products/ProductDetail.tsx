@@ -6,37 +6,37 @@ import VotesCount from "../../components/Common/VotesCount";
 import ToolBar from "../../components/Common/ToolBar";
 import Navigate from "../../components/Common/Navigate";
 import RltNavigate from "../../components/Common/RltNavigate";
-import NarakaLogo from "../../assets/images/products/logo/naraka_logo.png";
+import NarakaLogo from "../../assets/images/products/logo/naraka_logo.webp";
 
 // Import images and videos from assets/images directory
 
-import thumbnail0 from "../../assets/images/products/thumbnails/naraka_thumbnails_00.jpg";
-import thumbnail1 from "../../assets/images/products/thumbnails/naraka_thumbnails_01.jpg";
-import thumbnail2 from "../../assets/images/products/thumbnails/naraka_thumbnails_02.jpg";
-import thumbnail3 from "../../assets/images/products/thumbnails/naraka_thumbnails_03.jpg";
-import thumbnail4 from "../../assets/images/products/thumbnails/naraka_thumbnails_04.jpg";
-import thumbnail5 from "../../assets/images/products/thumbnails/naraka_thumbnails_05.jpg";
-import thumbnail6 from "../../assets/images/products/thumbnails/naraka_thumbnails_06.jpg";
-import thumbnail7 from "../../assets/images/products/thumbnails/naraka_thumbnails_07.jpg";
+import thumbnail0 from "../../assets/images/products/thumbnails/naraka_thumbnails_00.webp";
+import thumbnail1 from "../../assets/images/products/thumbnails/naraka_thumbnails_01.webp";
+import thumbnail2 from "../../assets/images/products/thumbnails/naraka_thumbnails_02.webp";
+import thumbnail3 from "../../assets/images/products/thumbnails/naraka_thumbnails_03.webp";
+import thumbnail4 from "../../assets/images/products/thumbnails/naraka_thumbnails_04.webp";
+import thumbnail5 from "../../assets/images/products/thumbnails/naraka_thumbnails_05.webp";
+import thumbnail6 from "../../assets/images/products/thumbnails/naraka_thumbnails_06.webp";
+import thumbnail7 from "../../assets/images/products/thumbnails/naraka_thumbnails_07.webp";
 
 // Import images for related product
 
-import rltProduct0 from "../../assets/images/products/rlt-product.png";
-import rltProduct1 from "../../assets/images/products/rlt-product-01.png";
-import rltProduct2 from "../../assets/images/products/rlt-product-02.png";
-import rltProduct3 from "../../assets/images/products/rlt-product-03.png";
-import rltProduct4 from "../../assets/images/products/rlt-product-04.png";
-import rltProduct5 from "../../assets/images/products/rlt-product-05.png";
-import rltProduct6 from "../../assets/images/products/rlt-product-06.png";
-import rltProduct7 from "../../assets/images/products/rlt-product-07.png";
-import rltProduct8 from "../../assets/images/products/rlt-product-08.png";
-import rltProduct9 from "../../assets/images/products/rlt-product-09.png";
-import rltProduct10 from "../../assets/images/products/rlt-product-10.png";
-import rltProduct11 from "../../assets/images/products/rlt-product-11.png";
-import rltProduct12 from "../../assets/images/products/rlt-product-12.png";
-import rltProduct13 from "../../assets/images/products/rlt-product-13.png";
-import rltProduct14 from "../../assets/images/products/rlt-product-14.png";
-import rltProduct15 from "../../assets/images/products/rlt-product-15.png";
+import rltProduct0 from "../../assets/images/products/rlt-product.webp";
+import rltProduct1 from "../../assets/images/products/rlt-product-01.webp";
+import rltProduct2 from "../../assets/images/products/rlt-product-02.webp";
+import rltProduct3 from "../../assets/images/products/rlt-product-03.webp";
+import rltProduct4 from "../../assets/images/products/rlt-product-04.webp";
+import rltProduct5 from "../../assets/images/products/rlt-product-05.webp";
+import rltProduct6 from "../../assets/images/products/rlt-product-06.webp";
+import rltProduct7 from "../../assets/images/products/rlt-product-07.webp";
+import rltProduct8 from "../../assets/images/products/rlt-product-08.webp";
+import rltProduct9 from "../../assets/images/products/rlt-product-09.webp";
+import rltProduct10 from "../../assets/images/products/rlt-product-10.webp";
+import rltProduct11 from "../../assets/images/products/rlt-product-11.webp";
+import rltProduct12 from "../../assets/images/products/rlt-product-12.webp";
+import rltProduct13 from "../../assets/images/products/rlt-product-13.webp";
+import rltProduct14 from "../../assets/images/products/rlt-product-14.webp";
+import rltProduct15 from "../../assets/images/products/rlt-product-15.webp";
 
 const relatedProductImg = [
   rltProduct0,
