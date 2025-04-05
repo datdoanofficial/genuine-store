@@ -574,7 +574,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// share btn <span class="material-symbols-light--share"></span>
+// share btn <span className="material-symbols-light--share"></span>
 
 .material-symbols-light--share {
   display: inline-block;
@@ -590,7 +590,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// report <span class="mingcute--flag-4-fill"></span>
+// report <span className="mingcute--flag-4-fill"></span>
 
 .mingcute--flag-4-fill {
   display: inline-block;
@@ -606,7 +606,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// heart icon <span class="solar--heart-linear"></span>
+// heart icon <span className="solar--heart-linear"></span>
 
 .solar--heart-linear {
   display: inline-block;
@@ -622,7 +622,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// buy icon <span class="icons8--buy"></span>
+// buy icon <span className="icons8--buy"></span>
 
 .icons8--buy {
   display: inline-block;
@@ -638,7 +638,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// user icon <span class="tabler--user-filled"></span>
+// user icon <span className="tabler--user-filled"></span>
 
 .tabler--user-filled {
   display: inline-block;
@@ -654,7 +654,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// credit card icon <span class="f7--creditcard-fill"></span>
+// credit card icon <span className="f7--creditcard-fill"></span>
 
 .f7--creditcard-fill {
   display: inline-block;
@@ -686,7 +686,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// paypal icon <span class="simple-icons--paypal"></span>
+// paypal icon <span className="simple-icons--paypal"></span>
 
 .simple-icons--paypal {
   display: inline-block;
@@ -702,7 +702,7 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   mask-size: 100% 100%;
 }
 
-// copy icon <span class="mingcute--copy-fill"></span>
+// copy icon <span className="mingcute--copy-fill"></span>
 
 .mingcute--copy-fill {
   display: inline-block;
@@ -725,6 +725,22 @@ $mrs-saint-delafield: "Mrs Saint Delafield", cursive;
   width: 1.2rem;
   height: 1.2rem;
   --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+// add to cart  <span className="la--cart-plus"></span>
+
+.la--cart-plus {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23000' d='M4 7c-.55 0-1 .45-1 1s.45 1 1 1h2.219l2.625 10.5c.222.89 1.02 1.5 1.937 1.5H23.25c.902 0 1.668-.598 1.906-1.469L27.75 10h-2.094l-2.406 9H10.781L8.156 8.5A1.98 1.98 0 0 0 6.22 7zm18 14c-1.645 0-3 1.355-3 3s1.355 3 3 3s3-1.355 3-3s-1.355-3-3-3m-9 0c-1.645 0-3 1.355-3 3s1.355 3 3 3s3-1.355 3-3s-1.355-3-3-3m3-14v3h-3v2h3v3h2v-3h3v-2h-3V7zm-3 16c.563 0 1 .438 1 1s-.438 1-1 1s-1-.438-1-1s.438-1 1-1m9 0c.563 0 1 .438 1 1s-.438 1-1 1s-1-.438-1-1s.438-1 1-1'/%3E%3C/svg%3E");
   background-color: currentColor;
   -webkit-mask-image: var(--svg);
   mask-image: var(--svg);

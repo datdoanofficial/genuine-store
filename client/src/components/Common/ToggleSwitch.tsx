@@ -1,12 +1,18 @@
 import React from "react";
 import "./ToggleSwitch.scss";
 
-type Props = {};
+type Props = {
+  onChange?: (checked: boolean) => void;
+};
 
-const ToggleSwitch = (props: Props) => {
+const ToggleSwitch = ({ onChange }: Props) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.checked);
+  };
+
   return (
     <label className="switch">
-      <input type="checkbox" />
+      <input type="checkbox" onChange={handleChange} />
       <span className="slider"></span>
     </label>
   );

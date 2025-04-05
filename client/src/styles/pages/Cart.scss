@@ -2,17 +2,38 @@
 
 .cart-page {
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 105px;
-  margin-bottom: 220px;
-  font-family: $pontano;
+  top: 125px;
+  margin-bottom: 250px;
+  font-family: "Pontano Sans", sans-serif;
   font-weight: 300;
-  width: calc(100% - 200px);
-  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: -moz-fit-content;
 
   .cart-header {
+    width: calc(100% - 6rem);
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    @media screen and (max-width: 1240px) {
+      width: calc(100% - 4rem);
+    }
+
+    @media screen and (max-width: 480px) {
+      width: calc(100% - 3rem);
+    }
+
+    @media screen and (max-width: 375px) {
+      width: calc(100% - 2rem);
+    }
+
+    .toolbar {
+      width: 100%;
+    }
 
     h1 {
       position: relative;
@@ -25,11 +46,23 @@
   }
 
   .cart-container {
-    width: 100%;
+    width: calc(100% - 6rem);
     height: fit-content;
     display: grid;
-    grid-template-columns: 3.5fr 1.5fr;
-    grid-gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @media screen and (max-width: 1240px) {
+      width: calc(100% - 4rem);
+    }
+
+    @media screen and (max-width: 480px) {
+      width: calc(100% - 3rem);
+    }
+
+    @media screen and (max-width: 375px) {
+      width: calc(100% - 2rem);
+    }
 
     .cart-items {
       width: 100%;
@@ -41,6 +74,15 @@
       padding: 25px 30px;
       background-color: #2a2a2a;
       border-radius: 10px;
+      font-size: 18px;
+
+      @media screen and (max-width: 480px) {
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 375px) {
+        font-size: 14px;
+      }
 
       .header {
         margin-bottom: 20px;
@@ -48,6 +90,14 @@
         .title {
           font-weight: 400;
           font-size: 36px;
+
+          @media screen and (max-width: 480px) {
+            font-size: 32px;
+          }
+
+          @media screen and (max-width: 375px) {
+            font-size: 28px;
+          }
         }
       }
 
@@ -76,7 +126,7 @@
       .cart-summary-subtotal {
         margin-top: 20px;
         padding: 26px 0;
-        font-weight: 500;
+        font-weight: 700;
         border-top: 1px solid #3a3a3a;
         display: flex;
         justify-content: space-between;
@@ -87,6 +137,7 @@
         height: 50px;
         color: #fff;
         text-transform: uppercase;
+        font-size: 16px;
         font-weight: 300;
         font-family: $pontano;
         background-color: $primary-color;
@@ -99,6 +150,10 @@
 
         &:hover {
           background-color: $hover-color;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 14px;
         }
       }
     }

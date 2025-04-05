@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./ProductFilter.scss";
+import "./WishlistFilter.scss";
 
 type Props = {};
 
-const ProductFilter = (props: Props) => {
+const WishlistFilter = (props: Props) => {
   const [selectValue, setSelectValue] = useState("");
   const [selectWidth, setSelectWidth] = useState("fit-content");
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -132,9 +132,10 @@ const ProductFilter = (props: Props) => {
             value={selectValue}
             style={{ width: selectWidth }}
           >
-            <option value="new-release">New Release</option>
-            <option value="coming-soon">Coming Soon</option>
+            <option value="recently-added">Recently Added</option>
             <option value="alphabetical">Alphabetical</option>
+            <option value="on-sale">On Sale</option>
+            <option value="coming-soon">Coming Soon</option>
             <option value="high-to-low">Price: High to Low</option>
             <option value="low-to-high">Price: Low to High</option>
           </select>
@@ -370,4 +371,4 @@ const ProductFilter = (props: Props) => {
   );
 };
 
-export default ProductFilter;
+export default WishlistFilter;

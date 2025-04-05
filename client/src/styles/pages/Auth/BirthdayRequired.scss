@@ -21,6 +21,20 @@
     background-color: $bg-color;
     border-radius: 20px;
 
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      padding: 40px 30px;
+    }
+
+    @media screen and (max-width: 375px) {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      padding: 40px 20px;
+    }
+
     .birthday-heading {
       position: relative;
       width: 100%;
@@ -46,6 +60,10 @@
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 10px;
+
+          @media screen and (max-width: 375px) {
+            gap: 0.3rem;
+          }
         }
 
         .form-group {
@@ -61,7 +79,7 @@
             transition: 0.3s;
             background: none;
             color: $text-color;
-            padding: 15px 15px 15px 15px; /* Adjusted padding for select */
+            padding: 15px; /* Adjusted padding for select */
             font-size: 16px;
             font-family: $pontano;
             font-weight: 300;
@@ -80,6 +98,10 @@
             &:focus {
               border-color: #c4c4c4;
             }
+
+            @media screen and (max-width: 375px) {
+              padding: 10px;
+            }
           }
 
           input {
@@ -91,7 +113,7 @@
             transition: 0.3s;
             background: none;
             color: $text-color;
-            padding: 0 25px;
+            padding: 0 15px;
             font-size: 16px;
             font-family: $pontano;
             font-weight: 300;
@@ -102,6 +124,10 @@
 
             &:focus {
               border-color: #c4c4c4;
+            }
+
+            @media screen and (max-width: 375px) {
+              padding: 0 10px;
             }
           }
         }
@@ -128,7 +154,7 @@
             width: fit-content;
             display: grid;
             font-size: 14px;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 20px;
             text-decoration: underline;
             text-decoration-thickness: 0.8px;
             text-underline-offset: 2px;

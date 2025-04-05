@@ -9,6 +9,58 @@ type Props = {
 };
 
 const ProductCardInteractive = ({ isInCart }: Props) => {
+  const [viewportSize, setViewportSize] = React.useState<
+    "desktop" | "tablet" | "mobile" | "smallMobile" | "extraSmallMobile"
+  >(
+    window.innerWidth <= 375
+      ? "extraSmallMobile"
+      : window.innerWidth <= 576
+      ? "smallMobile"
+      : window.innerWidth <= 768
+      ? "mobile"
+      : window.innerWidth <= 1024
+      ? "tablet"
+      : "desktop"
+  );
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 375) {
+        setViewportSize("extraSmallMobile");
+      } else if (window.innerWidth <= 576) {
+        setViewportSize("smallMobile");
+      } else if (window.innerWidth <= 768) {
+        setViewportSize("mobile");
+      } else if (window.innerWidth <= 1024) {
+        setViewportSize("tablet");
+      } else {
+        setViewportSize("desktop");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const renderDeleteButton = () => {
+    if (viewportSize === "tablet") {
+      return "Delete";
+    }
+    return <span className="fluent--delete-20-regular"></span>;
+  };
+
+  const renderActionButton = () => {
+    if (viewportSize === "mobile" || viewportSize === "extraSmallMobile") {
+      return isInCart ? (
+        <span className="solar--heart-linear"></span>
+      ) : (
+        <span className="la--cart-plus"></span>
+      );
+    }
+    return isInCart ? "Move to wishlist" : "Add to cart";
+  };
+
   return (
     <div className="product-cart">
       <Link to="/product-details" className="product-img">
@@ -31,14 +83,9 @@ const ProductCardInteractive = ({ isInCart }: Props) => {
           <div className="label">Platform:</div>
           <span className="teenyicons--windows-solid"></span>
         </div>
-
         <div className="action-btn">
-          <button className="remove-btn">
-            <span className="fluent--delete-20-regular"></span>
-          </button>
-          <button className="add-to-cart">
-            {isInCart ? "Move to wishlist" : "Add to cart"}
-          </button>
+          <button className="remove-btn">{renderDeleteButton()}</button>
+          <button className="add-to-cart">{renderActionButton()}</button>
         </div>
       </div>
     </div>
