@@ -2,15 +2,21 @@
 
 .wishlist-page {
   position: relative;
-  top: 125px;
-  margin-bottom: 250px;
-  font-family: "Pontano Sans", sans-serif;
-  font-weight: 300;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 105px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: -moz-fit-content;
+  height: fit-content;
+
+  .toolbar {
+    .header-wrapper {
+      margin: 40px 0 20px 0;
+    }
+  }
 
   .wishlist-header {
     width: calc(100% - 6rem);

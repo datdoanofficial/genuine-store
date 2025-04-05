@@ -13,9 +13,16 @@
   width: 100%;
   height: fit-content;
 
+  .toolbar {
+    .header-wrapper {
+      margin: 20px 0 40px 0;
+    }
+  }
+
   .heading-wrapper {
     width: calc(100% - 6rem);
     height: 80vh;
+    margin-bottom: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
